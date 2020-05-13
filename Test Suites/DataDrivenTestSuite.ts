@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>DataDrivenTestSuite</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>30</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <testSuiteGuid>59e1cd7c-6181-42f9-86bc-d20b85e2ac78</testSuiteGuid>
+   <testCaseLink>
+      <guid>c0adccea-78d8-4af2-b84f-2a4a9b833a67</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Miscelinious/MultipleDataSet</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>513477d9-6902-4353-a67b-d7a9a70e4aad</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/ExcelDataSource/EnterBugMultipleTest Data</testDataId>
+      </testDataLink>
+      <variableLink>
+         <testDataLinkId>513477d9-6902-4353-a67b-d7a9a70e4aad</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Severity</value>
+         <variableId>2d7aac1d-4fab-470e-8c0d-11cc1305e87c</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>513477d9-6902-4353-a67b-d7a9a70e4aad</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Hardware</value>
+         <variableId>edb0cec9-be1a-497c-b1e5-acccb4e96e57</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>513477d9-6902-4353-a67b-d7a9a70e4aad</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>OS</value>
+         <variableId>bc1490ed-13b0-467e-9203-3b74c175595b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>513477d9-6902-4353-a67b-d7a9a70e4aad</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Summary</value>
+         <variableId>3f97c2ad-9c86-42cd-8b63-9ef19497fec0</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>513477d9-6902-4353-a67b-d7a9a70e4aad</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Description</value>
+         <variableId>1504a1af-e201-49eb-9910-8807a07e4110</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>
