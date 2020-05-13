@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>PeopleShop</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://people-shop.qa2.shopnation.com/shop/saint-laurent-saint-laurent-mens-tropical-print-shirt-black-chalk-size-43-17-p3a6708cba613b532d98d64543fc2e794.html'</initValue>
+      <name>applicationUrlPDPPeopleShop</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://people-shop.qa2.shopnation.com/shop/beauty/beauty-blender-walmart-sc281474979950926.html?ins=1'</initValue>
+      <name>applicationUrlStoryPeopleShop</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>4</initValue>
+      <name>SleepTime</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>
