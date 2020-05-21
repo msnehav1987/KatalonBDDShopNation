@@ -1,3 +1,4 @@
+package shopNation
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -40,27 +41,42 @@ import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
+import com.kms.katalon.core.webui.driver.DriverFactory
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.By as By
+import org.openqa.selenium.interactions.Actions
 
 
 
-class RealSimplePageNotFound {
+class RSPageNotFoundValidation{
+	WebDriver driver;
+	WebElement element;
 	/**
 	 * The step definitions below match with Katalon sample Gherkin steps
 	 */
-	@Given("The RealSimple 404 Page Url")
-	def passRealSimpleUrl() {
-		println("The RealSimple 404 Page Url is provided")
+	@Given("Provided info about the PageNotFound scenario")
+	def infoAboutPageNotFound(){
+		println("Search the Page not found header title")
 	}
 
-	@When("search for the valid url and close")
-	def checkThePageNotFoundTitle() {
-		println("search for title")
-		WebUI.callTestCase(findTestCase('Test Cases/RealSimple404Page'),null)
+	@When("Navigate to PageNotFound where the store name is (.*) and its respective with (.*)")
+	def PageNotFoundLogin(String storename, String url){
+		println("login to the PageNotFound, the storename is: " +storename+"url is: "+ url)
+		WebUI.openBrowser(url)
+		WebUI.waitForPageLoad(10)
+		WebUI.maximizeWindow()
+	}
+	@When("search for the Page not found title")
+	def PageNotFoundHeader(){
+		WebUI.waitForElementVisible(findTestObject('Object Repository/RS404Page.PageTitle'), GlobalVariable.timeOut)
+		System.out.println('The page title is available')
+		WebUI.delay(3)
 	}
 
-	@Then("Validation is pass")
-	def validationCompleted() {
-
-		println("last step completed")
+	@Then("close the PageNotFound session")
+	def pageNotFoundCloseBrowser(){
+		WebUI.closeBrowser()
+		println("Last step completed")
 	}
 }

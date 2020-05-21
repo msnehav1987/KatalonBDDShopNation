@@ -1,24 +1,24 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleStory.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimplePageNotFound.feature");
 formatter.feature({
-  "name": "RealSimple Story page Smoke",
+  "name": "RealSimple PageNotFound Smoke",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "name": "RealSimple Story Page Smoke by validating the Story Page content",
-  "description": "Given: Provided info about the Story Page scenario",
+  "name": "RealSimple PageNotFound Smoke by validating the Page title",
+  "description": "Given: Provided info about the PageNotFound scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to Story Page where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
+  "name": "Navigate to PageNotFound where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
   "keyword": "When "
 });
 formatter.step({
-  "name": "search for the Story Page content",
+  "name": "search for the Page not found title",
   "keyword": "When "
 });
 formatter.step({
-  "name": "close the Story session",
+  "name": "close the PageNotFound session",
   "keyword": "Then "
 });
 formatter.examples({
@@ -35,42 +35,42 @@ formatter.examples({
     {
       "cells": [
         "RealSimple",
-        "https://realsimple-shop.qa2.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins\u003d1"
+        "https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html"
       ]
     }
   ]
 });
 formatter.scenario({
-  "name": "RealSimple Story Page Smoke by validating the Story Page content",
-  "description": "Given: Provided info about the Story Page scenario",
+  "name": "RealSimple PageNotFound Smoke by validating the Page title",
+  "description": "Given: Provided info about the PageNotFound scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to Story Page where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins\u003d1",
+  "name": "Navigate to PageNotFound where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSStoryPageValidation.goToStoryPage(String,String)"
+  "location": "RSPageNotFoundValidation.PageNotFoundLogin(String,String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "search for the Story Page content",
+  "name": "search for the Page not found title",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSStoryPageValidation.searchStoryContents()"
+  "location": "RSPageNotFoundValidation.PageNotFoundHeader()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "close the Story session",
+  "name": "close the PageNotFound session",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "RSStoryPageValidation.logoutStoryPageSession()"
+  "location": "RSPageNotFoundValidation.pageNotFoundCloseBrowser()"
 });
 formatter.result({
   "status": "passed"

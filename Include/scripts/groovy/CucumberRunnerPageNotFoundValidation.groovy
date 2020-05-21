@@ -48,7 +48,7 @@ import cucumber.api.junit.Cucumber
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="Include/features/operations", glue="", plugin=["pretty","html:Reports"])
+@CucumberOptions(features="Include/features/operations/ShopNationSmoke/realSimplePageNotFound.feature", glue="", plugin=["pretty","html:Reports"])
 
-public class CucumberRunner {
+public class CucumberRunnerPageNotFoundValidation {
 }
