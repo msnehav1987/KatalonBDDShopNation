@@ -1,24 +1,24 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimplePageNotFound.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleSitemap.feature");
 formatter.feature({
-  "name": "RealSimple PageNotFound Smoke",
+  "name": "RealSimple Sitemap Smoke",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "name": "RealSimple PageNotFound Smoke by validating the Page title",
-  "description": "Given: Provided info about the PageNotFound scenario",
+  "name": "RealSimple Sitemap Smoke by validating the Sitemap header",
+  "description": "Given: Provided info about the scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to PageNotFound where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
+  "name": "Provided store and Url, Navigate to Sitemap Page where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
   "keyword": "When "
 });
 formatter.step({
-  "name": "search for the Page not found title",
+  "name": "validate the Sitemap header",
   "keyword": "When "
 });
 formatter.step({
-  "name": "close the PageNotFound session",
+  "name": "close the sitemap browser",
   "keyword": "Then "
 });
 formatter.examples({
@@ -35,42 +35,42 @@ formatter.examples({
     {
       "cells": [
         "RealSimple",
-        "https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html"
+        "https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html"
       ]
     }
   ]
 });
 formatter.scenario({
-  "name": "RealSimple PageNotFound Smoke by validating the Page title",
-  "description": "Given: Provided info about the PageNotFound scenario",
+  "name": "RealSimple Sitemap Smoke by validating the Sitemap header",
+  "description": "Given: Provided info about the scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to PageNotFound where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html",
+  "name": "Provided store and Url, Navigate to Sitemap Page where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSPageNotFoundValidation.PageNotFoundLogin(String,String)"
+  "location": "RSSiteMapValidation.siteMapPageLogin(String,String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "search for the Page not found title",
+  "name": "validate the Sitemap header",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSPageNotFoundValidation.PageNotFoundHeader()"
+  "location": "RSSiteMapValidation.siteMapHeader()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "close the PageNotFound session",
+  "name": "close the sitemap browser",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "RSPageNotFoundValidation.pageNotFoundCloseBrowser()"
+  "location": "RSSiteMapValidation.siteMapCloseBrowser()"
 });
 formatter.result({
   "status": "passed"

@@ -1,3 +1,4 @@
+package shopNation
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -40,27 +41,43 @@ import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
+import com.kms.katalon.core.webui.driver.DriverFactory
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.By as By
+import org.openqa.selenium.interactions.Actions
 
 
 
-class RealSimpleProductUnavailable{
+class RSProductUnavailableValidation{
+	WebDriver driver;
+	WebElement element;
 	/**
 	 * The step definitions below match with Katalon sample Gherkin steps
 	 */
-	@Given("The RealSimple Product Unavailable Page Url")
-	def passRealSimpleProductUnavailableUrl() {
-		println("The RealSimple product unavilable url is provided")
+	@Given("Provided info about the product unavailable scenario")
+	def infoAboutProductUnavailableScenario(){
+		println("Search for the unavailable product")
 	}
 
-	@When("search for the image unavailable")
-	def checkImageUnavailability() {
-		println("search for unavailable image")
-		WebUI.callTestCase(findTestCase('Test Cases/RealSimpleProductUnavailable'),null)
+	@When("Navigate to Product Unavailable Page where the store name is (.*) and its respective url is (.*)")
+	def realSimpleProductUnavailableLogin(String storename, String url){
+		println("login to the product unavailable page, the storename is: " +storename+"url is: "+ url)
+		WebUI.openBrowser(url)
+		WebUI.waitForPageLoad(10)
+		WebUI.maximizeWindow()
+	}
+	@When("the product image is unavailable")
+	def productUnavailableImage(){
+		WebUI.delay(5)
+		WebUI.waitForElementVisible(findTestObject('Object Repository/RealSimpleProductUnavailableMessage'), GlobalVariable.timeOut)
+		System.out.println('The image is unavailable')
+		WebUI.delay(3)
 	}
 
-	@Then("Validation page unavailable is pass")
-	def validationPageUnavailableCompleted() {
-
-		println("Validation completed")
+	@Then("close the product unavailable session")
+	def realSimpelProductUnavailableCloseBrowser(){
+		WebUI.closeBrowser()
+		println("Last step completed")
 	}
 }
