@@ -4,66 +4,66 @@
     "elements": [
       {
         "line": 10,
-        "name": "RealSimple Pageii Smoke by validating the Pageii content",
-        "description": "Given: Provided info about the Pageii scenario",
-        "id": "realsimple-pageii-smoke;realsimple-pageii-smoke-by-validating-the-pageii-content;;2",
+        "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
+        "description": "Given: Provided info about the product unavailable scenario",
+        "id": "realsimple-product-unavailable-smoke;realsimple-product-unavailable-smoke-by-validating-the-product-unavailable-text-title;;2",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 17404062200,
+              "duration": 25879733900,
               "status": "passed"
             },
             "line": 4,
-            "name": "Navigate to Pageii where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html",
+            "name": "Navigate to Product Unavailable Page where the store name is RealSimple and its respective url is https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
             "match": {
               "arguments": [
                 {
                   "val": "RealSimple",
-                  "offset": 43
+                  "offset": 61
                 },
                 {
-                  "val": "https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html",
-                  "offset": 78
+                  "val": "https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
+                  "offset": 98
                 }
               ],
-              "location": "RSPageiiValidation.PageiiLogin(String,String)"
+              "location": "RSProductUnavailableValidation.realSimpleProductUnavailableLogin(String,String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 4878224000,
+              "duration": 14505672800,
               "status": "passed"
             },
             "line": 5,
-            "name": "search for the Skyword Article content",
+            "name": "the product image is unavailable",
             "match": {
-              "location": "RSPageiiValidation.PageiiSkywordArticleHeader()"
+              "location": "RSProductUnavailableValidation.productUnavailableImage()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 935284500,
+              "duration": 1177737200,
               "status": "passed"
             },
             "line": 6,
-            "name": "close the Pageii session",
+            "name": "close the product unavailable session",
             "match": {
-              "location": "RSPageiiValidation.pageiiCloseBrowser()"
+              "location": "RSProductUnavailableValidation.realSimpelProductUnavailableCloseBrowser()"
             },
             "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "RealSimple Pageii Smoke",
+    "name": "RealSimple Product Unavailable Smoke",
     "description": "",
-    "id": "realsimple-pageii-smoke",
+    "id": "realsimple-product-unavailable-smoke",
     "keyword": "Feature",
-    "uri": "Include/features/operations/ShopNationSmoke/realSimplePageTwo.feature",
+    "uri": "Include/features/operations/ShopNationSmoke/realSimpleProductUnavailable.feature",
     "tags": []
   }
 ]

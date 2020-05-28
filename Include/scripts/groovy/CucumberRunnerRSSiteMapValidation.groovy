@@ -48,7 +48,7 @@ import cucumber.api.junit.Cucumber
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="Include/features/operations/ShopNationSmoke/realSimpleSitemap.feature", glue="", plugin=["pretty","html:Reports"])
+@CucumberOptions(features="Include/features/operations/ShopNationSmoke/realSimpleSitemap.feature", glue="", plugin=["pretty","html:ReportsFolder","json:ReportsFolder/cucumber.json"])
 
 public class CucumberRunnerRSSiteMapValidation {
 }
