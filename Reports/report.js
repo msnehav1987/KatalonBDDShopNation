@@ -1,24 +1,24 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleSitemap.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleProductUnavailable.feature");
 formatter.feature({
-  "name": "RealSimple Sitemap Smoke",
+  "name": "RealSimple Product Unavailable Smoke",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "name": "RealSimple Sitemap Smoke by validating the Sitemap header",
-  "description": "Given: Provided info about the scenario",
+  "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
+  "description": "Given: Provided info about the product unavailable scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Provided store and Url, Navigate to Sitemap Page where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
+  "name": "Navigate to Product Unavailable Page where the store name is \u003cstorename\u003e and its respective url is \u003curl\u003e",
   "keyword": "When "
 });
 formatter.step({
-  "name": "validate the Sitemap header",
+  "name": "the product image is unavailable",
   "keyword": "When "
 });
 formatter.step({
-  "name": "close the sitemap browser",
+  "name": "close the product unavailable session",
   "keyword": "Then "
 });
 formatter.examples({
@@ -35,42 +35,42 @@ formatter.examples({
     {
       "cells": [
         "RealSimple",
-        "https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html"
+        "https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html"
       ]
     }
   ]
 });
 formatter.scenario({
-  "name": "RealSimple Sitemap Smoke by validating the Sitemap header",
-  "description": "Given: Provided info about the scenario",
+  "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
+  "description": "Given: Provided info about the product unavailable scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Provided store and Url, Navigate to Sitemap Page where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html",
+  "name": "Navigate to Product Unavailable Page where the store name is RealSimple and its respective url is https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSSiteMapValidation.siteMapPageLogin(String,String)"
+  "location": "RSProductUnavailableValidation.realSimpleProductUnavailableLogin(String,String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "validate the Sitemap header",
+  "name": "the product image is unavailable",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSSiteMapValidation.siteMapHeader()"
+  "location": "RSProductUnavailableValidation.productUnavailableImage()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "close the sitemap browser",
+  "name": "close the product unavailable session",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "RSSiteMapValidation.siteMapCloseBrowser()"
+  "location": "RSProductUnavailableValidation.realSimpelProductUnavailableCloseBrowser()"
 });
 formatter.result({
   "status": "passed"

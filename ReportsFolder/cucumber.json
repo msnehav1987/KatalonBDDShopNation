@@ -1,0 +1,69 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 10,
+        "name": "RealSimple Pageii Smoke by validating the Pageii content",
+        "description": "Given: Provided info about the Pageii scenario",
+        "id": "realsimple-pageii-smoke;realsimple-pageii-smoke-by-validating-the-pageii-content;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 17404062200,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Navigate to Pageii where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html",
+            "match": {
+              "arguments": [
+                {
+                  "val": "RealSimple",
+                  "offset": 43
+                },
+                {
+                  "val": "https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html",
+                  "offset": 78
+                }
+              ],
+              "location": "RSPageiiValidation.PageiiLogin(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4878224000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "search for the Skyword Article content",
+            "match": {
+              "location": "RSPageiiValidation.PageiiSkywordArticleHeader()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 935284500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "close the Pageii session",
+            "match": {
+              "location": "RSPageiiValidation.pageiiCloseBrowser()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "RealSimple Pageii Smoke",
+    "description": "",
+    "id": "realsimple-pageii-smoke",
+    "keyword": "Feature",
+    "uri": "Include/features/operations/ShopNationSmoke/realSimplePageTwo.feature",
+    "tags": []
+  }
+]
