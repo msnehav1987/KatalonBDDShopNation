@@ -1,24 +1,24 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleProductUnavailable.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Include/features/operations/ShopNationSmoke/realSimpleProductDetailPage.feature");
 formatter.feature({
-  "name": "RealSimple Product Unavailable Smoke",
+  "name": "RealSimple PDP Smoke",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
-  "description": "Given: Provided info about the product unavailable scenario",
+  "name": "RealSimple PDP Smoke by validating the product card title",
+  "description": "Given: Provided info",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to Product Unavailable Page where the store name is \u003cstorename\u003e and its respective url is \u003curl\u003e",
+  "name": "Navigate to PDP Page where the store name is \u003cstorename\u003e and its respective with \u003curl\u003e",
   "keyword": "When "
 });
 formatter.step({
-  "name": "the product image is unavailable",
+  "name": "search and click the product card info",
   "keyword": "When "
 });
 formatter.step({
-  "name": "close the product unavailable session",
+  "name": "close the browser",
   "keyword": "Then "
 });
 formatter.examples({
@@ -35,42 +35,42 @@ formatter.examples({
     {
       "cells": [
         "RealSimple",
-        "https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html"
+        "https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html"
       ]
     }
   ]
 });
 formatter.scenario({
-  "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
-  "description": "Given: Provided info about the product unavailable scenario",
+  "name": "RealSimple PDP Smoke by validating the product card title",
+  "description": "Given: Provided info",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "Navigate to Product Unavailable Page where the store name is RealSimple and its respective url is https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
+  "name": "Navigate to PDP Page where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSProductUnavailableValidation.realSimpleProductUnavailableLogin(String,String)"
+  "location": "RsPdpPageValidation.realSimplePdp(String,String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the product image is unavailable",
+  "name": "search and click the product card info",
   "keyword": "When "
 });
 formatter.match({
-  "location": "RSProductUnavailableValidation.productUnavailableImage()"
+  "location": "RsPdpPageValidation.clickProductCardInfoRS()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "close the product unavailable session",
+  "name": "close the browser",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "RSProductUnavailableValidation.realSimpelProductUnavailableCloseBrowser()"
+  "location": "RsPdpPageValidation.validationRSPdpCompleted()"
 });
 formatter.result({
   "status": "passed"

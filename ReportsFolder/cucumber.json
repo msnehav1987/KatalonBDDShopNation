@@ -4,66 +4,66 @@
     "elements": [
       {
         "line": 10,
-        "name": "RealSimple Product Unavailable Smoke by validating the product unavailable text title",
-        "description": "Given: Provided info about the product unavailable scenario",
-        "id": "realsimple-product-unavailable-smoke;realsimple-product-unavailable-smoke-by-validating-the-product-unavailable-text-title;;2",
+        "name": "RealSimple PDP Smoke by validating the product card title",
+        "description": "Given: Provided info",
+        "id": "realsimple-pdp-smoke;realsimple-pdp-smoke-by-validating-the-product-card-title;;2",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 25879733900,
+              "duration": 23364536900,
               "status": "passed"
             },
             "line": 4,
-            "name": "Navigate to Product Unavailable Page where the store name is RealSimple and its respective url is https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
+            "name": "Navigate to PDP Page where the store name is RealSimple and its respective with https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html",
             "match": {
               "arguments": [
                 {
                   "val": "RealSimple",
-                  "offset": 61
+                  "offset": 45
                 },
                 {
-                  "val": "https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html",
-                  "offset": 98
+                  "val": "https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html",
+                  "offset": 80
                 }
               ],
-              "location": "RSProductUnavailableValidation.realSimpleProductUnavailableLogin(String,String)"
+              "location": "RsPdpPageValidation.realSimplePdp(String,String)"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 14505672800,
+              "duration": 22596227899,
               "status": "passed"
             },
             "line": 5,
-            "name": "the product image is unavailable",
+            "name": "search and click the product card info",
             "match": {
-              "location": "RSProductUnavailableValidation.productUnavailableImage()"
+              "location": "RsPdpPageValidation.clickProductCardInfoRS()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 1177737200,
+              "duration": 9175740700,
               "status": "passed"
             },
             "line": 6,
-            "name": "close the product unavailable session",
+            "name": "close the browser",
             "match": {
-              "location": "RSProductUnavailableValidation.realSimpelProductUnavailableCloseBrowser()"
+              "location": "RsPdpPageValidation.validationRSPdpCompleted()"
             },
             "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "RealSimple Product Unavailable Smoke",
+    "name": "RealSimple PDP Smoke",
     "description": "",
-    "id": "realsimple-product-unavailable-smoke",
+    "id": "realsimple-pdp-smoke",
     "keyword": "Feature",
-    "uri": "Include/features/operations/ShopNationSmoke/realSimpleProductUnavailable.feature",
+    "uri": "Include/features/operations/ShopNationSmoke/realSimpleProductDetailPage.feature",
     "tags": []
   }
 ]
