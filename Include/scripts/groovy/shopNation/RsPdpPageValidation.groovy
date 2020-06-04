@@ -59,7 +59,7 @@ class RsPdpPageValidation{
 	def infoAboutScenario(){
 		println("the product detail page provide the info about product and also lists the similar products")
 	}
-	
+
 	@When("Navigate to PDP Page where the store name is (.*) and its respective with (.*)")
 	def realSimplePdp(String storename, String url) {
 		println("The RealSimple PDP Url is provided")
