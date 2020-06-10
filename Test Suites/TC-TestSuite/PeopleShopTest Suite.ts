@@ -20,6 +20,6 @@
       <guid>1f0d3100-9574-46d3-a64a-f98b213cd7de</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/PeopleShopPDP</testCaseId>
+      <testCaseId>Test Cases/MyWeddingPDP</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

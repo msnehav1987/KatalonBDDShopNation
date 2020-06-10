@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 
 @com.kms.katalon.core.annotation.SetUp
 void SetUp() {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoStory'(GlobalVariable.applicationUrlStoryPeopleShop)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoStory'(GlobalVariable.MyWedding404PageUrl)
 }
 
 WebUI.waitForElementVisible(findTestObject('Object Repository/StoryHeroImagePeople'), GlobalVariable.SleepTime)
