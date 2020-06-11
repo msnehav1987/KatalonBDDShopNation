@@ -22,7 +22,7 @@
             <runConfigurationId>Chrome</runConfigurationId>
          </configuration>
          <runEnabled>true</runEnabled>
-         <testSuiteEntity>Test Suites/TC-TestSuite/PeopleShopTest Suite</testSuiteEntity>
+         <testSuiteEntity>Test Suites/TC-TestSuite/MyWeddingTest Suite</testSuiteEntity>
       </TestSuiteRunConfiguration>
    </testSuiteRunConfigurations>
 </TestSuiteCollectionEntity>

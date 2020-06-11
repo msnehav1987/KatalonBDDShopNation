@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 
 @com.kms.katalon.core.annotation.SetUp
 void SetUp() {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoPDP'(GlobalVariable.NoSearch)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.NoSearch)
 }
 
 WebUI.waitForElementVisible(findTestObject('Object Repository/RSNoSearchResultTextBox'), GlobalVariable.timeOut)

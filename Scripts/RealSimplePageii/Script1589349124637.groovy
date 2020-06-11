@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 
 @com.kms.katalon.core.annotation.SetUp
 void SetUp() {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoPDP'(GlobalVariable.Pageii)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.Pageii)
 	
 }
 
