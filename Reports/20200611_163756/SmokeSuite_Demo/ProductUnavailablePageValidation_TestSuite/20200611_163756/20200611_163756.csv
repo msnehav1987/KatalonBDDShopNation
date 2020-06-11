@@ -1,0 +1,19 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+ProductUnavailablePageValidation_TestSuite,Firefox 67.0,,,2020-06-11 16:38:06,2020-06-11 16:39:21,1m - 14.215s,PASSED
+,,,,,,,
+Test Cases/Smoke_Demo/ProductUnavailablePageValidation,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:39:21,1m - 13.861s,PASSED
+url = url,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.248s,PASSED
+applicationName = applicationName,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.001s,PASSED
+deviceType = deviceType,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.003s,PASSED
+isCanonical = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.003s,PASSED
+"if (url.contentEquals(""parenting"") || url.contentEquals(""realsimple"") || url.contentEquals(""people""))",Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.003s,PASSED
+else,Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:07,0.003s,PASSED
+"openBrowser("""")",Firefox 67.0,,,2020-06-11 16:38:07,2020-06-11 16:38:14,7.046s,PASSED
+maximizeWindow(),Firefox 67.0,,,2020-06-11 16:38:14,2020-06-11 16:38:14,0.045s,PASSED
+"navigateToUrl(url, STOP_ON_FAILURE)",Firefox 67.0,,,2020-06-11 16:38:14,2020-06-11 16:38:44,29.937s,PASSED
+"if (applicationName.equalsIgnoreCase(""more""))",Firefox 67.0,,,2020-06-11 16:38:44,2020-06-11 16:38:44,0.001s,PASSED
+else,Firefox 67.0,,,2020-06-11 16:38:44,2020-06-11 16:39:17,32.322s,PASSED
+"verifyElementVisible(findTestObject(applicationName + ""_Objects/"" + applicationName + ""_"" + deviceType + ""/homePageLogo""), STOP_ON_FAILURE)",Firefox 67.0,,,2020-06-11 16:39:17,2020-06-11 16:39:17,0.349s,PASSED
+"verifyElementVisible(findTestObject(applicationName + ""_Objects/"" + applicationName + ""_"" + deviceType + ""/homePageFooterLogo""), STOP_ON_FAILURE)",Firefox 67.0,,,2020-06-11 16:39:17,2020-06-11 16:39:17,0.304s,PASSED
+"verifyElementVisible(findTestObject(applicationName + ""_Objects/"" + applicationName + ""_"" + deviceType + ""/homePageFooterCopyright""), STOP_ON_FAILURE)",Firefox 67.0,,,2020-06-11 16:39:17,2020-06-11 16:39:18,0.333s,PASSED
+closeBrowser(),Firefox 67.0,,,2020-06-11 16:39:18,2020-06-11 16:39:21,2.792s,PASSED

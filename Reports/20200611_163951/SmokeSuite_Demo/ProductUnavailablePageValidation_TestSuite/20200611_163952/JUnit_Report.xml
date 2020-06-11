@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="ProductUnavailablePageValidation_TestSuite" time="73.216" tests="1" failures="0" errors="0">
+   <testsuite name="ProductUnavailablePageValidation_TestSuite" tests="1" failures="0" errors="0" time="73.216" timestamp="2020-06-11 16:40:12" hostname="kpallame - T470-PF0SZ0B9.ad.mdp.com" id="Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\kpallame\\git\\katalon_bdd\\KatalonBDDShopNation\\Reports\\20200611_163951\\SmokeSuite_Demo\\ProductUnavailablePageValidation_TestSuite\\20200611_163952"/>
+         <property name="logFiles" value="C:\\Users\\kpallame\\git\\katalon_bdd\\KatalonBDDShopNation\\Reports\\20200611_163951\\SmokeSuite_Demo\\ProductUnavailablePageValidation_TestSuite\\20200611_163952\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="kpallame - T470-PF0SZ0B9.ad.mdp.com"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="7.5.5.1"/>
+         <property name="browser" value="Chrome 83.0.4103.97"/>
+         <property name="hostAddress" value="10.150.138.66"/>
+         <property name="sessionId" value="0e599d1cfd081184c1a9e394e49046c4"/>
+         <property name="seleniumVersion" value="3.141.59"/>
+         <property name="proxyInformation" value="ProxyInformation { proxyOption=NO_PROXY, proxyServerType=HTTP, username=, password=********, proxyServerAddress=, proxyServerPort=0, executionList=\&quot;\&quot;, isApplyToDesiredCapabilities=true }"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Smoke_Demo/ProductUnavailablePageValidation" time="71.992" classname="Test Cases/Smoke_Demo/ProductUnavailablePageValidation" status="PASSED">
+         <system-out><![CDATA[2020-06-11 16:40:13 - [TEST_CASE][PASSED] - Test Cases/Smoke_Demo/ProductUnavailablePageValidation: Test Cases/Smoke_Demo/ProductUnavailablePageValidation
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - url = url: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - applicationName = applicationName: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - deviceType = deviceType: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - isCanonical = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - if (url.contentEquals("parenting") || url.contentEquals("realsimple") || url.contentEquals("people")): null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - else: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - url = url: null
+
+2020-06-11 16:40:14 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2020-06-11 16:40:15 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2020-06-11 16:40:15 - [MESSAGE][INFO] - Action delay is set to 0 milliseconds
+
+2020-06-11 16:40:23 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2020-06-11 16:40:23 - [TEST_STEP][PASSED] - maximizeWindow(): Current window maximized
+
+2020-06-11 16:40:25 - [MESSAGE][PASSED] - Current window maximized
+
+2020-06-11 16:40:25 - [TEST_STEP][PASSED] - navigateToUrl(url, STOP_ON_FAILURE): Navigate to 'https://realsimple-shop.qa2.shopnation.com/shop/' successfully
+
+2020-06-11 16:41:05 - [MESSAGE][PASSED] - Navigate to 'https://realsimple-shop.qa2.shopnation.com/shop/' successfully
+
+2020-06-11 16:41:05 - [TEST_STEP][PASSED] - if (applicationName.equalsIgnoreCase("more")): null
+
+2020-06-11 16:41:05 - [TEST_STEP][PASSED] - else: Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/productUnavailableImage' is visible
+
+2020-06-11 16:41:05 - [TEST_STEP][PASSED] - navigateToUrl(ResponseKibanaUrl): Navigate to 'https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p1b6c17fedce50bacc87ba94a08a3667a.html' successfully
+
+2020-06-11 16:41:17 - [MESSAGE][PASSED] - Navigate to 'https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p1b6c17fedce50bacc87ba94a08a3667a.html' successfully
+
+2020-06-11 16:41:17 - [TEST_STEP][PASSED] - isCanonical = com.helper.commonutilities.CommonUtilities.validateCanonicalURL(): com.helper.commonutilities.CommonUtilities.validateCanonicalURL is PASSED
+
+2020-06-11 16:41:17 - [MESSAGE][PASSED] - com.helper.commonutilities.CommonUtilities.validateCanonicalURL is PASSED
+
+2020-06-11 16:41:17 - [TEST_STEP][PASSED] - println("isCanonical->" + isCanonical): null
+
+2020-06-11 16:41:17 - [TEST_STEP][PASSED] - if (AlphabetNavigation): null
+
+2020-06-11 16:41:17 - [TEST_STEP][PASSED] - verifyElementVisible(findTestObject("Object Repository/" + applicationName + "_Objects/" + applicationName + "_" + deviceType + "/productUnavailableImage"), STOP_ON_FAILURE): Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/productUnavailableImage' is visible
+
+2020-06-11 16:41:19 - [MESSAGE][PASSED] - Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/productUnavailableImage' is visible
+
+2020-06-11 16:41:19 - [TEST_STEP][PASSED] - verifyElementVisible(findTestObject(applicationName + "_Objects/" + applicationName + "_" + deviceType + "/homePageLogo"), STOP_ON_FAILURE): Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageLogo' is visible
+
+2020-06-11 16:41:19 - [MESSAGE][PASSED] - Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageLogo' is visible
+
+2020-06-11 16:41:19 - [TEST_STEP][PASSED] - verifyElementVisible(findTestObject(applicationName + "_Objects/" + applicationName + "_" + deviceType + "/homePageFooterLogo"), STOP_ON_FAILURE): Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageFooterLogo' is visible
+
+2020-06-11 16:41:20 - [MESSAGE][PASSED] - Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageFooterLogo' is visible
+
+2020-06-11 16:41:20 - [TEST_STEP][PASSED] - verifyElementVisible(findTestObject(applicationName + "_Objects/" + applicationName + "_" + deviceType + "/homePageFooterCopyright"), STOP_ON_FAILURE): Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageFooterCopyright' is visible
+
+2020-06-11 16:41:24 - [MESSAGE][PASSED] - Object 'Object Repository/RealSimple_Objects/RealSimple_Desktop/homePageFooterCopyright' is visible
+
+2020-06-11 16:41:24 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2020-06-11 16:41:24 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2020-06-11 16:40:12 - [TEST_SUITE][PASSED] - ProductUnavailablePageValidation_TestSuite: Test Cases/Smoke_Demo/ProductUnavailablePageValidation]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

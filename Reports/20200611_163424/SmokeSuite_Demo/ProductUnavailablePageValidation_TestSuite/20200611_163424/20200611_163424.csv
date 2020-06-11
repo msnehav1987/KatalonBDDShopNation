@@ -1,0 +1,9 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+ProductUnavailablePageValidation_TestSuite,,,,2020-06-11 16:34:35,2020-06-11 16:34:36,1.506s,ERROR
+,,,,,,,
+Test Cases/Smoke_Demo/ProductUnavailablePageValidation,,,,2020-06-11 16:34:35,2020-06-11 16:34:36,1.122s,ERROR
+url = url,,,,2020-06-11 16:34:36,2020-06-11 16:34:36,0.088s,PASSED
+applicationName = applicationName,,,,2020-06-11 16:34:36,2020-06-11 16:34:36,0.154s,PASSED
+deviceType = deviceType,,,,2020-06-11 16:34:36,2020-06-11 16:34:36,0.003s,PASSED
+isCanonical = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,,,,2020-06-11 16:34:36,2020-06-11 16:34:36,0.003s,PASSED
+"if (url.contentEquals(""parenting"") || url.contentEquals(""realsimple"") || url.contentEquals(""people""))",,,,2020-06-11 16:34:36,2020-06-11 16:34:36,0.112s,PASSED
