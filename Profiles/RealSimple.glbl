@@ -6,22 +6,22 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
       <name>applicationUrlRealSimple</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins=1'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins=1'</initValue>
       <name>applicationUrlStory</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa3.shopnation.com/shop/brand.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/brand.html'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa3.shopnation.com/shop/store.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/store.html'</initValue>
       <name>DirectoryStoreURL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -31,32 +31,32 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p0a29d83a0f56eb5fd4a59106ed14df2d.html'</initValue>
       <name>ProductUnavailable</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen/maximize-your-small-pantry-houzz-sc281474979953844.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/food-kitchen/maximize-your-small-pantry-houzz-sc281474979953844.html'</initValue>
       <name>SlideShow</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/'</initValue>
       <name>NoSearch</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/food-kitchen-ii296987354.html'</initValue>
       <name>Pageii</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/dfjhfjhjhfjd.html'</initValue>
       <name>RealSimple404PageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>SiteMapUrl</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
