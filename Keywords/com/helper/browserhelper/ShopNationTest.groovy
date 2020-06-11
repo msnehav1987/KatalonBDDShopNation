@@ -31,9 +31,11 @@ public class ShopNationTest {
 
 
 	@Keyword
-	public void loginIntoStory(String applicationUrlStory){
-		WebUI.openBrowser(applicationUrlStory)
-		WebUI.waitForPageLoad(4)
+	public void loginIntoApplication(String applicationUrl){
+		String envToExecute='qa2'
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+		WebUI.openBrowser(applicationUrl)
+		WebUI.waitForPageLoad(10)
 		WebUI.maximizeWindow()
 	}
 }

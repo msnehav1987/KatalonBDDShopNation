@@ -21,7 +21,7 @@ void SetUp() {
 	
 }
 
-WebUI.waitForElementVisible(findTestObject('Object Repository/RS404Page.PageTitle'), GlobalVariable.timeOut)
+WebUI.waitForElementVisible(findTestObject('RS404PagePageTitle'), GlobalVariable.timeOut)
 
 System.out.println('The page title is available')
 

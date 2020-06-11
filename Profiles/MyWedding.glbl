@@ -6,12 +6,12 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/sitemap.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>MyWeddingHtmlSiteMapUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/gdhgdhfg.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/gdhgdhfg.html'</initValue>
       <name>MyWedding404PageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -21,17 +21,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'http://mywedding-shop.qa2.shopnation.com/shop/bride/best-shapewear-reviews-sc281474979867700.html?ins=1'</initValue>
+      <initValue>'http://mywedding-shop.%env%.shopnation.com/shop/bride/best-shapewear-reviews-sc281474979867700.html?ins=1'</initValue>
       <name>MyWeddingStoryPageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/bride/best-shapewear-reviews-sc281474979867700.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/bride/best-shapewear-reviews-sc281474979867700.html'</initValue>
       <name>MyWeddingBestReviewsUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/alfred-sung-strapless-sweetheart-sateen-twill-column-gown-bridesmaid-dress-blue-alfred-sung-dresses-p86dd1a023eeaae9255acff5041c42952.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/alfred-sung-strapless-sweetheart-sateen-twill-column-gown-bridesmaid-dress-blue-alfred-sung-dresses-p86dd1a023eeaae9255acff5041c42952.html'</initValue>
       <name>MyWeddingProductUnavailablePage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -41,12 +41,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/colsie-womens-fleece-lounge-jogger-pants-colsie-coral-xl-womens-pink-p3e90e5f54d6d248d5bc5ce76b056625c.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/colsie-womens-fleece-lounge-jogger-pants-colsie-coral-xl-womens-pink-p3e90e5f54d6d248d5bc5ce76b056625c.html'</initValue>
       <name>MyWeddingPDP</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'http://mywedding-shop.qa2.shopnation.com/shop/holiday-deals-ii1868319894.html'</initValue>
+      <initValue>'http://mywedding-shop.%env%.shopnation.com/shop/holiday-deals-ii1868319894.html'</initValue>
       <name>MyWeddingPageii</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

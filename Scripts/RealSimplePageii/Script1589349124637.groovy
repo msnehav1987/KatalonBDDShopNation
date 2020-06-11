@@ -21,7 +21,7 @@ void SetUp() {
 	
 }
 
-WebUI.waitForElementVisible(findTestObject('Object Repository/RSiiPage.Skyward.ArticleLinks'), GlobalVariable.timeOut)
+WebUI.waitForElementVisible(findTestObject('RSiiPageSkywardArticleLinks'), GlobalVariable.timeOut)
 
 System.out.println('The Skyword article link is available')
 
