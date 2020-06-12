@@ -31,7 +31,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
       <name>PDPpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

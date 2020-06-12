@@ -41,7 +41,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://mywedding-shop.qa2.shopnation.com/shop/colsie-womens-fleece-lounge-jogger-pants-colsie-coral-xl-womens-pink-p3e90e5f54d6d248d5bc5ce76b056625c.html'</initValue>
+      <initValue>'https://mywedding-shop.%env%.shopnation.com/shop/colsie-womens-fleece-lounge-jogger-pants-colsie-coral-xl-womens-pink-p3e90e5f54d6d248d5bc5ce76b056625c.html'</initValue>
       <name>PDPpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

@@ -7,7 +7,7 @@
    <GlobalVariableEntity>
       <description></description>
       <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
-      <name>applicationUrlRealSimple</name>
+      <name>ProductDetailPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
@@ -58,5 +58,15 @@
       <description></description>
       <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>SiteMapUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/kitchenaid-kitchenaid-empire-red-5-speed-ultra-power-hand-mixer-khm512-p3468e5635b1edbaaf361f050cf258af5.html'</initValue>
+      <name>applicationUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'RealSimple'</initValue>
+      <name>AppName</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
