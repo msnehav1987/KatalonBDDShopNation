@@ -40,7 +40,7 @@ WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
 
 
 if (applicationName.equalsIgnoreCase('more')) {
-    WebUI.openBrowser(GlobalVariable.PDUpage //String applicationName = GlobalVariable.applicationName.toString()
+    WebUI.openBrowser(GlobalVariable.PDUpage //String applicationName = GlobalVariable.AppName.toString()
         )
 } else {
     WebUI.navigateToUrl(GlobalVariable.ResponseKibanaUrl)

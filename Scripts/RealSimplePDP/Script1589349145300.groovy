@@ -23,7 +23,7 @@ import org.openqa.selenium.interactions.Actions
 
 @com.kms.katalon.core.annotation.SetUp
 void SetUp() {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.applicationUrlRealSimple)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.ProductDetailPage)
 }
 
 WebDriver driver = DriverFactory.getWebDriver()

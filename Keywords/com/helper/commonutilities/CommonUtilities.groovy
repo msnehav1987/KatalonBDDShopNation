@@ -47,26 +47,22 @@ import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions
 
 class CommonUtilities {
-	
+
 	@Keyword
-	public boolean validateCanonicalURL()
-	{
+	public boolean validateCanonicalURL() {
 		try{
 			WebDriver webDriver = DriverFactory.getWebDriver()
 			String sourceCode = webDriver.getPageSource();
 			String[] codeLines = sourceCode.split(">");
-			for(int i=0; i<codeLines.length; i++)
-			{
-				if(codeLines[i].contains("canonical"))
-				{
+			for(int i=0; i<codeLines.length; i++) {
+				if(codeLines[i].contains("canonical")) {
 					String desLine = codeLines[i];
 					String curURL = webDriver.getCurrentUrl();
 					String[] SplitURL = curURL.split(".com");
-						return (sourceCode.contains("canonical") && desLine.contains(SplitURL[1]));
+					return (sourceCode.contains("canonical") && desLine.contains(SplitURL[1]));
 				}
 			}
-		}catch(Exception e)
-		{
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return false;
