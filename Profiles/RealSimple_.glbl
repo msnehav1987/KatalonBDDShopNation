@@ -74,4 +74,9 @@
       <initValue>'RealSimple'</initValue>
       <name>applicationName</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'realsimple'</initValue>
+      <name>urlContent</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

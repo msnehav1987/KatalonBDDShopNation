@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//footer/div/ul</value>
+         <value>//footer/div[@class='logo']</value>
       </entry>
       <entry>
          <key>BASIC</key>
