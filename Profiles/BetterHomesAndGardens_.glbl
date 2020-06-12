@@ -46,7 +46,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/kitchen/kitchen-pantry-organization-the-home-depot-'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/kitchen/kitchen-pantry-organization-the-home-depot-sc281474979883301.html'</initValue>
       <name>SlideshowPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

@@ -64,4 +64,9 @@
       <initValue>'https://parenting-shop.%env%.shopnation.com/shop/store.html'</initValue>
       <name>DirectoryStoreURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Parenting'</initValue>
+      <name>applicationName</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
