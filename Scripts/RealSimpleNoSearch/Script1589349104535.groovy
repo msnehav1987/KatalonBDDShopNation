@@ -20,11 +20,11 @@ void SetUp() {
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.NoSearch)
 }
 
-WebUI.waitForElementVisible(findTestObject('Object Repository/RSNoSearchResultTextBox'), GlobalVariable.timeOut)
+WebUI.waitForElementVisible(findTestObject('RealSimple_Objects/RealSimple_Desktop/HomePagesearchtext'), GlobalVariable.timeOut)
 
-WebUI.setText(findTestObject('Object Repository/RSNoSearchResultTextBox'), 'gjgkdg')
+WebUI.setText(findTestObject('RealSimple_Objects/RealSimple_Desktop/HomePagesearchtext'), 'gjgkdg')
 
-WebUI.click(findTestObject('Object Repository/RSSerchIcon'))
+WebUI.click(findTestObject('RealSimple_Objects/RealSimple_Desktop/HomePagesearchButton'))
 
 WebUI.delay(3)
 

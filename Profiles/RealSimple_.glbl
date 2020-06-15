@@ -6,7 +6,7 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/\r\n'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/\r\n'</initValue>
       <name>url</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
