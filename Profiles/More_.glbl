@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>More_</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/'</initValue>
+      <name>url</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
+      <name>HtmlSiteMapUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/gdhgdhfg.html'</initValue>
+      <name>_404PageUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/well-woven-well-woven-good-vibes-millie-blush-pink-modern-zigzag-stripes-5-ft-3-in-x-7-ft-3-in-area-rug-pc6c505af737114d786a92d01ad8198b0.html'</initValue>
+      <name>PDUpage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/nina-leonard-nina-leonard-water-resistant-rain-jacket-pfe9da52c417c1794e69ba2d7c6a93c3d.html'</initValue>
+      <name>PDPpage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/womens-clothing/smocked-dresses-sc281474979937135.html'</initValue>
+      <name>SlideshowPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://more-shop.%env%.shopnation.com/shop/womens-clothing-ii1000.html'</initValue>
+      <name>PageiiUrl</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>
