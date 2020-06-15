@@ -11,22 +11,22 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/sitemap.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>HtmlSiteMapUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/dfjhfjhjhfjd.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/dfjhfjhjhfjd.html'</initValue>
       <name>_404PageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins=1'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/beauty/walmart-com-sc281474979898761.html?ins=1'</initValue>
       <name>StoryPageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
       <name>PDUpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -36,32 +36,32 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen/maximize-your-small-pantry-houzz-'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/food-kitchen/maximize-your-small-pantry-houzz-'</initValue>
       <name>SlideshowPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/food-kitchen-ii296987354.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/food-kitchen-ii296987354.html'</initValue>
       <name>PageiiUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/all.html?mz=a'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/all.html?mz=a'</initValue>
       <name>CategoryListingPageCPA</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/brand.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/brand.html'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/store.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/store.html'</initValue>
       <name>DirectoryStoreURL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p1b6c17fedce50bacc87ba94a08a3667a.html'</initValue>
+      <initValue>'https://realsimple-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p1b6c17fedce50bacc87ba94a08a3667a.html'</initValue>
       <name>ResponseKibanaUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

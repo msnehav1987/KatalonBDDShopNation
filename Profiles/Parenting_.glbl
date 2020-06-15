@@ -69,4 +69,9 @@
       <initValue>'Parenting'</initValue>
       <name>applicationName</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'parenting'</initValue>
+      <name>urlContent</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

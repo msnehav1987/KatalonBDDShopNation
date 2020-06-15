@@ -39,4 +39,9 @@
       <initValue>'https://more-shop.%env%.shopnation.com/shop/womens-clothing-ii1000.html'</initValue>
       <name>PageiiUrl</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'more'</initValue>
+      <name>urlContent</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
