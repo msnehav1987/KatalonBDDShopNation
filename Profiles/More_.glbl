@@ -41,7 +41,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'more'</initValue>
-      <name>urlContent</name>
+      <initValue>''</initValue>
+      <name>ResponseKibanaUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>AlphabetNavigation</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'More'</initValue>
+      <name>applicationName</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

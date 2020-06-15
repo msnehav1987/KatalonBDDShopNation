@@ -9,4 +9,9 @@
       <initValue>'Desktop'</initValue>
       <name>deviceType</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'qa2'</initValue>
+      <name>envType</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

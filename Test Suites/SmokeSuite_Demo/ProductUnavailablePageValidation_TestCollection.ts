@@ -4,7 +4,7 @@
    <name>ProductUnavailablePageValidation_TestCollection</name>
    <tag></tag>
    <executionMode>PARALLEL</executionMode>
-   <maxConcurrentInstances>3</maxConcurrentInstances>
+   <maxConcurrentInstances>14</maxConcurrentInstances>
    <testSuiteRunConfigurations>
       <TestSuiteRunConfiguration>
          <configuration>
@@ -12,7 +12,7 @@
             <profileName>BetterHomesAndGardens_</profileName>
             <runConfigurationId>Chrome</runConfigurationId>
          </configuration>
-         <runEnabled>true</runEnabled>
+         <runEnabled>false</runEnabled>
          <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
       </TestSuiteRunConfiguration>
       <TestSuiteRunConfiguration>
@@ -21,7 +21,7 @@
             <profileName>RealSimple_</profileName>
             <runConfigurationId>Chrome</runConfigurationId>
          </configuration>
-         <runEnabled>true</runEnabled>
+         <runEnabled>false</runEnabled>
          <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
       </TestSuiteRunConfiguration>
       <TestSuiteRunConfiguration>
@@ -31,6 +31,42 @@
             <runConfigurationId>Chrome</runConfigurationId>
          </configuration>
          <runEnabled>true</runEnabled>
+         <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
+      </TestSuiteRunConfiguration>
+      <TestSuiteRunConfiguration>
+         <configuration>
+            <groupName>Web Desktop</groupName>
+            <profileName>Shape_</profileName>
+            <runConfigurationId>Chrome</runConfigurationId>
+         </configuration>
+         <runEnabled>false</runEnabled>
+         <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
+      </TestSuiteRunConfiguration>
+      <TestSuiteRunConfiguration>
+         <configuration>
+            <groupName>Web Desktop</groupName>
+            <profileName>Parenting_</profileName>
+            <runConfigurationId>Chrome</runConfigurationId>
+         </configuration>
+         <runEnabled>false</runEnabled>
+         <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
+      </TestSuiteRunConfiguration>
+      <TestSuiteRunConfiguration>
+         <configuration>
+            <groupName>Web Desktop</groupName>
+            <profileName>More_</profileName>
+            <runConfigurationId>Chrome</runConfigurationId>
+         </configuration>
+         <runEnabled>false</runEnabled>
+         <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
+      </TestSuiteRunConfiguration>
+      <TestSuiteRunConfiguration>
+         <configuration>
+            <groupName>Web Desktop</groupName>
+            <profileName>MarthaStewart_</profileName>
+            <runConfigurationId>Chrome</runConfigurationId>
+         </configuration>
+         <runEnabled>false</runEnabled>
          <testSuiteEntity>Test Suites/SmokeSuite_Demo/ProductUnavailablePageValidation_TestSuite</testSuiteEntity>
       </TestSuiteRunConfiguration>
    </testSuiteRunConfigurations>

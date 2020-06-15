@@ -19,7 +19,6 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-
 public class ShopNationTest {
 
 	@Keyword
@@ -38,4 +37,51 @@ public class ShopNationTest {
 		WebUI.waitForPageLoad(10)
 		WebUI.maximizeWindow()
 	}
+	
+
+	@Keyword
+	public String getURL(String env,String globalVariable){
+		String envToExecuteReplacedURL=globalVariable
+		switch(env.toLowerCase()){
+
+			case 'prod':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "");
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				return envToExecuteReplacedURL
+				break;
+
+			case 'qa1':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.");
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				return envToExecuteReplacedURL
+				break;
+
+			case 'qa2':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.");
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				return envToExecuteReplacedURL
+				break;
+
+			case 'qa3':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.");
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				return envToExecuteReplacedURL
+				break;
+				
+			case 'prod':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "");
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				return envToExecuteReplacedURL
+				break;
+			default:
+				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL);
+				break;
+		}
+		
+		
+	}
+	
+	
+	
+	
 }

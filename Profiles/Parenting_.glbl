@@ -71,7 +71,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'parenting'</initValue>
-      <name>urlContent</name>
+      <initValue>false</initValue>
+      <name>AlphabetNavigation</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://parenting-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p32e50bba4681f85314eacecabf22fd83.html\r\n'</initValue>
+      <name>ResponseKibanaUrl</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

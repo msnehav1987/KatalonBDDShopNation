@@ -6,42 +6,42 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/'</initValue>
       <name>url</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/sitemap.html'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>HtmlSiteMapUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/hgghftt.html'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/hgghftt.html'</initValue>
       <name>_404PageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://sn-qa2.bhg.com/shop/pet-supplies/perfect-picks-to-treat-your-pets-'</initValue>
+      <initValue>'https://sn-%env%.bhg.com/shop/pet-supplies/perfect-picks-to-treat-your-pets-'</initValue>
       <name>ShoppingGuideUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://sn-qa2.bhg.com/shop/holidaydeals/memorial-day-sale-overstock-sc281474979855300.html?ins=1'</initValue>
+      <initValue>'https://sn-%env%.bhg.com/shop/holidaydeals/memorial-day-sale-overstock-sc281474979855300.html?ins=1'</initValue>
       <name>StoryPageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://sn-qa2.bhg.com/shop/home-improvement/best-reviews-humidifiers-sc281474979785167.html?ins=1'</initValue>
+      <initValue>'https://sn-%env%.bhg.com/shop/home-improvement/best-reviews-humidifiers-sc281474979785167.html?ins=1'</initValue>
       <name>BestReviewsUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
       <name>PDUpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/red-barrel-studio-red-barrel-studio-denslowe-rose-33-x-20-5-floral-3d-embossed-wallpaper-rbsd3158-color-purple-p49708a27b3b6d30976da2fa66cddfb5b.html'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/red-barrel-studio-red-barrel-studio-denslowe-rose-33-x-20-5-floral-3d-embossed-wallpaper-rbsd3158-color-purple-p49708a27b3b6d30976da2fa66cddfb5b.html'</initValue>
       <name>PDPpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -51,7 +51,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/holidaydeals-ii1504645672.html'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/holidaydeals-ii1504645672.html'</initValue>
       <name>PageiiUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -61,7 +61,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://home-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p494ae3478ca9e9e7f6cef70252d922ec.html\r\n'</initValue>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p494ae3478ca9e9e7f6cef70252d922ec.html\r\n'</initValue>
       <name>ResponseKibanaUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

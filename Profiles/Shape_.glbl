@@ -6,52 +6,52 @@
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/'</initValue>
       <name>url</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/sitemap.html'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/sitemap.html'</initValue>
       <name>HtmlSiteMapUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/gdhgdhfg.html'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/gdhgdhfg.html'</initValue>
       <name>_404PageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/holiday-deals/black-friday-deals-fashion-sc281474979888013.html?ins=1'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/holiday-deals/black-friday-deals-fashion-sc281474979888013.html?ins=1'</initValue>
       <name>StoryPageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/home-gym/which-exercise-bike-is-right-for-you-'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/home-gym/which-exercise-bike-is-right-for-you-'</initValue>
       <name>ShoppingGuideUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/home-gym/best-reviews-foam-rollers-sc281474979843748.html?ins=1'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/home-gym/best-reviews-foam-rollers-sc281474979843748.html?ins=1'</initValue>
       <name>BestReviewsUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-'</initValue>
       <name>PDUpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/catherines-braided-neck-a-line-dress-with-pockets-pb8561bf1b39a8d95f266e804a00cb2ae.html'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/catherines-braided-neck-a-line-dress-with-pockets-pb8561bf1b39a8d95f266e804a00cb2ae.html'</initValue>
       <name>PDPpage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/fitness-gear/sports-hats-'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/fitness-gear/sports-hats-'</initValue>
       <name>SlideshowPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/top-picks-ii344998584.html'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/top-picks-ii344998584.html'</initValue>
       <name>PageiiUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -61,7 +61,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://shape-shop.qa2.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-pe589b2b5d2930fc7187e40d988169963.html'</initValue>
+      <initValue>'https://shape-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-pe589b2b5d2930fc7187e40d988169963.html'</initValue>
       <name>ResponseKibanaUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -69,9 +69,5 @@
       <initValue>'Shape'</initValue>
       <name>applicationName</name>
    </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'shape'</initValue>
-      <name>urlContent</name>
-   </GlobalVariableEntity>
 </GlobalVariableEntities>
+
