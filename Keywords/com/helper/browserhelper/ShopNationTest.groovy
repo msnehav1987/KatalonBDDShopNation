@@ -37,7 +37,7 @@ public class ShopNationTest {
 		WebUI.waitForPageLoad(10)
 		WebUI.maximizeWindow()
 	}
-	
+
 
 	@Keyword
 	public String getURL(String env,String globalVariable){
@@ -67,7 +67,7 @@ public class ShopNationTest {
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
 				return envToExecuteReplacedURL
 				break;
-				
+
 			case 'prod':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "");
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
@@ -77,11 +77,5 @@ public class ShopNationTest {
 				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL);
 				break;
 		}
-		
-		
 	}
-	
-	
-	
-	
 }
