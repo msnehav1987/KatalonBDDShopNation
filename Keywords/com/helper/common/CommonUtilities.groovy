@@ -1,4 +1,4 @@
-package com.helper.commonutilities
+package com.helper.common
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -48,25 +48,6 @@ import org.openqa.selenium.interactions.Actions
 
 class CommonUtilities {
 
-	@Keyword
-	public boolean validateCanonicalURL() {
-		try{
-			WebDriver webDriver = DriverFactory.getWebDriver()
-			String sourceCode = webDriver.getPageSource();
-			String[] codeLines = sourceCode.split(">");
-			for(int i=0; i<codeLines.length; i++) {
-				if(codeLines[i].contains("canonical")) {
-					String desLine = codeLines[i];
-					String curURL = webDriver.getCurrentUrl();
-					String[] SplitURL = curURL.split(".com");
-					return (sourceCode.contains("canonical") && desLine.contains(SplitURL[1]));
-				}
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
 
 	/**
 	 * Refresh browser

@@ -19,6 +19,15 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import org.openqa.selenium.WebDriver
+
+import com.kms.katalon.core.webui.exception.WebElementNotFoundException
+import com.kms.katalon.core.webui.driver.DriverFactory
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.By as By
+import groovy.json.JsonSlurper as JsonSlurper
+
 public class ShopNationTest {
 
 	@Keyword
@@ -37,51 +46,112 @@ public class ShopNationTest {
 		WebUI.waitForPageLoad(10)
 		WebUI.maximizeWindow()
 	}
-	
 
+
+	@Keyword
+	public boolean validateCanonicalURL() {
+		try{
+			WebDriver webDriver = DriverFactory.getWebDriver()
+			String sourceCode = webDriver.getPageSource()
+			String[] codeLines = sourceCode.split(">")
+			for(int i=0; i<codeLines.length; i++) {
+				if(codeLines[i].contains("canonical")) {
+					String desLine = codeLines[i]
+					String curURL = webDriver.getCurrentUrl()
+					String[] SplitURL = curURL.split(".com")
+					return (sourceCode.contains("canonical") && desLine.contains(SplitURL[1]))
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace()
+		}
+		return false
+	}
+
+
+	/*
+	 *
+	 * Get the exact environment specific url from the global variables
+	 */
 	@Keyword
 	public String getURL(String env,String globalVariable){
 		String envToExecuteReplacedURL=globalVariable
 		switch(env.toLowerCase()){
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "");
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
-				break;
+				break
 
 			case 'qa1':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.");
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
-				break;
+				break
 
 			case 'qa2':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.");
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
-				break;
+				break
 
 			case 'qa3':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.");
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
-				break;
-				
+				break
+
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "");
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL);
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
-				break;
+				break
 			default:
-				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL);
-				break;
+				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+				break
 		}
-		
-		
 	}
-	
-	
-	
-	
+
+
+	/**
+	 *
+	 * Common Footer Validation
+	 */
+	@Keyword
+	def footerValidation() {
+		String applicationName = GlobalVariable.applicationName
+		String deviceType = GlobalVariable.deviceType
+		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageLogo'),
+				FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterLogo'),
+				FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterCopyright'),
+				FailureHandling.STOP_ON_FAILURE)
+	}
+
+	/**
+	 *
+	 * Common json reader
+	 */
+	@Keyword
+	public String  jsonReader(String keyValue) {
+
+		String key =keyValue
+		String projPath= System.getProperty("user.dir");
+
+		String filePath=projPath+"\\Object Repository\\"+GlobalVariable.applicationName+"_Objects\\"+GlobalVariable.applicationName+"_Desktop\\Desktop.json"
+
+		File f = new File(filePath)
+
+		def InputJSON = new JsonSlurper().parseFile(f,"UTF-8")
+
+		String dataToReturn = InputJSON.get(GlobalVariable.applicationName.toString().toLowerCase()).get(key)
+
+		println ("Parsed the data from->"+filePath+"\n Data ->>"+dataToReturn)
+		
+		return dataToReturn
+	}
 }
