@@ -151,7 +151,31 @@ public class ShopNationTest {
 		String dataToReturn = InputJSON.get(GlobalVariable.applicationName.toString().toLowerCase()).get(key)
 
 		println ("Parsed the data from->"+filePath+"\n Data ->>"+dataToReturn)
-		
+
 		return dataToReturn
+	}
+
+	@Keyword
+	public void navigateToScreen(String navigationSequence,String Page_Type){
+		try {
+			String[] arrNavigationElement = navigationSequence.split("\\|");
+			for (String navigationElement : arrNavigationElement) {
+				//scrollToViewElement(objectRepository.get(navigationElement),navigationElement.toString());
+				String keyValueFromJson=navigationElement
+				String xPath = jsonReader(keyValueFromJson)
+				WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xPath]))
+				//	WebUI.verifyElementVisible(findTestObject(navigationElement), FailureHandling.STOP_ON_FAILURE)
+				WebUI.delay(10)
+				//	if(GlobalVariable.SlideshowPage ||GlobalVariable.Pageii||GlobalVariable.ProductDetailPage)
+				WebUI.click(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xPath]), FailureHandling.STOP_ON_FAILURE)
+				WebUI.delay(10)
+			}
+		}catch(Exception e){
+			e.printStackTrace()
+		}
+	}
+
+	public void NavigateToPage(String xPath, String pageName) {
+		navigateToScreen(xPath,pageName);
 	}
 }

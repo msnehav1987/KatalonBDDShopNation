@@ -74,4 +74,9 @@
       <initValue>'mywedding'</initValue>
       <name>urlContent</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'null'</initValue>
+      <name>DirectoryBrandURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

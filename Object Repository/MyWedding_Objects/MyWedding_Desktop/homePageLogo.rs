@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@class='c-header__logo']//a</value>
+         <value>//div[@class='c-header__logo']//a</value>
       </entry>
       <entry>
          <key>BASIC</key>

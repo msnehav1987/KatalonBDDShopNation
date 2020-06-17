@@ -27,9 +27,9 @@ String url = GlobalVariable.applicationUrl
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
-String PdpUrl= GlobalVariable.PDPpage
+String DirectoryUrl= GlobalVariable.DirectoryBrandURL
 
-if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))) {
+if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))) {
 
 //		@com.kms.katalon.core.annotation.SetUp
 //void SetUp() {
@@ -37,17 +37,23 @@ if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))) {
 	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/directorypagealphabetlist'), FailureHandling.STOP_ON_FAILURE)
 	WebUI.delay(10)
 	println ("The element is visible")
+}else{
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.NavigateToPage'("HomePage.BurgerMenu|HomePage.Burger.Stores","StoresPage")
+WebUI.delay(10)
+println ("The element is visible")
 }
 
 	isCanonical = CustomKeywords.'com.helper.commonutilities.CommonUtilities.validateCanonicalURL'()
 
 	println('isCanonical->' + isCanonical)
+	
 
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
+//	WebUI.waitForElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), GlobalVariable.timeOut)
 	
-	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
+//	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
 	
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+//	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
 WebUI.closeBrowser()
 
 
