@@ -54,4 +54,9 @@
       <initValue>'More'</initValue>
       <name>applicationName</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'null'</initValue>
+      <name>DirectoryBrandURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

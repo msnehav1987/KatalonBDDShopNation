@@ -22,8 +22,6 @@ import org.openqa.selenium.interactions.Actions
 
 
 
-String url = GlobalVariable.applicationUrl
-
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
@@ -31,8 +29,6 @@ String DirectoryUrl= GlobalVariable.DirectoryBrandURL
 
 if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))) {
 
-//		@com.kms.katalon.core.annotation.SetUp
-//void SetUp() {
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.DirectoryBrandURL)
 	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/directorypagealphabetlist'), FailureHandling.STOP_ON_FAILURE)
 	WebUI.delay(10)
