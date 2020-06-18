@@ -41,10 +41,14 @@ public class ShopNationTest {
 	@Keyword
 	public void loginIntoApplication(String applicationUrl){
 		String envToExecute='qa2'
+		String deviceType = GlobalVariable.deviceType
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		WebUI.openBrowser(applicationUrl)
 		WebUI.waitForPageLoad(10)
+		if(deviceType.contains("Desktop"))
 		WebUI.maximizeWindow()
+		else
+		println("maximized")
 	}
 
 
@@ -122,14 +126,14 @@ public class ShopNationTest {
 	def footerValidation() {
 		String elems = "HomePage.Logo;HomePage.Footer.Copyright;HomePage.Footer.Logo";
 		validateMultipleElements(elems);
-//		String [] arr= elems.split(";")
-//		for(int i = 0  ;i<arr.length;i++) {
-//			String keyValueFromJson=arr[i]
-//			String xpath = jsonReader(keyValueFromJson)
-//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
-//		}
+		//		String [] arr= elems.split(";")
+		//		for(int i = 0  ;i<arr.length;i++) {
+		//			String keyValueFromJson=arr[i]
+		//			String xpath = jsonReader(keyValueFromJson)
+		//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		//		}
 	}
-	
+
 	/**
 	 *
 	 * Common validateMultipleElements Validation
@@ -144,7 +148,7 @@ public class ShopNationTest {
 			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
 		}
 	}
-	
+
 
 	/**
 	 *

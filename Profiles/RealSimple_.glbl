@@ -79,4 +79,9 @@
       <initValue>'realsimple'</initValue>
       <name>urlContent</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Desktop'</initValue>
+      <name>deviceType</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
