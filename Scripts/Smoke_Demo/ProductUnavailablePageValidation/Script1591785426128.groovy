@@ -20,49 +20,55 @@ import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions as Actions
 
-String url = GlobalVariable.url
+String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 String applicationName = GlobalVariable.applicationName
+
 String deviceType = GlobalVariable.deviceType
+
 Boolean isCanonical
 
 if ((url.contentEquals('parenting') || url.contentEquals('realsimple')) || url.contentEquals('people')) {
-    url = GlobalVariable.CategoryListingPageCPA
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 } else {
-    url = GlobalVariable.url
+    url = url
 }
 
 WebUI.openBrowser('')
+
 WebUI.maximizeWindow()
+
 //WebUI.delay(4)
 WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
 
-
-
 if (applicationName.equalsIgnoreCase('more')) {
-    WebUI.openBrowser(GlobalVariable.PDUpage //String applicationName = GlobalVariable.AppName.toString()
-        )
+    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PDUpage))
 } else {
-    WebUI.navigateToUrl(GlobalVariable.ResponseKibanaUrl)
+    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.ResponseKibanaUrl))
 
-    isCanonical = CustomKeywords.'com.helper.commonutilities.CommonUtilities.validateCanonicalURL'()
+    isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
 
     println('isCanonical->' + isCanonical)
 
     if (GlobalVariable.AlphabetNavigation) {
-        WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+ '_Objects/'+applicationName+'_'+deviceType+'/productUnavailableImage'),FailureHandling.STOP_ON_FAILURE)
+        WebUI.verifyElementVisible(findTestObject(((((('Object Repository/' + applicationName) + '_Objects/') + applicationName) + 
+                '_') + deviceType) + '/productUnavailableImage'), FailureHandling.STOP_ON_FAILURE)
     }
     
-    WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/productUnavailableImage'),FailureHandling.STOP_ON_FAILURE)
+    WebUI.verifyElementVisible(findTestObject(((((('Object Repository/' + applicationName) + '_Objects/') + applicationName) + 
+            '_') + deviceType) + '/productUnavailableImage'), FailureHandling.STOP_ON_FAILURE)
 }
 
-WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
-WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-
-WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageLogo'), 
+//    FailureHandling.STOP_ON_FAILURE)
+//
+//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterLogo'), 
+//    FailureHandling.STOP_ON_FAILURE)
+//
+//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterCopyright'), 
+//    FailureHandling.STOP_ON_FAILURE)
 
 WebUI.closeBrowser()
-
-
 
