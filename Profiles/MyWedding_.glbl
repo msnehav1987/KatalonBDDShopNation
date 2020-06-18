@@ -79,4 +79,9 @@
       <initValue>'null'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'http://mywedding-shop.%env%.shopnation.com/shop-c752360405.html'</initValue>
+      <name>CatagoryHomePageValidationKibanaURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

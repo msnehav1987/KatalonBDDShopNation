@@ -79,4 +79,9 @@
       <initValue>'https://parenting-shop.%env%.shopnation.com/shop/misook-misook-womens-spectator-striped-a-line-dress-black-new-ivory-size-large-p32e50bba4681f85314eacecabf22fd83.html\r\n'</initValue>
       <name>ResponseKibanaUrl</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://parenting-shop.%env%.shopnation.com/shop-c827654588.html'</initValue>
+      <name>CatagoryHomePageValidationKibanaURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

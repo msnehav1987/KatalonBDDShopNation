@@ -89,4 +89,9 @@
       <initValue>'null'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://home-shop.%env%.shopnation.com/shop-c485365183.html'</initValue>
+      <name>CatagoryHomePageValidationKibanaURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -69,4 +69,9 @@
       <initValue>'null'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://marthastewart-shop.qa2.shopnation.com/shop-c468877380.html'</initValue>
+      <name>CatagoryHomePageValidationKibanaURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

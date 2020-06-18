@@ -81,7 +81,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Desktop'</initValue>
-      <name>deviceType</name>
+      <initValue>'Windows'</initValue>
+      <name>platformName</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

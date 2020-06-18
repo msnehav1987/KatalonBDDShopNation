@@ -41,14 +41,14 @@ public class ShopNationTest {
 	@Keyword
 	public void loginIntoApplication(String applicationUrl){
 		String envToExecute='qa2'
-		String deviceType = GlobalVariable.deviceType
+		String platform = GlobalVariable.platformName
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		WebUI.openBrowser(applicationUrl)
 		WebUI.waitForPageLoad(10)
-		if(deviceType.contains("Desktop"))
-		WebUI.maximizeWindow()
-		else
-		println("maximized")
+		//		if(platform.contains("Windows"))
+		//		WebUI.maximizeWindow()
+		//		else
+		//		println("maximized")
 	}
 
 
