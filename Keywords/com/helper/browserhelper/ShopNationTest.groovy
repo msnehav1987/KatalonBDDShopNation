@@ -120,17 +120,31 @@ public class ShopNationTest {
 	 */
 	@Keyword
 	def footerValidation() {
-		String applicationName = GlobalVariable.applicationName
-		String deviceType = GlobalVariable.deviceType
-		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageLogo'),
-				FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterLogo'),
-				FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterCopyright'),
-				FailureHandling.STOP_ON_FAILURE)
+		String elems = "HomePage.Logo;HomePage.Footer.Copyright;HomePage.Footer.Logo";
+		validateMultipleElements(elems);
+//		String [] arr= elems.split(";")
+//		for(int i = 0  ;i<arr.length;i++) {
+//			String keyValueFromJson=arr[i]
+//			String xpath = jsonReader(keyValueFromJson)
+//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+//		}
 	}
+	
+	/**
+	 *
+	 * Common validateMultipleElements Validation
+	 */
+	@Keyword
+	def validateMultipleElements(String elementsSepratedBySemiColon) {
+		String elems = elementsSepratedBySemiColon
+		String [] arr= elems.split(";")
+		for(int i = 0  ;i<arr.length;i++) {
+			String keyValueFromJson=arr[i]
+			String xpath = jsonReader(keyValueFromJson)
+			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		}
+	}
+	
 
 	/**
 	 *
