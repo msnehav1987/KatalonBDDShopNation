@@ -122,14 +122,14 @@ public class ShopNationTest {
 	def footerValidation() {
 		String elems = "HomePage.Logo;HomePage.Footer.Copyright;HomePage.Footer.Logo";
 		validateMultipleElements(elems);
-//		String [] arr= elems.split(";")
-//		for(int i = 0  ;i<arr.length;i++) {
-//			String keyValueFromJson=arr[i]
-//			String xpath = jsonReader(keyValueFromJson)
-//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
-//		}
+		//		String [] arr= elems.split(";")
+		//		for(int i = 0  ;i<arr.length;i++) {
+		//			String keyValueFromJson=arr[i]
+		//			String xpath = jsonReader(keyValueFromJson)
+		//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		//		}
 	}
-	
+
 	/**
 	 *
 	 * Common validateMultipleElements Validation
@@ -144,7 +144,7 @@ public class ShopNationTest {
 			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
 		}
 	}
-	
+
 
 	/**
 	 *
@@ -191,5 +191,13 @@ public class ShopNationTest {
 
 	public void NavigateToPage(String xPath, String pageName) {
 		navigateToScreen(xPath,pageName);
+	}
+
+
+	@Keyword
+	public void verifyElementVisible(String element){
+		String xpath = jsonReader("HomePage.categoryHomepage.CategoryDependency.Subcategories")
+		WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		println ("Element "+ element +" is present and visible")
 	}
 }
