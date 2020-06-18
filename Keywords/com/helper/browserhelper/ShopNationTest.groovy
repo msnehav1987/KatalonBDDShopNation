@@ -196,4 +196,12 @@ public class ShopNationTest {
 	public void NavigateToPage(String xPath, String pageName) {
 		navigateToScreen(xPath,pageName);
 	}
+
+
+	@Keyword
+	public void verifyElementVisible(String element){
+		String xpath = jsonReader("HomePage.categoryHomepage.CategoryDependency.Subcategories")
+		WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		println ("Element "+ element +" is present and visible")
+	}
 }
