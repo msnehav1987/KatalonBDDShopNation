@@ -47,7 +47,7 @@ System.out.println('The slide show author name is present')
 WebUI.delay(3)
 }
 
-	isCanonical = CustomKeywords.'com.helper.commonutilities.CommonUtilities.validateCanonicalURL'()
+	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
 
 	println('isCanonical->' + isCanonical)
 

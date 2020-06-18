@@ -50,7 +50,7 @@ else {
 	println ("The element is visible")
 }
 
-	isCanonical = CustomKeywords.'com.helper.commonutilities.CommonUtilities.validateCanonicalURL'()
+	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
 
 	println('isCanonical->' + isCanonical)
 
