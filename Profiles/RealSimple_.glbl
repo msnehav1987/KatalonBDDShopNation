@@ -79,4 +79,9 @@
       <initValue>'realsimple'</initValue>
       <name>urlContent</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://realsimple-shop.qa2.shopnation.com/shop-c296987354.html'</initValue>
+      <name>CatagoryHomePageValidationKibanaURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
