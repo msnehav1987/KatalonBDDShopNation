@@ -14,4 +14,9 @@
       <initValue>'qa2'</initValue>
       <name>envType</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://kibana-%env%-es63.shopnation.com'</initValue>
+      <name>kibanaSourceURL</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

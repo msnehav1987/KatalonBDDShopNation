@@ -23,13 +23,13 @@ String deviceType = GlobalVariable.deviceType
 
 Boolean isCanonical
 
+
+
 WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
 
 if (deviceType.equalsIgnoreCase("desktop")) {
 	WebUI.maximizeWindow()
 }
-
-
 
 if (applicationName.equalsIgnoreCase('More') || applicationName.equalsIgnoreCase('Shape')) {
     String keyValueFromJson = 'HomePage.categoryhomepagae'
@@ -40,8 +40,16 @@ if (applicationName.equalsIgnoreCase('More') || applicationName.equalsIgnoreCase
 }
 else
 {
-	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CatagoryHomePageValidationKibanaURL), 
-    FailureHandling.STOP_ON_FAILURE)
+	try {
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.matchPhrase'(GlobalVariable.envType,GlobalVariable.applicationName)
+		
+	} catch (Exception e) {
+	   printf("Something went wrong with kibana , so trying manually hardcoded url..", e)
+		e.printStackTrace()
+		WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CatagoryHomePageValidationKibanaURL),
+			FailureHandling.STOP_ON_FAILURE) 
+	}
+	
 }
  
 isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
