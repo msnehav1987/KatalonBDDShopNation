@@ -30,15 +30,10 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
 import groovy.json.JsonSlurper as JsonSlurper
-<<<<<<< HEAD
 import com.kms.katalon.core.appium.driver.AppiumDriverManager
 import io.appium.java_client.android.AndroidDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.mobile.driver.MobileDriverType
-=======
-import io.restassured.*
-import io.restassured.authentication.PreemptiveBasicAuthScheme
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 
 public class ShopNationTest {
 	AndroidDriver driver;
@@ -95,30 +90,34 @@ public class ShopNationTest {
 		switch(env.toLowerCase()){
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.|%env%", "prod.")
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa1':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.|%env%", "qa1.")
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa2':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.|%env%", "qa2.")
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa3':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.|%env%", "qa3.")
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
 				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
-
+			case 'prod':
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 			default:
 				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
 				break
@@ -213,7 +212,6 @@ public class ShopNationTest {
 		println ("Element "+ element +" is present and visible")
 	}
 
-<<<<<<< HEAD
 	@Keyword
 	public void BrowserStackSamsung(String applicationUrl){
 		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
@@ -249,138 +247,8 @@ public class ShopNationTest {
 		String deviceType = GlobalVariable.deviceType
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		WebUI.navigateToUrl(applicationUrl)
-//		String sessionid= driver.sessionId
-//		println(sessionid)
+		//		String sessionid= driver.sessionId
+		//		println(sessionid)
 		WebUI.waitForPageLoad(10)
 	}
-=======
-
-	@Keyword
-	public void matchPhrase(String envType,String applicationName){
-		String matchPhrase="";
-		String indexName="_id";
-		String value = null;
-		try{
-			ArrayList<String> ListOfValues =kibanacategory(applicationName);
-
-			for(String indexValues:ListOfValues)
-				matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
-			value=matchPhrase.substring(0, matchPhrase.length()-1);
-			kibanacategoryQuery(value);
-		}catch(Exception e) {
-			println ("Exception in matchphrase method.Exception is ->> "+e)
-		}
-	}
-
-
-	public ArrayList<String> kibanacategory(String appName) {
-		//appName=appName+".kibana"
-		//This is Search Query String is for es74 kibana
-		//String searchString="{\"index\":\"product\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[{\"field\":\"dateChanged\",\"format\":\"date_time\"},{\"field\":\"dateCreated\",\"format\":\"date_time\"},{\"field\":\"dateImage\",\"format\":\"date_time\"},{\"field\":\"dateScraped\",\"format\":\"date_time\"},{\"field\":\"dateUpdated\",\"format\":\"date_time\"}],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName+"\"}}},{\"match_phrase\":{\"editorsChoicesCount\":{\"query\":\"1\"}}},{\"match_phrase\":{\"hierarchyIdsCount\":{\"query\":\"1\"}}},{\"match_phrase\":{\"duplicate\":{\"query\":false}}}],\"should\":[],\"must_not\":[]}}}\n";
-		//This is Search Query String is for es63 kibana
-		String searchString="{\"index\":\"product\",\"ignore_unavailable\":true,\"timeout\":30000}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[\"dateChanged\",\"dateCreated\",\"dateImage\",\"dateScraped\",\"dateUpdated\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName.toLowerCase()+"\"}}},{\"match_phrase\":{\"editorsChoicesCount\":{\"query\":1}}},{\"match_phrase\":{\"hierarchyIdsCount\":{\"query\":1}}},{\"match_phrase\":{\"duplicate\":{\"query\":false}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
-		String[] strfinal=null;
-		ArrayList<String>al = null;
-		try{
-			authenticationforkibana();
-			String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
-			RequestSpecification httpRequest = io.restassured.RestAssured.given();
-			//GET request to find ResponseIds
-			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
-			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
-			Response searchResult=io.restassured.RestAssured.given()
-					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-					.header("kbn-version","6.3.2")
-					.header("Content-Type","application/json; charset=utf-8")
-					.body(searchString)
-					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
-			System.out.println(searchResult.asString());
-			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
-			String categoryid = jsonPathEvaluator.getString("responses[0].hits.hits[0]._source.categoryIds");
-			System.out.println(categoryid);
-			String  str=categoryid.replace("[","").replace("]","");
-			strfinal=str.split(",");
-			al=new ArrayList<String>(Arrays.asList(strfinal));
-		}
-
-		catch(Exception e)
-		{
-			println("Exception: ${e}")
-			print ("Exception in matchphrase method.Exception is ->> "+e)
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-		return al;
-
-
-	}
-
-
-	public static void authenticationforkibana() {
-		String convertedURL= GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
-		//		String convertedURL= getURL(GlobalVariable.envType.toString(),GlobalVariable.kibanaSourceURL.toString())
-
-
-		RestAssured.baseURI = convertedURL+"/api/console/api_server";
-		System.out.println(RestAssured.baseURI);
-		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
-		authScheme.setUserName(new String(Base64.getDecoder().decode("cGFuZGV5bA==")));
-		authScheme.setPassword(new String(Base64.getDecoder().decode("QWF5YW5zaEAxNw==")));
-		RestAssured.authentication = authScheme;
-
-	}
-
-	public String kibanacategoryQuery(String value){
-		
-		String categoryValue= null;
-		//This is Search Query String is for es74 kibana
-		//String searchString="{\"index\":\"data-category-*\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"bool\":{\"minimum_should_match\":1,\"should\":["+value+"]}},{\"match_phrase\":{\"homePage\":{\"query\":true}}}],\"should\":[],\"must_not\":[]}}}\n";
-		//This is Search Query String is for es63 kibana
-		String searchString="{\"index\":\"data-category-*\",\"ignore_unavailable\":true,\"timeout\":30000}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"bool\":{\"minimum_should_match\":1,\"should\":["+value+"]}},{\"match_phrase\":{\"homePage\":{\"query\":true}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
-		try{
-			authenticationforkibana();
-			RequestSpecification httpRequest = io.restassured.RestAssured.given()
-			String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
-
-			System.out.println(searchString);
-			//GET request to find ResponseIds
-			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
-			Response searchResult=io.restassured.RestAssured.given()
-					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-					.header("kbn-version","6.3.2")
-					.header("Content-Type","application/json; charset=utf-8")
-					.body(searchString)
-					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
-			System.out.println(searchResult.asString());
-			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
-			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
-			System.out.println(categoryhome);
-			categoryValue="-c"+categoryhome;
-			
-			String navigation=productvalue(getURL(GlobalVariable.envType, GlobalVariable.url), categoryValue);
-			System.out.println("\n\n"+navigation);
-			int index=navigation.lastIndexOf('/');
-			String navigationFirst=navigation.substring(0,index);
-			String navigationLast= navigation.substring(navigation.lastIndexOf("/") + 1);
-			navigation= navigationFirst+navigationLast;
-			System.out.println(navigation);
-			WebUI.navigateToUrl(navigation , FailureHandling.STOP_ON_FAILURE) 
-			//homepage.navigateToDirectUrl(navigation);
-		}
-		catch(Exception e)
-		{
-			println ("Exception in matchphrase method.Exception is ->> "+e)
-			//refApplicationGenericUtils.extentReportLogFAIL(e.getMessage());
-		}
-
-	}
-
-	public String productvalue(Object object,String pid){
-
-		return (object+pid+".html");
-
-	}
-
-
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 }
