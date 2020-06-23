@@ -84,4 +84,14 @@
       <initValue>'Windows'</initValue>
       <name>platformName</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>true</initValue>
+      <name>Samsung</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>Desktop</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

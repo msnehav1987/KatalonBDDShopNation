@@ -27,9 +27,13 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
 import groovy.json.JsonSlurper as JsonSlurper
+import com.kms.katalon.core.appium.driver.AppiumDriverManager
+import io.appium.java_client.android.AndroidDriver
+import org.openqa.selenium.remote.DesiredCapabilities
+import com.kms.katalon.core.mobile.driver.MobileDriverType
 
 public class ShopNationTest {
-
+	AndroidDriver driver;
 	@Keyword
 	public void loginIntoPDP(String applicationUrlRealSimple){
 		WebUI.openBrowser(applicationUrlRealSimple)
@@ -42,13 +46,13 @@ public class ShopNationTest {
 	public void loginIntoApplication(String applicationUrl){
 		String envToExecute='qa2'
 		String platform = GlobalVariable.platformName
+		String deviceType = GlobalVariable.deviceType
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		WebUI.openBrowser(applicationUrl)
 		WebUI.waitForPageLoad(10)
-		//		if(platform.contains("Windows"))
-		//		WebUI.maximizeWindow()
-		//		else
-		//		println("maximized")
+		//		if (deviceType.equalsIgnoreCase("desktop")) {
+		//	WebUI.maximizeWindow()
+		//}
 	}
 
 
@@ -203,5 +207,45 @@ public class ShopNationTest {
 		String xpath = jsonReader("HomePage.categoryHomepage.CategoryDependency.Subcategories")
 		WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
 		println ("Element "+ element +" is present and visible")
+	}
+
+	@Keyword
+	public void BrowserStackSamsung(String applicationUrl){
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		capabilities.setCapability("device", "Samsung Galaxy S8");
+
+		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+		capabilities.setCapability('browserstack.debug', true);
+		capabilities.setCapability('build', "Automation_ShopNation_Katalon_Mob");
+		capabilities.setCapability('project', "Shopnation");
+		capabilities.setCapability('browserstack.video', true);
+		capabilities.setCapability('browserstack.local', true);
+		capabilities.setCapability('browserstack.ie.enablePopups', false);
+		capabilities.setCapability('browserstack.safari.enablePopups', true);
+		capabilities.setCapability('nativeWebTap', true);
+		capabilities.setCapability('acceptSslCerts', true);
+		capabilities.setCapability('browserstack.geoLocation', "US");
+		capabilities.setCapability('browserstack.console', "verbose");
+		capabilities.setCapability('browser', "android");
+		capabilities.setCapability('platformName', "ANDROID");
+		capabilities.setCapability('realMobile', "true");
+		capabilities.setCapability('deviceOrientation', "portrait");
+		capabilities.setCapability('browserstack.appium_version', "1.17.0");
+		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
+		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+
+
+		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.ANDROID_DRIVER, capabilities, new URL(browserStackServerURL));
+		String envToExecute='qa2'
+		String platform = GlobalVariable.platformName
+		String deviceType = GlobalVariable.deviceType
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+		WebUI.navigateToUrl(applicationUrl)
+//		String sessionid= driver.sessionId
+//		println(sessionid)
+		WebUI.waitForPageLoad(10)
 	}
 }

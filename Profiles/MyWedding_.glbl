@@ -84,4 +84,14 @@
       <initValue>'http://mywedding-shop.%env%.shopnation.com/shop-c752360405.html'</initValue>
       <name>CatagoryHomePageValidationKibanaURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Samsung'</initValue>
+      <name>AndroidDevice</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>Desktop</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
