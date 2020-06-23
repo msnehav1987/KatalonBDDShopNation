@@ -14,48 +14,80 @@
       <guid>357e6a82-5085-4690-a7dc-ec952ef7be2f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimplePDP</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimplePDP</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>8196eb86-b3e2-4f95-a37b-aa1e9d84519a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimpleStory</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimpleStory</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>0db32340-6410-4eb1-a77c-12930ece8c84</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimpleProductUnavailable</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimpleProductUnavailable</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>8b8a0c28-bb1a-4d4d-8f0a-b435e2409678</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimplePageii</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimplePageii</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>e8ce5211-cce2-4e9c-8787-569a1a921a3f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimpleNoSearch</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimpleNoSearch</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>b1175339-d7b5-4306-a5da-05f24b58b689</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimple404Page</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimple404Page</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>260cdf74-3ba5-47d3-a7e6-949eff52fd73</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimpleSlideShow</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimpleSlideShow</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
    <testCaseLink>
       <guid>077d0dcc-a3a6-412a-a155-7f530d120b64</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
+<<<<<<< HEAD
       <testCaseId>Test Cases/IntegratedTest/RealSimpleSiteMap</testCaseId>
+=======
+      <testCaseId>Test Cases/Integration/RealSimpleSiteMap</testCaseId>
+>>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
    </testCaseLink>
 </TestSuiteEntity>

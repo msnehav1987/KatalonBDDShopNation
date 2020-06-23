@@ -14,12 +14,12 @@
       <guid>ecccd978-40df-451f-b168-d38ca01cc1c9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/PeopleShopStory</testCaseId>
+      <testCaseId>Test Cases/Integration/PeopleShopStory</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>1f0d3100-9574-46d3-a64a-f98b213cd7de</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/MyWeddingPDP</testCaseId>
+      <testCaseId>Test Cases/Integration/MyWeddingPDP</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
