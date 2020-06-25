@@ -30,15 +30,14 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
 import groovy.json.JsonSlurper as JsonSlurper
-<<<<<<< HEAD
+
 import com.kms.katalon.core.appium.driver.AppiumDriverManager
 import io.appium.java_client.android.AndroidDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.mobile.driver.MobileDriverType
-=======
+
 import io.restassured.*
 import io.restassured.authentication.PreemptiveBasicAuthScheme
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 
 public class ShopNationTest {
 	AndroidDriver driver;
@@ -134,12 +133,6 @@ public class ShopNationTest {
 	def footerValidation() {
 		String elems = "HomePage.Logo;HomePage.Footer.Copyright;HomePage.Footer.Logo";
 		validateMultipleElements(elems);
-		//		String [] arr= elems.split(";")
-		//		for(int i = 0  ;i<arr.length;i++) {
-		//			String keyValueFromJson=arr[i]
-		//			String xpath = jsonReader(keyValueFromJson)
-		//			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
-		//		}
 	}
 
 	/**
@@ -148,11 +141,13 @@ public class ShopNationTest {
 	 */
 	@Keyword
 	def validateMultipleElements(String elementsSepratedBySemiColon) {
+		
 		String elems = elementsSepratedBySemiColon
 		String [] arr= elems.split(";")
 		for(int i = 0  ;i<arr.length;i++) {
 			String keyValueFromJson=arr[i]
 			String xpath = jsonReader(keyValueFromJson)
+			WebUI.scrollToElement(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), 10, FailureHandling.STOP_ON_FAILURE)
 			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
 		}
 	}
@@ -213,7 +208,6 @@ public class ShopNationTest {
 		println ("Element "+ element +" is present and visible")
 	}
 
-<<<<<<< HEAD
 	@Keyword
 	public void BrowserStackSamsung(String applicationUrl){
 		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
@@ -235,25 +229,22 @@ public class ShopNationTest {
 		capabilities.setCapability('browserstack.geoLocation', "US");
 		capabilities.setCapability('browserstack.console', "verbose");
 		capabilities.setCapability('browser', "android");
+		capabilities.setCapability('browserName', "android");
 		capabilities.setCapability('platformName', "ANDROID");
 		capabilities.setCapability('realMobile', "true");
 		capabilities.setCapability('deviceOrientation', "portrait");
 		capabilities.setCapability('browserstack.appium_version', "1.17.0");
 		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
 		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
-
-
+		capabilities.setCapability("os_version", "7.0");
+		capabilities.setCapability("browserstack.idleTimeout" , "900" );
+		
 		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.ANDROID_DRIVER, capabilities, new URL(browserStackServerURL));
-		String envToExecute='qa2'
-		String platform = GlobalVariable.platformName
-		String deviceType = GlobalVariable.deviceType
-		applicationUrl=applicationUrl.replace("%env%", envToExecute)
-		WebUI.navigateToUrl(applicationUrl)
-//		String sessionid= driver.sessionId
-//		println(sessionid)
-		WebUI.waitForPageLoad(10)
+		DriverFactory.changeWebDriver(driver)
+		//WebUI.navigateToUrl(applicationUrl)
+
 	}
-=======
+
 
 	@Keyword
 	public void matchPhrase(String envType,String applicationName){
@@ -382,5 +373,4 @@ public class ShopNationTest {
 	}
 
 
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 }

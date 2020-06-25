@@ -6,7 +6,7 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Desktop'</initValue>
+      <initValue>'mobile'</initValue>
       <name>deviceType</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
