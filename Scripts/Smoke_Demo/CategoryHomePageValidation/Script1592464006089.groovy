@@ -14,6 +14,16 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.configuration.RunConfiguration
+//
+//RunConfiguration.pre("browserName", "android")
+//RunConfiguration.setMobileDriverPreferencesProperty("device", "Samsung Galaxy S8");
+//RunConfiguration.setMobileDriverPreferencesProperty("os_version", "7.0");
+//RunConfiguration.setMobileDriverPreferencesProperty("platformName","Android")
+//RunConfiguration.setMobileDriverPreferencesProperty("build","Automation_ShopNation_Katalon_Mob")
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
+
 
 String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
@@ -25,13 +35,16 @@ Boolean isCanonical
 
 
 
-WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
+
 
 if (deviceType.equalsIgnoreCase("desktop")) {
+	WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
 	WebUI.maximizeWindow()
 }
 
+
 if (applicationName.equalsIgnoreCase('More') || applicationName.equalsIgnoreCase('Shape')) {
+	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
     String keyValueFromJson = 'HomePage.categoryhomepagae'
 
     String xpath = CustomKeywords.'com.helper.browserhelper.ShopNationTest.jsonReader'(keyValueFromJson)
