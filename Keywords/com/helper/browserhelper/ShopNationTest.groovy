@@ -32,15 +32,10 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
 import groovy.json.JsonSlurper as JsonSlurper
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 import com.kms.katalon.core.appium.driver.AppiumDriverManager
 import io.appium.java_client.android.AndroidDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.mobile.driver.MobileDriverType
-<<<<<<< HEAD
 import org.openqa.selenium.remote.RemoteWebDriver
 import org.openqa.selenium.interactions.Actions
 import io.appium.java_client.ios.IOSDriver
@@ -54,12 +49,8 @@ import org.openqa.selenium.ie.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.openqa.selenium.remote.*;
-
-=======
-
 import io.restassured.*
 import io.restassured.authentication.PreemptiveBasicAuthScheme
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 
 public class ShopNationTest {
 	AndroidDriver driver=((RemoteWebDriver) driver);
@@ -118,37 +109,37 @@ public class ShopNationTest {
 		switch(env.toLowerCase()){
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa1':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa2':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa3':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 			default:
-				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
-				break
+			printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+			break
 		}
 	}
 
@@ -169,7 +160,7 @@ public class ShopNationTest {
 	 */
 	@Keyword
 	def validateMultipleElements(String elementsSepratedBySemiColon) {
-		
+
 		String elems = elementsSepratedBySemiColon
 		String [] arr= elems.split(";")
 		for(int i = 0  ;i<arr.length;i++) {
@@ -235,11 +226,7 @@ public class ShopNationTest {
 		WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
 		println ("Element "+ element +" is present and visible")
 	}
-<<<<<<< HEAD
 
-=======
-
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 	@Keyword
 	public void BrowserStackSamsung(String applicationUrl){
 		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
@@ -261,46 +248,26 @@ public class ShopNationTest {
 		capabilities.setCapability('browserstack.geoLocation', "US");
 		capabilities.setCapability('browserstack.console', "verbose");
 		capabilities.setCapability('browser', "android");
-<<<<<<< HEAD
 		capabilities.setCapability('platformName', "Android");
-=======
-		capabilities.setCapability('browserName', "android");
-		capabilities.setCapability('platformName', "ANDROID");
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 		capabilities.setCapability('realMobile', "true");
 		capabilities.setCapability('deviceOrientation', "portrait");
 		capabilities.setCapability('browserstack.appium_version', "1.17.0");
 		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
 		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
-<<<<<<< HEAD
 		capabilities.setCapability('os_version', "7.0");
 		capabilities.setCapability('browserstack.idleTimeout', "900");
 
 
 
-=======
-		capabilities.setCapability("os_version", "7.0");
-		capabilities.setCapability("browserstack.idleTimeout" , "900" );
-		
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
 		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.ANDROID_DRIVER, capabilities, new URL(browserStackServerURL));
-<<<<<<< HEAD
 		String envToExecute='qa2'
 		String platform = GlobalVariable.platformName
 		String deviceType = GlobalVariable.deviceType
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		driver.get(applicationUrl)
 		DriverFactory.changeWebDriver(driver)
-=======
-		DriverFactory.changeWebDriver(driver)
-		//WebUI.navigateToUrl(applicationUrl)
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
-
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
+	
 
 	@Keyword
 	public void BrowserStackIpad(String applicationUrl){
@@ -442,7 +409,7 @@ public class ShopNationTest {
 
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setCapability("browserVersion", "11.0");
-//		capabilities.setCapability("platformName", "WINDOWS");
+		//		capabilities.setCapability("platformName", "WINDOWS");
 		capabilities.setCapability('browserstack.debug', true);
 		capabilities.setCapability('build', "Automation_ShopNation_Katalon_InternetExplorer");
 		capabilities.setCapability('project', "Shopnation");
@@ -464,7 +431,7 @@ public class ShopNationTest {
 		capabilities.setCapability("ignoreZoomSetting", true);
 		capabilities.setCapability("ignoreProtectedModeSettings", true);
 		capabilities.setCapability("resolution", "1366x768");
-//		capabilities.setCapability('os_version', "11.0");
+		//		capabilities.setCapability('os_version', "11.0");
 		//		chromeOptions.setCapability('browserstack.idleTimeout', "900");
 		InternetExplorerOptions options = new InternetExplorerOptions();
 		options.merge(capabilities);
@@ -474,11 +441,10 @@ public class ShopNationTest {
 		driver.get(applicationUrl);
 
 	}
-<<<<<<< HEAD
-=======
+	
 
 	public String kibanacategoryQuery(String value){
-		
+
 		String categoryValue= null;
 		//This is Search Query String is for es74 kibana
 		//String searchString="{\"index\":\"data-category-*\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"bool\":{\"minimum_should_match\":1,\"should\":["+value+"]}},{\"match_phrase\":{\"homePage\":{\"query\":true}}}],\"should\":[],\"must_not\":[]}}}\n";
@@ -493,17 +459,17 @@ public class ShopNationTest {
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			Response searchResult=io.restassured.RestAssured.given()
-					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-					.header("kbn-version","6.3.2")
-					.header("Content-Type","application/json; charset=utf-8")
-					.body(searchString)
-					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+			.header("kbn-version","6.3.2")
+			.header("Content-Type","application/json; charset=utf-8")
+			.body(searchString)
+			.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
 			System.out.println(categoryhome);
 			categoryValue="-c"+categoryhome;
-			
+
 			String navigation=productvalue(getURL(GlobalVariable.envType, GlobalVariable.url), categoryValue);
 			System.out.println("\n\n"+navigation);
 			int index=navigation.lastIndexOf('/');
@@ -511,7 +477,7 @@ public class ShopNationTest {
 			String navigationLast= navigation.substring(navigation.lastIndexOf("/") + 1);
 			navigation= navigationFirst+navigationLast;
 			System.out.println(navigation);
-			WebUI.navigateToUrl(navigation , FailureHandling.STOP_ON_FAILURE) 
+			WebUI.navigateToUrl(navigation , FailureHandling.STOP_ON_FAILURE)
 			//homepage.navigateToDirectUrl(navigation);
 		}
 		catch(Exception e)
@@ -529,5 +495,5 @@ public class ShopNationTest {
 	}
 
 
->>>>>>> branch 'master' of https://github.com/pandeyl/KatalonBDDShopNation.git
+	
 }
