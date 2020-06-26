@@ -86,12 +86,32 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Samsung'</initValue>
-      <name>AndroidDevice</name>
+      <initValue>'true'</initValue>
+      <name>Desktop</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>false</initValue>
-      <name>Desktop</name>
+      <initValue>'true'</initValue>
+      <name>Samsung</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>iPad</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>iPhone</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>local</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>InternetExplorer</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

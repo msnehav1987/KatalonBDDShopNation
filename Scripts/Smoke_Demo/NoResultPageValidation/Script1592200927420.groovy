@@ -20,7 +20,16 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions
 
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+String url = GlobalVariable.url
 
+
+public void NoResultPage(){
 
 String url = GlobalVariable.url
 
@@ -29,26 +38,61 @@ String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
 String urlComp= GlobalVariable.urlContent
 
-if (url.contains(urlComp)) {
+//if (url.contains(urlComp)) {
 
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
+//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
 	
 	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), FailureHandling.STOP_ON_FAILURE)
 	WebUI.delay(10)
 	WebUI.setText(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), 'gjgkdg')
 	WebUI.click(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchButton'))
 	WebUI.delay(10)
+	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+	
+		println('isCanonical->' + isCanonical)
+	
+		WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+	WebUI.closeBrowser()
 	
 	}
 
 
-	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+if (Samsung.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
+	NoResultPage()
+}
 
-	println('isCanonical->' + isCanonical)
+else if (Desktop.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
+	NoResultPage()
+	}
 
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
+else if (iPad.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
+	NoResultPage()
+}
+
+else if (iPhone.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
+	NoResultPage()
+}
+
+else if(local.contains('true')) {
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
+		NoResultPage()
+}
+
+else if (InternetExplorer.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
+	NoResultPage()
+}
+
+
+
+
+
 	
-	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
-WebUI.closeBrowser()

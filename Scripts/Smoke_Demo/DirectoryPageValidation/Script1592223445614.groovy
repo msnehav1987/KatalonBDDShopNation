@@ -21,20 +21,29 @@ import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions
 
 
-
-String applicationName = GlobalVariable.applicationName
-String deviceType = GlobalVariable.deviceType
-Boolean isCanonical
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
 String DirectoryUrl= GlobalVariable.DirectoryBrandURL
+
+public void DirectoryPage(){
+	String applicationName = GlobalVariable.applicationName
+	String deviceType = GlobalVariable.deviceType
+	Boolean isCanonical
+	String DirectoryUrl= GlobalVariable.DirectoryBrandURL
+
 
 if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))) {
 
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.DirectoryBrandURL)
+//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.DirectoryBrandURL)
 	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/directorypagealphabetlist'), FailureHandling.STOP_ON_FAILURE)
 	WebUI.delay(10)
 	println ("The element is visible")
 }else{
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
+//CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.NavigateToPage'("HomePage.BurgerMenu|HomePage.Burger.Stores","StoresPage")
 WebUI.delay(10)
 println ("The element is visible")
@@ -53,4 +62,65 @@ println ("The element is visible")
 WebUI.closeBrowser()
 
 
+}
+
+if (Samsung.contains('true')){
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.DirectoryBrandURL)
+	DirectoryPage()
+}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
+		DirectoryPage()
+		}
+}
+
+else if (Desktop.contains('true')){
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.DirectoryBrandURL)
+	DirectoryPage()
+	}else{
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.url)
+	DirectoryPage()
+}
+	}
+
+else if (iPad.contains('true')){
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.DirectoryBrandURL)
+	DirectoryPage()
+}else{
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.url)
+DirectoryPage()
+}
+}
+
+else if (iPhone.contains('true')){
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.DirectoryBrandURL)
+	DirectoryPage()
+}else{
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.url)
+DirectoryPage()
+}
+}
+
+else if(local.contains('true')) {
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.DirectoryBrandURL)
+		DirectoryPage()
+	}else {
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
+	DirectoryPage()
+	}
+}
+
+else if (InternetExplorer.contains('true')){
+	if ((DirectoryUrl.contains('parenting') || DirectoryUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.DirectoryBrandURL)
+	DirectoryPage()
+}else {
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.url)
+DirectoryPage()
+}
+}
 

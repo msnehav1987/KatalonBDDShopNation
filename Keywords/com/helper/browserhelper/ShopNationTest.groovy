@@ -22,6 +22,8 @@ import internal.GlobalVariable
 import io.restassured.path.json.JsonPath
 import io.restassured.response.Response
 import io.restassured.specification.RequestSpecification
+import sun.awt.datatransfer.ClipboardTransferable.DataFactory
+
 import org.openqa.selenium.WebDriver
 
 import com.kms.katalon.core.webui.exception.WebElementNotFoundException
@@ -34,9 +36,25 @@ import com.kms.katalon.core.appium.driver.AppiumDriverManager
 import io.appium.java_client.android.AndroidDriver
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.mobile.driver.MobileDriverType
+import org.openqa.selenium.remote.RemoteWebDriver
+import org.openqa.selenium.interactions.Actions
+import io.appium.java_client.ios.IOSDriver
+import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
+import io.appium.java_client.AppiumDriver
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.ie.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import org.openqa.selenium.remote.*;
+
 
 public class ShopNationTest {
-	AndroidDriver driver;
+	AndroidDriver driver=((RemoteWebDriver) driver);
+
+
 	@Keyword
 	public void loginIntoPDP(String applicationUrlRealSimple){
 		WebUI.openBrowser(applicationUrlRealSimple)
@@ -233,12 +251,15 @@ public class ShopNationTest {
 		capabilities.setCapability('browserstack.geoLocation', "US");
 		capabilities.setCapability('browserstack.console', "verbose");
 		capabilities.setCapability('browser', "android");
-		capabilities.setCapability('platformName', "ANDROID");
+		capabilities.setCapability('platformName', "Android");
 		capabilities.setCapability('realMobile', "true");
 		capabilities.setCapability('deviceOrientation', "portrait");
 		capabilities.setCapability('browserstack.appium_version', "1.17.0");
 		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
 		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		capabilities.setCapability('os_version', "7.0");
+		capabilities.setCapability('browserstack.idleTimeout', "900");
+
 
 
 		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.ANDROID_DRIVER, capabilities, new URL(browserStackServerURL));
@@ -246,9 +267,181 @@ public class ShopNationTest {
 		String platform = GlobalVariable.platformName
 		String deviceType = GlobalVariable.deviceType
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
-		WebUI.navigateToUrl(applicationUrl)
-		//		String sessionid= driver.sessionId
-		//		println(sessionid)
-		WebUI.waitForPageLoad(10)
+		driver.get(applicationUrl)
+		DriverFactory.changeWebDriver(driver)
+
+	}
+
+	@Keyword
+	public void BrowserStackIpad(String applicationUrl){
+		//AppiumDriver<IOSDriver> driver = MobileDriverFactory.getDriver();
+		IOSDriver driver=((RemoteWebDriver) driver);
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		capabilities.setCapability("device", "iPad Mini 2019");
+
+		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+		capabilities.setCapability('browserstack.debug', true);
+		capabilities.setCapability('build', "Automation_ShopNation_Katalon_iPad");
+		capabilities.setCapability('project', "Shopnation");
+		capabilities.setCapability('browserstack.video', true);
+		capabilities.setCapability('browserstack.local', true);
+		capabilities.setCapability('browserstack.ie.enablePopups', false);
+		capabilities.setCapability('browserstack.safari.enablePopups', true);
+		capabilities.setCapability('nativeWebTap', true);
+		capabilities.setCapability('acceptSslCerts', true);
+		capabilities.setCapability('browserstack.geoLocation', "US");
+		capabilities.setCapability('browserstack.console', "verbose");
+		capabilities.setCapability('browser', "iPad");
+		capabilities.setCapability('platformName', "MAC");
+		capabilities.setCapability('realMobile', "true");
+		capabilities.setCapability('deviceOrientation', "portrait");
+		capabilities.setCapability('browserstack.appium_version', "1.17.0");
+		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
+		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		capabilities.setCapability('os_version', "12");
+		capabilities.setCapability('browserstack.idleTimeout', "900");
+
+
+
+		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.IOS_DRIVER, capabilities, new URL(browserStackServerURL));
+		String envToExecute='qa2'
+		String platform = GlobalVariable.platformName
+		String deviceType = GlobalVariable.deviceType
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+		driver.get(applicationUrl)
+		DriverFactory.changeWebDriver(driver)
+
+	}
+
+	@Keyword
+	public void BrowserStackIphone(String applicationUrl){
+		IOSDriver driver=((RemoteWebDriver) driver);
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		capabilities.setCapability("device", "iPhone XS");
+
+		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+		capabilities.setCapability('browserstack.debug', true);
+		capabilities.setCapability('build', "Automation_ShopNation_Katalon_iPad");
+		capabilities.setCapability('project', "Shopnation");
+		capabilities.setCapability('browserstack.video', true);
+		capabilities.setCapability('browserstack.local', true);
+		capabilities.setCapability('browserstack.ie.enablePopups', false);
+		capabilities.setCapability('browserstack.safari.enablePopups', true);
+		capabilities.setCapability('nativeWebTap', true);
+		capabilities.setCapability('acceptSslCerts', true);
+		capabilities.setCapability('browserstack.geoLocation', "US");
+		capabilities.setCapability('browserstack.console', "verbose");
+		capabilities.setCapability('browser', "iPhone");
+		capabilities.setCapability('platformName', "MAC");
+		capabilities.setCapability('realMobile', "true");
+		capabilities.setCapability('deviceOrientation', "portrait");
+		capabilities.setCapability('browserstack.appium_version', "1.17.0");
+		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
+		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		capabilities.setCapability('os_version', "12");
+		capabilities.setCapability('browserstack.idleTimeout', "900");
+
+
+
+		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.IOS_DRIVER, capabilities, new URL(browserStackServerURL));
+		String envToExecute='qa2'
+		String platform = GlobalVariable.platformName
+		String deviceType = GlobalVariable.deviceType
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+		driver.get(applicationUrl)
+		DriverFactory.changeWebDriver(driver)
+
+	}
+
+	@Keyword
+	public void BrowserStackChrome(String applicationUrl){
+		//ChromeDriver driver=((RemoteWebDriver) driver);
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+
+		//		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		//capabilities.setCapability("device", "iPhone XS");
+
+		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+
+
+		String envToExecute='qa2'
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setCapability("browserVersion", "74");
+		chromeOptions.setCapability("platformName", "WINDOWS");
+		chromeOptions.setCapability('browserstack.debug', true);
+		chromeOptions.setCapability('build', "Automation_ShopNation_Katalon_Chrome");
+		chromeOptions.setCapability('project', "Shopnation");
+		chromeOptions.setCapability('browserstack.video', true);
+		chromeOptions.setCapability('browserstack.local', true);
+		chromeOptions.setCapability('browserstack.ie.enablePopups', false);
+		chromeOptions.setCapability('browserstack.safari.enablePopups', true);
+		chromeOptions.setCapability('nativeWebTap', true);
+		chromeOptions.setCapability('acceptSslCerts', true);
+		chromeOptions.setCapability('browserstack.geoLocation', "US");
+		chromeOptions.setCapability('browserstack.console', "verbose");
+		chromeOptions.setCapability('browser', "Chrome");
+		chromeOptions.setCapability('browserstack.appium_version', "1.17.0");
+		chromeOptions.setCapability('browserstack.user', "sundarsivaraman3");
+		chromeOptions.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		//		chromeOptions.setCapability('os_version', "10");
+		//		chromeOptions.setCapability('browserstack.idleTimeout', "900");
+
+		WebDriver driver = new RemoteWebDriver(new URL(browserStackServerURL), chromeOptions);
+		DriverFactory.changeWebDriver(driver)
+		driver.get(applicationUrl);
+
+	}
+
+
+	@Keyword
+	public void BrowserStackInternetExplorer(String applicationUrl){
+
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+
+		String envToExecute='qa2'
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setCapability("browserVersion", "11.0");
+//		capabilities.setCapability("platformName", "WINDOWS");
+		capabilities.setCapability('browserstack.debug', true);
+		capabilities.setCapability('build', "Automation_ShopNation_Katalon_InternetExplorer");
+		capabilities.setCapability('project', "Shopnation");
+		capabilities.setCapability('browserstack.video', true);
+		capabilities.setCapability('browserstack.local', true);
+		capabilities.setCapability('browserstack.ie.enablePopups', false);
+		capabilities.setCapability('browserstack.safari.enablePopups', true);
+		capabilities.setCapability('nativeWebTap', true);
+		capabilities.setCapability('acceptSslCerts', true);
+		capabilities.setCapability('browserstack.geoLocation', "US");
+		capabilities.setCapability('browserstack.console', "verbose");
+		capabilities.setCapability('browser', "IE");
+		capabilities.setCapability('browserstack.appium_version', "1.17.0");
+		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
+		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+		capabilities.setCapability("ignoreZoomSetting", true);
+		capabilities.setCapability("ignoreProtectedModeSettings", true);
+		capabilities.setCapability("resolution", "1366x768");
+//		capabilities.setCapability('os_version', "11.0");
+		//		chromeOptions.setCapability('browserstack.idleTimeout', "900");
+		InternetExplorerOptions options = new InternetExplorerOptions();
+		options.merge(capabilities);
+
+		WebDriver driver = new RemoteWebDriver(new URL(browserStackServerURL), options);
+		DriverFactory.changeWebDriver(driver)
+		driver.get(applicationUrl);
+
 	}
 }

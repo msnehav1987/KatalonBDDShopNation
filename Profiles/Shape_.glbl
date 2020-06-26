@@ -74,4 +74,24 @@
       <initValue>'null'</initValue>
       <name>DirectoryBrandURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>Desktop</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>Samsung</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>iPad</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>iPhone</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

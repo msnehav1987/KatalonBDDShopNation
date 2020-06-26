@@ -21,26 +21,30 @@ import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions
 
 
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+String url = GlobalVariable.HtmlSiteMapUrl
 
+
+public void HTMLSiteMapPage(){
 String url = GlobalVariable.HtmlSiteMapUrl
 
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
-String urlComp= GlobalVariable.urlContent
 
-if (url.contains(urlComp)) {
-
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.HtmlSiteMapUrl)
-	
+//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.HtmlSiteMapUrl)
+WebUI.delay(10)
 	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/SiteMapTitle'), FailureHandling.STOP_ON_FAILURE)
 	WebUI.delay(10)
 	println ("The element is visible")
-}
 
-	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
-
-	println('isCanonical->' + isCanonical)
+//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+//	println('isCanonical->' + isCanonical)
 
 	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
 	
@@ -48,6 +52,38 @@ if (url.contains(urlComp)) {
 	
 	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
 WebUI.closeBrowser()
+
+}
+
+if (Samsung.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
+	HTMLSiteMapPage()
+}
+
+else if (Desktop.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
+	HTMLSiteMapPage()
+	}
+
+else if (iPad.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
+	HTMLSiteMapPage()
+}
+
+else if (iPhone.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
+	HTMLSiteMapPage()
+}
+
+else if(local.contains('true')) {
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
+		HTMLSiteMapPage()
+}
+
+else if (InternetExplorer.contains('true')){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
+	HTMLSiteMapPage()
+}
 
 
 

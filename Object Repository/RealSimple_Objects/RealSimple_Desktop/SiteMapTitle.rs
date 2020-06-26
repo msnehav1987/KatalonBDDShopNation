@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//tr[1]//h1[text()='Sitemap']</value>
+         <value>//tr[1]//td[1]//h1[text()='Sitemap']</value>
       </entry>
       <entry>
          <key>BASIC</key>

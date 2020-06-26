@@ -22,8 +22,17 @@ import org.openqa.selenium.interactions.Actions
 
 
 
-String url = GlobalVariable.applicationUrl
+//String url = GlobalVariable.applicationUrl
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+String PdpUrl= GlobalVariable.PDPpage
 
+
+public void ProductDetailPage(){
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
@@ -31,8 +40,6 @@ String PdpUrl= GlobalVariable.PDPpage
 
 if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))) {
 
-//		@com.kms.katalon.core.annotation.SetUp
-//void SetUp() {
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
 	WebDriver driver = DriverFactory.getWebDriver()
 	WebUI.delay(10)
@@ -60,6 +67,68 @@ else {
 	
 	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
 WebUI.closeBrowser()
+
+}
+
+if (Samsung.contains('true')){
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.PDPpage)
+		ProductDetailPage()
+		}
+}
+
+else if (Desktop.contains('true')){
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+	}else{
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+}
+	}
+
+else if (iPad.contains('true')){
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+}else{
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.PDPpage)
+ProductDetailPage()
+}
+}
+
+else if (iPhone.contains('true')){
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+}else{
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.PDPpage)
+ProductDetailPage()
+}
+}
+
+else if(local.contains('true')) {
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
+		ProductDetailPage()
+	}else {
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+	}
+}
+
+else if (InternetExplorer.contains('true')){
+	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.PDPpage)
+	ProductDetailPage()
+}else {
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.PDPpage)
+ProductDetailPage()
+}
+}
 
 
 
