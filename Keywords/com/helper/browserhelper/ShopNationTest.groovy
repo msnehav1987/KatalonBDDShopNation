@@ -114,38 +114,38 @@ public class ShopNationTest {
 		switch(env.toLowerCase()){
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa1':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa2':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'qa3':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 
 			case 'prod':
-				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-				return envToExecuteReplacedURL
-				break
+			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+			return envToExecuteReplacedURL
+			break
 			default:
-				assert false
-				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
-				break
+			assert false
+			printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+			break
 		}
 	}
 
@@ -181,7 +181,6 @@ public class ShopNationTest {
 		catch(Exception e) {
 			println ("Exception in validateMultipleElements method ->>"+e);
 			assert false
-
 		}
 	}
 
@@ -312,56 +311,54 @@ public class ShopNationTest {
 
 	@Keyword
 	public void BrowserStackIpad(String applicationUrl){
-		//AppiumDriver<IOSDriver> driver = MobileDriverFactory.getDriver();
-		IOSDriver driver=((RemoteWebDriver) driver);
-		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		try{
+			//AppiumDriver<IOSDriver> driver = MobileDriverFactory.getDriver();
+			IOSDriver driver=((RemoteWebDriver) driver);
+			String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
 
-		capabilities.setCapability("device", "iPad Mini 2019");
+			DesiredCapabilities capabilities = new DesiredCapabilities();
 
-		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
-		capabilities.setCapability('browserstack.debug', true);
-		capabilities.setCapability('build', "Automation_ShopNation_Katalon_iPad");
-		capabilities.setCapability('project', "Shopnation");
-		capabilities.setCapability('browserstack.video', true);
-		capabilities.setCapability('browserstack.local', true);
-		capabilities.setCapability('browserstack.ie.enablePopups', false);
-		capabilities.setCapability('browserstack.safari.enablePopups', true);
-		capabilities.setCapability('nativeWebTap', true);
-		capabilities.setCapability('acceptSslCerts', true);
-		capabilities.setCapability('browserstack.geoLocation', "US");
-		capabilities.setCapability('browserstack.console', "verbose");
-		capabilities.setCapability('browser', "iPad");
-		capabilities.setCapability('platformName', "MAC");
-		capabilities.setCapability('realMobile', "true");
-		capabilities.setCapability('deviceOrientation', "portrait");
-		capabilities.setCapability('browserstack.appium_version', "1.17.0");
-		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
-		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
-		capabilities.setCapability('os_version', "12");
-		capabilities.setCapability('browserstack.idleTimeout', "900");
+			capabilities.setCapability("device", "iPad Mini 2019");
+
+			//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+			capabilities.setCapability('browserstack.debug', true);
+			capabilities.setCapability('build', "Automation_ShopNation_Katalon_iPad");
+			capabilities.setCapability('project', "Shopnation");
+			capabilities.setCapability('browserstack.video', true);
+			capabilities.setCapability('browserstack.local', true);
+			capabilities.setCapability('browserstack.ie.enablePopups', false);
+			capabilities.setCapability('browserstack.safari.enablePopups', true);
+			capabilities.setCapability('nativeWebTap', true);
+			capabilities.setCapability('acceptSslCerts', true);
+			capabilities.setCapability('browserstack.geoLocation', "US");
+			capabilities.setCapability('browserstack.console', "verbose");
+			capabilities.setCapability('browser', "iPad");
+			capabilities.setCapability('platformName', "MAC");
+			capabilities.setCapability('realMobile', "true");
+			capabilities.setCapability('deviceOrientation', "portrait");
+			capabilities.setCapability('browserstack.appium_version', "1.17.0");
+			capabilities.setCapability('browserstack.user', "sundarsivaraman3");
+			capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
+			capabilities.setCapability('os_version', "12");
+			capabilities.setCapability('browserstack.idleTimeout', "900");
 
 
 
-		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.IOS_DRIVER, capabilities, new URL(browserStackServerURL));
-		String envToExecute='qa2'
-		String platform = GlobalVariable.platformName
-		String deviceType = GlobalVariable.deviceType
-		applicationUrl=applicationUrl.replace("%env%", envToExecute)
-		driver.get(applicationUrl)
-		DriverFactory.changeWebDriver(driver)
+			driver=AppiumDriverManager.createMobileDriver(MobileDriverType.IOS_DRIVER, capabilities, new URL(browserStackServerURL));
+			String envToExecute='qa2'
+			String platform = GlobalVariable.platformName
+			String deviceType = GlobalVariable.deviceType
+			applicationUrl=applicationUrl.replace("%env%", envToExecute)
+			driver.get(applicationUrl)
+			DriverFactory.changeWebDriver(driver)
 
-	for(String indexValues:ListOfValues)
-				matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
-			value=matchPhrase.substring(0, matchPhrase.length()-1);
-			kibanacategoryQuery(value);
+
 		}catch(Exception e) {
 			println ("Exception is "+e)
 			assert false
 			println ("Exception in matchphrase method.Exception is ->> "+e)
 		}
-
 	}
 
 	@Keyword
@@ -409,6 +406,7 @@ public class ShopNationTest {
 
 	@Keyword
 	public void BrowserStackChrome(String applicationUrl){
+	
 		//ChromeDriver driver=((RemoteWebDriver) driver);
 		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
 
@@ -418,16 +416,6 @@ public class ShopNationTest {
 
 		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
 
-
-		catch(Exception e)
-		{
-			println("Exception: ${e}")
-			print ("Exception in matchphrase method.Exception is ->> "+e)
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-			assert false
-		}
-		return al;
 
 
 		String envToExecute='qa2'
@@ -547,6 +535,27 @@ public class ShopNationTest {
 	}
 
 
+
+	@Keyword
+	public void matchPhrase(String envType,String applicationName){
+		String matchPhrase="";
+		String indexName="_id";
+		String value = null;
+		try{
+			ArrayList<String> ListOfValues =kibanacategory(applicationName);
+
+			for(String indexValues:ListOfValues)
+			matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
+			value=matchPhrase.substring(0, matchPhrase.length()-1);
+			kibanacategoryQuery(value);
+		}catch(Exception e) {
+			println ("Exception is "+e)
+			assert false
+			println ("Exception in matchphrase method.Exception is ->> "+e)
+		}
+	}
+
+
 	public String kibanacategoryQuery(String value){
 
 		String categoryValue= null;
@@ -563,11 +572,11 @@ public class ShopNationTest {
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			Response searchResult=io.restassured.RestAssured.given()
-					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-					.header("kbn-version","6.3.2")
-					.header("Content-Type","application/json; charset=utf-8")
-					.body(searchString)
-					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+			.header("kbn-version","6.3.2")
+			.header("Content-Type","application/json; charset=utf-8")
+			.body(searchString)
+			.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
@@ -618,11 +627,11 @@ public class ShopNationTest {
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			Response searchResult=RestAssured.given()
-					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-					.header("kbn-version","6.3.2")
-					.header("Content-Type","application/json; charset=utf-8")
-					.body(searchString)
-					.post(kibanaSourceURL+"/elasticsearch/_msearch");
+			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+			.header("kbn-version","6.3.2")
+			.header("Content-Type","application/json; charset=utf-8")
+			.body(searchString)
+			.post(kibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
