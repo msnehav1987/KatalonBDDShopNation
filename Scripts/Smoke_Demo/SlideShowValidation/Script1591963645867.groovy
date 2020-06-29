@@ -41,7 +41,7 @@ if (!(applicationName.equalsIgnoreCase('Betterhomesandgardens') || applicationNa
 
     CustomKeywords.'com.helper.browserhelper.ShopNationTest.clickOnElement'('HomePage.categoryDetail.SeeAllArticle', 'HomePage.categoryDetail.SeeAllArticle')
 } else {
-    String xpathParam = CustomKeywords.'com.helper.browserhelpergetXpathValue'('SlideShow.heroarea.author')
+    String xpathParam = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getXpathValue'('SlideShow.heroarea.author')
 
     CustomKeywords.'com.helper.browserhelper.ShopNationTest.FetchPagefromkibana'('SLIDESHOW', xpathParam, 'heroarea.author')
 }

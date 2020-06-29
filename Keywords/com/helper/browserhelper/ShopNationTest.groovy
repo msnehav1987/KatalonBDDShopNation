@@ -114,38 +114,38 @@ public class ShopNationTest {
 		switch(env.toLowerCase()){
 
 			case 'prod':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa1':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa2':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa3':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'prod':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 			default:
-			assert false
-			printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
-			break
+				assert false
+				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+				break
 		}
 	}
 
@@ -399,6 +399,7 @@ public class ShopNationTest {
 
 	@Keyword
 	public void BrowserStackChrome(String applicationUrl){
+
 		//ChromeDriver driver=((RemoteWebDriver) driver);
 		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
 
@@ -626,11 +627,11 @@ public class ShopNationTest {
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			Response searchResult=io.restassured.RestAssured.given()
-			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-			.header("kbn-version","6.3.2")
-			.header("Content-Type","application/json; charset=utf-8")
-			.body(searchString)
-			.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
@@ -663,7 +664,19 @@ public class ShopNationTest {
 
 	}
 
+	public static void authenticationforkibana() {
+		String convertedURL= GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
+		//		String convertedURL= getURL(GlobalVariable.envType.toString(),GlobalVariable.kibanaSourceURL.toString())
 
+
+		RestAssured.baseURI = convertedURL+"/api/console/api_server";
+		System.out.println(RestAssured.baseURI);
+		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
+		authScheme.setUserName(new String(Base64.getDecoder().decode("cGFuZGV5bA==")));
+		authScheme.setPassword(new String(Base64.getDecoder().decode("QWF5YW5zaEAxNw==")));
+		RestAssured.authentication = authScheme;
+
+	}
 
 
 	public void FetchPagefromkibana(String page,String xPath, String elementName){
@@ -681,11 +694,11 @@ public class ShopNationTest {
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			Response searchResult=RestAssured.given()
-			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-			.header("kbn-version","6.3.2")
-			.header("Content-Type","application/json; charset=utf-8")
-			.body(searchString)
-			.post(kibanaSourceURL+"/elasticsearch/_msearch");
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(kibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
@@ -710,7 +723,7 @@ public class ShopNationTest {
 		}
 		catch(Exception e)
 		{
-			println ("Exception is "+e)
+			println ("Exception in FetchPagefromkibana->> "+e)
 			assert false
 			//refApplicationGenericUtils.extentReportLogFAIL(e.getMessage());
 		}
