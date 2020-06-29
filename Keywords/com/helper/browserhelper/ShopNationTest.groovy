@@ -352,16 +352,6 @@ public class ShopNationTest {
 		driver.get(applicationUrl)
 		DriverFactory.changeWebDriver(driver)
 
-	for(String indexValues:ListOfValues)
-				matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
-			value=matchPhrase.substring(0, matchPhrase.length()-1);
-			kibanacategoryQuery(value);
-		}catch(Exception e) {
-			println ("Exception is "+e)
-			assert false
-			println ("Exception in matchphrase method.Exception is ->> "+e)
-		}
-
 	}
 
 	@Keyword
@@ -417,18 +407,6 @@ public class ShopNationTest {
 		//capabilities.setCapability("device", "iPhone XS");
 
 		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
-
-
-		catch(Exception e)
-		{
-			println("Exception: ${e}")
-			print ("Exception in matchphrase method.Exception is ->> "+e)
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-			assert false
-		}
-		return al;
-
 
 		String envToExecute='qa2'
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
@@ -545,7 +523,84 @@ public class ShopNationTest {
 		driver.get(applicationUrl);
 
 	}
+	
+	@Keyword
+	public void matchPhrase(String envType,String applicationName){
+		String matchPhrase="";
+		String indexName="_id";
+		String value = null;
+		try{
+			ArrayList<String> ListOfValues =kibanacategory(applicationName);
 
+			for(String indexValues:ListOfValues)
+				matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
+			value=matchPhrase.substring(0, matchPhrase.length()-1);
+			kibanacategoryQuery(value);
+		}catch(Exception e) {
+			println ("Exception is "+e)
+			assert false
+			println ("Exception in matchphrase method.Exception is ->> "+e)
+		}
+	}
+
+	
+	public ArrayList<String> kibanacategory(String appName) {
+		//appName=appName+".kibana"
+		//This is Search Query String is for es74 kibana
+		//String searchString="{\"index\":\"product\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[{\"field\":\"dateChanged\",\"format\":\"date_time\"},{\"field\":\"dateCreated\",\"format\":\"date_time\"},{\"field\":\"dateImage\",\"format\":\"date_time\"},{\"field\":\"dateScraped\",\"format\":\"date_time\"},{\"field\":\"dateUpdated\",\"format\":\"date_time\"}],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName+"\"}}},{\"match_phrase\":{\"editorsChoicesCount\":{\"query\":\"1\"}}},{\"match_phrase\":{\"hierarchyIdsCount\":{\"query\":\"1\"}}},{\"match_phrase\":{\"duplicate\":{\"query\":false}}}],\"should\":[],\"must_not\":[]}}}\n";
+		//This is Search Query String is for es63 kibana
+		String searchString="{\"index\":\"product\",\"ignore_unavailable\":true,\"timeout\":30000}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[\"dateChanged\",\"dateCreated\",\"dateImage\",\"dateScraped\",\"dateUpdated\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName.toLowerCase()+"\"}}},{\"match_phrase\":{\"editorsChoicesCount\":{\"query\":1}}},{\"match_phrase\":{\"hierarchyIdsCount\":{\"query\":1}}},{\"match_phrase\":{\"duplicate\":{\"query\":false}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
+		String[] strfinal=null;
+		ArrayList<String>al = null;
+		try{
+			authenticationforkibana();
+			String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
+			RequestSpecification httpRequest = io.restassured.RestAssured.given();
+			//GET request to find ResponseIds
+			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
+			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			Response searchResult=io.restassured.RestAssured.given()
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+			System.out.println(searchResult.asString());
+			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
+			String categoryid = jsonPathEvaluator.getString("responses[0].hits.hits[0]._source.categoryIds");
+			System.out.println(categoryid);
+			String  str=categoryid.replace("[","").replace("]","");
+			strfinal=str.split(",");
+			al=new ArrayList<String>(Arrays.asList(strfinal));
+		}
+
+		catch(Exception e)
+		{
+			println("Exception: ${e}")
+			print ("Exception in matchphrase method.Exception is ->> "+e)
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			assert false
+		}
+		return al;
+
+
+	}
+
+	
+	public static void authenticationforkibana() {
+		String convertedURL= GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
+		//		String convertedURL= getURL(GlobalVariable.envType.toString(),GlobalVariable.kibanaSourceURL.toString())
+
+
+		RestAssured.baseURI = convertedURL+"/api/console/api_server";
+		System.out.println(RestAssured.baseURI);
+		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
+		authScheme.setUserName(new String(Base64.getDecoder().decode("cGFuZGV5bA==")));
+		authScheme.setPassword(new String(Base64.getDecoder().decode("QWF5YW5zaEAxNw==")));
+		RestAssured.authentication = authScheme;
+
+	}
 
 	public String kibanacategoryQuery(String value){
 
