@@ -96,6 +96,8 @@ public class ShopNationTest {
 				}
 			}
 		}catch(Exception e) {
+			println ("Exception is "+e)
+			assert false
 			e.printStackTrace()
 		}
 		return false
@@ -107,8 +109,8 @@ public class ShopNationTest {
 	 * Get the exact environment specific url from the global variables
 	 */
 	@Keyword
-	public static String getURL(String env,String globalVariable){
-		String envToExecuteReplacedURL=globalVariable
+	public static String getURL(String env,String urlToReplace){
+		String envToExecuteReplacedURL=urlToReplace
 		switch(env.toLowerCase()){
 
 			case 'prod':
@@ -141,6 +143,7 @@ public class ShopNationTest {
 				return envToExecuteReplacedURL
 				break
 			default:
+				assert false
 				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
 				break
 		}
@@ -164,13 +167,21 @@ public class ShopNationTest {
 	@Keyword
 	def validateMultipleElements(String elementsSepratedBySemiColon) {
 
-		String elems = elementsSepratedBySemiColon
-		String [] arr= elems.split(";")
-		for(int i = 0  ;i<arr.length;i++) {
-			String keyValueFromJson=arr[i]
-			String xpath = jsonReader(keyValueFromJson)
-			WebUI.scrollToElement(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), 10, FailureHandling.STOP_ON_FAILURE)
-			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+
+		try{
+			String elems = elementsSepratedBySemiColon
+			String [] arr= elems.split(";")
+			for(int i = 0  ;i<arr.length;i++) {
+				String keyValueFromJson=arr[i]
+				String xpath = jsonReader(keyValueFromJson)
+				WebUI.scrollToElement(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), 10, FailureHandling.STOP_ON_FAILURE)
+				WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			}
+		}
+		catch(Exception e) {
+			println ("Exception in validateMultipleElements method ->>"+e);
+			assert false
+
 		}
 	}
 
@@ -181,21 +192,30 @@ public class ShopNationTest {
 	 */
 	@Keyword
 	public String  jsonReader(String keyValue) {
+		try{
+			String key =keyValue
+			String projPath= System.getProperty("user.dir");
+			CharSequence applicationName = GlobalVariable.applicationName
+			if (applicationName.contains("gardens")) {
+				applicationName="BetterHomesAndGardens"
+			}
+			String filePath=projPath+"\\Object Repository\\"+applicationName+"_Objects\\"+applicationName+"_Desktop\\Desktop.json"
 
-		String key =keyValue
-		String projPath= System.getProperty("user.dir");
+			File f = new File(filePath)
 
-		String filePath=projPath+"\\Object Repository\\"+GlobalVariable.applicationName+"_Objects\\"+GlobalVariable.applicationName+"_Desktop\\Desktop.json"
+			def InputJSON = new JsonSlurper().parseFile(f,"UTF-8")
 
-		File f = new File(filePath)
+			String dataToReturn = InputJSON.get(applicationName.toString().toLowerCase()).get(key)
 
-		def InputJSON = new JsonSlurper().parseFile(f,"UTF-8")
+			println ("Parsed the data from->"+filePath+"\n Found the value for "+keyValue+" which is ->>"+dataToReturn)
 
-		String dataToReturn = InputJSON.get(GlobalVariable.applicationName.toString().toLowerCase()).get(key)
-
-		println ("Parsed the data from->"+filePath+"\n Data ->>"+dataToReturn)
-
-		return dataToReturn
+			return dataToReturn
+		}
+		catch(Exception e ) {
+			println ("Exception in jsonReader ->>"+e)
+			assert false
+			e.printStackTrace()
+		}
 	}
 
 	@Keyword
@@ -214,6 +234,8 @@ public class ShopNationTest {
 				WebUI.delay(10)
 			}
 		}catch(Exception e){
+			println ("Exception is "+e)
+			assert false
 			e.printStackTrace()
 		}
 	}
@@ -225,10 +247,28 @@ public class ShopNationTest {
 
 	@Keyword
 	public void verifyElementVisible(String element){
-		String xpath = jsonReader("HomePage.categoryHomepage.CategoryDependency.Subcategories")
-		WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
-		println ("Element "+ element +" is present and visible")
+		try{
+			String xpath = jsonReader(element)
+
+			WebUI.scrollToElement(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), 30, FailureHandling.STOP_ON_FAILURE)
+			println ("Scrolled till Element "+ element +" with xpath ->"+xpath+" Successfully.")
+			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			println ("Element "+ element +" with xpath ->"+xpath+" is present and visible")
+		}
+		catch(Exception e ) {
+			println ("Exception in verifyElementVisible method ->> "+e)
+			assert false
+			e.printStackTrace()
+		}
 	}
+
+
+	@Keyword
+	public void verifyElementVisible(String element,String elementName){
+		verifyElementVisible(element)
+		println ("Element "+ elementName +" is present and visible")
+	}
+
 
 	@Keyword
 	public void BrowserStackSamsung(String applicationUrl){
@@ -257,10 +297,8 @@ public class ShopNationTest {
 		capabilities.setCapability('browserstack.appium_version', "1.17.0");
 		capabilities.setCapability('browserstack.user', "sundarsivaraman3");
 		capabilities.setCapability('browserstack.key', "RxZop5AQyA9hMxborsMz");
-		capabilities.setCapability('os_version', "7.0");
-		capabilities.setCapability('browserstack.idleTimeout', "900");
-
-
+		capabilities.setCapability("os_version", "7.0");
+		capabilities.setCapability("browserstack.idleTimeout" , "900" );
 
 		driver=AppiumDriverManager.createMobileDriver(MobileDriverType.ANDROID_DRIVER, capabilities, new URL(browserStackServerURL));
 		String envToExecute='qa2'
@@ -313,6 +351,16 @@ public class ShopNationTest {
 		applicationUrl=applicationUrl.replace("%env%", envToExecute)
 		driver.get(applicationUrl)
 		DriverFactory.changeWebDriver(driver)
+
+	for(String indexValues:ListOfValues)
+				matchPhrase=matchPhrase+"{\"match_phrase\":{\""+indexName+"\":"+indexValues.replaceAll(" ", "")+"}},";
+			value=matchPhrase.substring(0, matchPhrase.length()-1);
+			kibanacategoryQuery(value);
+		}catch(Exception e) {
+			println ("Exception is "+e)
+			assert false
+			println ("Exception in matchphrase method.Exception is ->> "+e)
+		}
 
 	}
 
@@ -369,6 +417,17 @@ public class ShopNationTest {
 		//capabilities.setCapability("device", "iPhone XS");
 
 		//Set the app_url (returned on uploading app on Browserstack) in the 'app' capability
+
+
+		catch(Exception e)
+		{
+			println("Exception: ${e}")
+			print ("Exception in matchphrase method.Exception is ->> "+e)
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			assert false
+		}
+		return al;
 
 
 		String envToExecute='qa2'
@@ -528,17 +587,188 @@ public class ShopNationTest {
 		catch(Exception e)
 		{
 			println ("Exception in matchphrase method.Exception is ->> "+e)
+			//
+			assert false
 			//refApplicationGenericUtils.extentReportLogFAIL(e.getMessage());
 		}
 
 	}
 
 	public String productvalue(Object object,String pid){
-
+		printf ("returning ->>"+object+pid+".html")
 		return (object+pid+".html");
 
 	}
 
 
 
+
+	public void FetchPagefromkibana(String page,String xPath, String elementName){
+		String kibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
+		String appnameOnKibana=GlobalVariable.applicationName.toString().toLowerCase();
+		//Kibana Query for es74
+		// String searchString="{\"index\":\"data-content-*\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[{\"field\":\"endDate\",\"format\":\"date_time\"},{\"field\":\"publishedDate\",\"format\":\"date_time\"},{\"field\":\"startDate\",\"format\":\"date_time\"},{\"field\":\"updateDate\",\"format\":\"date_time\"}],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"match_phrase\":{\"contentType\":{\"query\":\""+page+"\"}}},{\"match_phrase\":{\"hierarchyId\":{\"query\":\""+appnameOnKibana+"\"}}},{\"match_phrase\":{\"published\":{\"query\":true}}}],\"should\":[],\"must_not\":[]}}}\n";
+		//Kibana Query for es63
+		String searchString= "{\"index\":\"data-content-*\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[\"endDate\",\"publishedDate\",\"startDate\",\"updateDate\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"match_phrase\":{\"contentType\":{\"query\":\""+page+"\"}}},{\"match_phrase\":{\"published\":{\"query\":true}}},{\"match_phrase\":{\"hierarchyId\":{\"query\":\""+appnameOnKibana+"\"}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
+		String CategorylistingArticle;
+		try{
+			authenticationforkibana();
+			RequestSpecification httpRequest = RestAssured.given();
+			//GET request to find ResponseIds
+			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
+			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			Response searchResult=RestAssured.given()
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(kibanaSourceURL+"/elasticsearch/_msearch");
+			System.out.println(searchResult.asString());
+
+			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
+			for(int i=0;i<=5;i++)
+			{
+				String pagevalue=jsonPathEvaluator.getString("responses[0].hits.hits["+i+"]._source.id");
+				System.out.println(pagevalue);
+				CategorylistingArticle="sc"+pagevalue;
+				System.out.println(CategorylistingArticle);
+				// HomePage homepage=new HomePage(driver, objectRepository, CategorylistingArticle, softAssert, reportLogger);
+				String navigation=productvalue((getURL(GlobalVariable.envType, GlobalVariable.SlideshowPage)), CategorylistingArticle);
+				System.out.println(navigation);
+				WebUI.navigateToUrl(navigation)
+				// homepage.navigateToDirectUrl(navigation);
+
+
+				if(WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath', [('variable') : xPath]), FailureHandling.STOP_ON_FAILURE)){
+					System.out.println("The navigated page is"+elementName);
+					break;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			println ("Exception is "+e)
+			assert false
+			//refApplicationGenericUtils.extentReportLogFAIL(e.getMessage());
+		}
+	}
+
+	@Keyword
+	public String getXpathValue(String xpathKey){
+		try
+		{
+			String xpath = jsonReader(xpathKey)
+			//WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			println ("Xpath retrieved for->"+xpathKey +" from json is -> "+xpath)
+			return xpath
+		}
+		catch(Exception e)
+		{
+			println ("Exception while getXpathValue method ->>"+e)
+			assert false
+		}
+
+	}
+
+	public String getXpathValue(String xpathKey, String elementName){
+		try{
+			String xpath = jsonReader(xpathKey)
+			//WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			println ("Xpath retrieved for "+elementName+" from json is -> "+xpath)
+
+			return xpath
+		}
+		catch(Exception e)
+		{
+			println ("Exception while getXpathValue method ->>"+e)
+			assert false
+		}
+	}
+
+	public String clickOnElement(String xpathKey, String elementName){
+		try{
+			String xpath = jsonReader(xpathKey)
+			//						println ("Xpath retrieved for "+elementName+" from json is -> "+xpath)
+			WebUI.click(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), FailureHandling.STOP_ON_FAILURE)
+			println ("Clicked on "+elementName+" with xpath -> "+xpath+" Successfully")
+		}
+		catch(Exception e)
+		{
+			println ("Exception while clickOnElement method ->>"+e)
+			assert false
+		}
+	}
+
+
+
+	public String setElementValue(String xpathKey, String elementName, String elementValueToSet){
+		try{
+			String xpath = jsonReader(xpathKey)
+			//			println ("Xpath retrieved for "+elementName+" from json is -> "+xpath)
+			//clickOnElement(xpath, elementName)
+			//			println ("Clicked on "+elementName+" with xpath -> "+xpath+" Successfully")
+			WebUI.sendKeys(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), elementValueToSet, FailureHandling.STOP_ON_FAILURE)
+			println ("SetElementValue on "+elementName+" with xpath -> "+xpath+" as -> "+elementValueToSet+" Successfully")
+		}
+		catch(Exception e)
+		{
+			println ("Exception while setElementValue method ->>"+e)
+			assert false
+		}
+	}
+
+
+
+
+	public void nosearch(){
+
+		String applicationName= GlobalVariable.applicationName
+		try{
+			if(applicationName.equalsIgnoreCase("marthastewart")||applicationName.equalsIgnoreCase("more")||applicationName.equalsIgnoreCase("MyWedding")){
+				//WebUI.click(null, FailureHandling.STOP_ON_FAILURE)
+				clickOnElement(("HomePage.searchicon"), "search icon");
+				setElementValue(("HomePage.searchtext"), "searchtext", "hgytwyw");
+				clickOnElement(("HomePage.searchButton"), "searchButton");
+			}else{
+				//refApplicationGenericUtils.clickElement(getXpathValue("HomePage.searchtext"), "searchtext");
+				//				if(applicationName.equalsIgnoreCase("parenting"))
+				//					refApplicationGenericUtils.clickElement(getXpathValue("HomePage.Logo"), "Homepage Logo of the application");
+				setElementValue(("HomePage.searchtext"), "searchtext", "hgytwyw");
+				clickOnElement(("HomePage.searchButton"), "searchButton");
+			}
+		}catch(Exception e)
+		{
+			println ("Exception while nosearch method ->>"+e)
+			assert false
+		}
+	}
+
+	public openUrlBasedOnDevice(String urlToReplace)
+	{
+		String url = getURL(GlobalVariable.envType,urlToReplace)
+		try{
+			String deviceType = GlobalVariable.deviceType
+			//			CharSequence url =getURL'(GlobalVariable.envType, GlobalVariable.url)'
+
+			if (deviceType.equalsIgnoreCase('desktop')) {
+				println ("Opening on deviceType->"+deviceType )
+				WebUI.openBrowser(url, FailureHandling.STOP_ON_FAILURE)
+				println ("Maximizing the window")
+				WebUI.maximizeWindow()
+			}
+			else
+			{
+				WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
+			}
+		}
+		catch(Exception e)
+		{
+			println ("Exception while openUrlBasedOnDevice method ->>"+e)
+			assert false
+		}
+	}
+
+
 }
+
+

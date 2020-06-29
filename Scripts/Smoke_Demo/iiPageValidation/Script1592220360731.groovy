@@ -1,3 +1,4 @@
+
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -14,77 +15,43 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.webui.driver.DriverFactory
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import org.openqa.selenium.WebDriver as WebDriver
+import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
-import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.interactions.Actions as Actions
 
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
-String Samsung= GlobalVariable.Samsung
-String Desktop= GlobalVariable.Desktop
-String iPad= GlobalVariable.iPad
-String iPhone= GlobalVariable.iPhone
-String local= GlobalVariable.local
-String InternetExplorer= GlobalVariable.InternetExplorer
-String url = GlobalVariable.url
+String TCName = ''
 
-
-public void iiPage(){
 String applicationName = GlobalVariable.applicationName
-String deviceType = GlobalVariable.deviceType
+
 Boolean isCanonical
-String urlComp= GlobalVariable.urlContent
 
-//if (url.contains(urlComp)) {
+if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase('PDP')) {
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+}
 
-//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PageiiUrl)
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/iiPageSkywardArticleLinks'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.delay(10)
-	println ("The element is visible")
-//}
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
-//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+if (!(applicationName.equalsIgnoreCase('MarthaStewart'))) {
+    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PageiiUrl), 
+        FailureHandling.STOP_ON_FAILURE)
+} else {
+    String Url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PageiiUrl)
 
-//	println('isCanonical->' + isCanonical)
+    WebUI.navigateToUrl(Url, FailureHandling.STOP_ON_FAILURE)
 
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+    String partOfUrl = Url.substring(Url.indexOf('-i') + 1, Url.length())
+
+    if (partOfUrl.contains('-ii')) {
+        System.out.println('The page is pageii in marthaStewart')
+    }
+}
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('iiPage.Skyward.ArticleLinks', 'Skyward Article Links on Pageii')
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
+
 WebUI.closeBrowser()
-}
-
-
-
-if (Samsung.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.PageiiUrl)
-	iiPage()
-}
-
-else if (Desktop.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.PageiiUrl)
-	iiPage()
-	}
-
-else if (iPad.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.PageiiUrl)
-	iiPage()
-}
-
-else if (iPhone.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.PageiiUrl)
-	iiPage()
-}
-
-else if(local.contains('true')) {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PageiiUrl)
-	iiPage()
-}
-
-else if (InternetExplorer.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.PageiiUrl)
-	iiPage()
-}
-

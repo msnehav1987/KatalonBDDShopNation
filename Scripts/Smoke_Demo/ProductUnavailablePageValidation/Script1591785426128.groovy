@@ -27,8 +27,8 @@ String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 
 Boolean isCanonical
-
-if ((url.contentEquals('parenting') || url.contentEquals('realsimple')) || url.contentEquals('people')) {
+String TCName =""
+if ((url.contentEquals('parenting') || url.contentEquals('realsimple')) || url.contentEquals('people')  && TCName.equalsIgnoreCase("PDP")) {
     url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 } else {
     url = url

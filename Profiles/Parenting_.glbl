@@ -46,7 +46,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://parenting-shop.%env%.shopnation.com/shop/gaming/best-athletic-games-and-toys-for-toddlers-sc281474979953923.html'</initValue>
+      <initValue>'https://parenting-shop.%env%.shopnation.com/shop/gaming/best-athletic-games-and-toys-for-toddlers-'</initValue>
       <name>SlideshowPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

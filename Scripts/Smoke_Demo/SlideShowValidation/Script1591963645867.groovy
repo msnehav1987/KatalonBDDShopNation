@@ -1,3 +1,4 @@
+
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -14,120 +15,40 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.webui.driver.DriverFactory
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import org.openqa.selenium.WebDriver as WebDriver
+import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
-import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.interactions.Actions as Actions
 
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
-String Samsung= GlobalVariable.Samsung
-String Desktop= GlobalVariable.Desktop
-String iPad= GlobalVariable.iPad
-String iPhone= GlobalVariable.iPhone
-String local= GlobalVariable.local
-String InternetExplorer= GlobalVariable.InternetExplorer
-String url = GlobalVariable.url
+String TCName = ''
+
 String applicationName = GlobalVariable.applicationName
 
+Boolean isCanonical
 
-public void SlideShowPage(){
-	String applicationName = GlobalVariable.applicationName
-	String deviceType = GlobalVariable.deviceType
-	Boolean isCanonical
-//	String urlComp= GlobalVariable.urlContent
-
-if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))) {
-
-//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
-	
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/CategoryListingNavigation'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.click(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/CategoryListingNavigation'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagecategoryDetailSeeAllArticle'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.delay(10)
-	println ("The element is visible")
-}else{
-//CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.SlideshowPage)
-	WebUI.waitForElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/SlideShowHeroAreaAuthor'), GlobalVariable.timeOut)
-
-System.out.println('The slide show author name is present')
-
-WebUI.delay(3)
+if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase('PDP')) {
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 }
 
-//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
-//
-//	println('isCanonical->' + isCanonical)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+if (!(applicationName.equalsIgnoreCase('Betterhomesandgardens') || applicationName.equalsIgnoreCase('Parenting'))) {
+    CustomKeywords.'com.helper.browserhelper.ShopNationTest.navigateToScreen'('HomePage.categoryhomepagae|HomePage.categoryDetail.SeeAllArticleButton', 
+        'SlideshowPage')
+
+    CustomKeywords.'com.helper.browserhelper.ShopNationTest.clickOnElement'('HomePage.categoryDetail.SeeAllArticle', 'HomePage.categoryDetail.SeeAllArticle')
+} else {
+    String xpathParam = CustomKeywords.'com.helper.browserhelpergetXpathValue'('SlideShow.heroarea.author')
+
+    CustomKeywords.'com.helper.browserhelper.ShopNationTest.FetchPagefromkibana'('SLIDESHOW', xpathParam, 'heroarea.author')
+}
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.section.title', 'Slide Title')
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
+
 WebUI.closeBrowser()
-
-}
-
-
-if (Samsung.contains('true')){
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
-	SlideShowPage()
-}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.SlideshowPage)
-		SlideShowPage()
-		}
-}
-
-else if (Desktop.contains('true')){
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.url)
-	SlideShowPage()
-	}else{
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.SlideshowPage)
-	SlideShowPage()
-}
-	}
-
-else if (iPad.contains('true')){
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.url)
-	SlideShowPage()
-}else{
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.SlideshowPage)
-SlideShowPage()
-}
-}
-
-else if (iPhone.contains('true')){
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.url)
-	SlideShowPage()
-}else{
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.SlideshowPage)
-SlideShowPage()
-}
-}
-
-else if(local.contains('true')) {
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
-		SlideShowPage()
-	}else {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.SlideshowPage)
-	SlideShowPage()
-	}
-}
-
-else if (InternetExplorer.contains('true')){
-	if (!(applicationName.equalsIgnoreCase("Betterhomesandgardens")||applicationName.equalsIgnoreCase("Parenting"))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.url)
-	SlideShowPage()
-}else {
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.SlideshowPage)
-SlideShowPage()
-}
-}
-
-
 

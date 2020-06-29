@@ -31,68 +31,67 @@ String url = GlobalVariable.url
 
 public void NoResultPage(){
 
-String url = GlobalVariable.url
+
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 String applicationName = GlobalVariable.applicationName
+
 String deviceType = GlobalVariable.deviceType
+String TCName =""
+
 Boolean isCanonical
-String urlComp= GlobalVariable.urlContent
+if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people'))  && TCName.equalsIgnoreCase("PDP") ) {
+	url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+}
 
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.nosearch'()
+
+isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
+
+println('isCanonical->' + isCanonical)
+
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'("NoResult.Title","Page Title for No Search Result page")
+
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
+
+WebUI.closeBrowser()
+
+
+
+
+//String url = GlobalVariable.url
+//
+//String applicationName = GlobalVariable.applicationName
+//String deviceType = GlobalVariable.deviceType
+//Boolean isCanonical
+//String urlComp= GlobalVariable.urlContent
+//
 //if (url.contains(urlComp)) {
-
+//
 //	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
-	
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.delay(10)
-	WebUI.setText(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), 'gjgkdg')
-	WebUI.click(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchButton'))
-	WebUI.delay(10)
-	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
-	
-		println('isCanonical->' + isCanonical)
-	
-		WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
-		
-		WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-		
-		WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.closeBrowser()
-	
-	}
+//	
+//	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), FailureHandling.STOP_ON_FAILURE)
+//	WebUI.delay(10)
+//	WebUI.setText(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), 'gjgkdg')
+//	WebUI.click(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchButton'))
+//	WebUI.delay(10)
+//	
+//	}
+//
+//
+//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+//
+//	println('isCanonical->' + isCanonical)
+//
+//	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
+//	
+//	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
+//	
+//	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+//WebUI.closeBrowser()
 
-
-if (Samsung.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
-	NoResultPage()
-}
-
-else if (Desktop.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
-	NoResultPage()
-	}
-
-else if (iPad.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
-	NoResultPage()
-}
-
-else if (iPhone.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
-	NoResultPage()
-}
-
-else if(local.contains('true')) {
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
-		NoResultPage()
-}
-
-else if (InternetExplorer.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
-	NoResultPage()
-}
-
-
-
-
-
-	

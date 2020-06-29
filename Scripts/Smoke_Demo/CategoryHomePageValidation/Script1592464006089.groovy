@@ -14,62 +14,65 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+
 //
 //RunConfiguration.pre("browserName", "android")
 //RunConfiguration.setMobileDriverPreferencesProperty("device", "Samsung Galaxy S8");
 //RunConfiguration.setMobileDriverPreferencesProperty("os_version", "7.0");
 //RunConfiguration.setMobileDriverPreferencesProperty("platformName","Android")
 //RunConfiguration.setMobileDriverPreferencesProperty("build","Automation_ShopNation_Katalon_Mob")
-
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
 
-
-String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 String applicationName = GlobalVariable.applicationName
 
 String deviceType = GlobalVariable.deviceType
 
+String TCName = ''
+
 Boolean isCanonical
 
-
-
-
-
-if (deviceType.equalsIgnoreCase("desktop")) {
-	WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
-	WebUI.maximizeWindow()
+if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+} else {
+    url = GlobalVariable.url
 }
 
+if (deviceType.equalsIgnoreCase('desktop')) {
+    WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
+
+    WebUI.maximizeWindow()
+}
 
 if (applicationName.equalsIgnoreCase('More') || applicationName.equalsIgnoreCase('Shape')) {
-	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
+    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
+
     String keyValueFromJson = 'HomePage.categoryhomepagae'
 
     String xpath = CustomKeywords.'com.helper.browserhelper.ShopNationTest.jsonReader'(keyValueFromJson)
 
     WebUI.click(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath', [('variable') : xpath]), FailureHandling.STOP_ON_FAILURE)
+} else {
+    try {
+        CustomKeywords.'com.helper.browserhelper.ShopNationTest.matchPhrase'(GlobalVariable.envType, GlobalVariable.applicationName)
+    }
+    catch (Exception e) {
+        printf('Something went wrong with kibana , so trying manually hardcoded url..', e)
+
+        e.printStackTrace()
+
+        WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CatagoryHomePageValidationKibanaURL), 
+            FailureHandling.STOP_ON_FAILURE)
+    } 
 }
-else
-{
-	try {
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.matchPhrase'(GlobalVariable.envType,GlobalVariable.applicationName)
-		
-	} catch (Exception e) {
-	   printf("Something went wrong with kibana , so trying manually hardcoded url..", e)
-		e.printStackTrace()
-		WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CatagoryHomePageValidationKibanaURL),
-			FailureHandling.STOP_ON_FAILURE) 
-	}
-	
-}
- 
+
 isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
 
 println('isCanonical->' + isCanonical)
 
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'("HomePage.categoryHomepage.CategoryDependency.Subcategories")
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('HomePage.categoryHomepage.CategoryDependency.Subcategories')
 
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
