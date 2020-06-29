@@ -51,6 +51,9 @@ import java.net.URL;
 import org.openqa.selenium.remote.*;
 import io.restassured.*
 import io.restassured.authentication.PreemptiveBasicAuthScheme
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 public class ShopNationTest {
 	AndroidDriver driver=((RemoteWebDriver) driver);
@@ -109,37 +112,37 @@ public class ShopNationTest {
 		switch(env.toLowerCase()){
 
 			case 'prod':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa1':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa2':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'qa3':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 
 			case 'prod':
-			envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-			printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
-			return envToExecuteReplacedURL
-			break
+				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
+				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				return envToExecuteReplacedURL
+				break
 			default:
-			printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
-			break
+				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+				break
 		}
 	}
 
@@ -267,7 +270,7 @@ public class ShopNationTest {
 		driver.get(applicationUrl)
 		DriverFactory.changeWebDriver(driver)
 	}
-	
+
 
 	@Keyword
 	public void BrowserStackIpad(String applicationUrl){
@@ -441,7 +444,49 @@ public class ShopNationTest {
 		driver.get(applicationUrl);
 
 	}
-	
+
+	@Keyword
+	public void BrowserStackFireFox(String applicationUrl){
+		String browserStackServerURL = "https://sundarsivaraman3:RxZop5AQyA9hMxborsMz@hub-cloud.browserstack.com/wd/hub";
+		String envToExecute='qa2'
+		applicationUrl=applicationUrl.replace("%env%", envToExecute)
+
+		FirefoxProfile ffprofile = new FirefoxProfile();
+		ffprofile.setPreference("browserVersion", "52.0");
+		ffprofile.setPreference("platformName", "WINDOWS");
+		ffprofile.setPreference('browserstack.debug', true);
+		ffprofile.setPreference('build', "Automation_ShopNation_Katalon_Firefox");
+		ffprofile.setPreference('project', "Shopnation");
+		ffprofile.setPreference('browserstack.video', true);
+		ffprofile.setPreference('browserstack.local', true);
+		ffprofile.setPreference('browserstack.ie.enablePopups', false);
+		ffprofile.setPreference('browserstack.safari.enablePopups', true);
+		ffprofile.setPreference('nativeWebTap', true);
+		ffprofile.setPreference('acceptSslCerts', true);
+		ffprofile.setPreference('browserstack.geoLocation', "US");
+		ffprofile.setPreference('browserstack.console', "verbose");
+		ffprofile.setPreference('browser', "Firefox");
+		ffprofile.setPreference('browserstack.appium_version', "1.17.0");
+		ffprofile.setPreference('browserstack.user', "sundarsivaraman3");
+		ffprofile.setPreference('browserstack.key', "RxZop5AQyA9hMxborsMz");
+		ffprofile.setAcceptUntrustedCertificates(true);
+		ffprofile.setAssumeUntrustedCertificateIssuer(false);
+		ffprofile.setPreference("browser.cache.disk.enable", false);
+		ffprofile.setPreference("browser.cache.memory.enable", false);
+		ffprofile.setPreference("browser.cache.offline.enable", false);
+		ffprofile.setPreference("network.http.use-cache", false);
+		ffprofile.setPreference("resolution", "1024x768");
+		FirefoxOptions Options = new FirefoxOptions();
+		Options.setProfile(ffprofile);
+		//		chromeOptions.setCapability('os_version', "10");
+		//		chromeOptions.setCapability('browserstack.idleTimeout', "900");
+
+		WebDriver driver = new RemoteWebDriver(new URL(browserStackServerURL), Options);
+		DriverFactory.changeWebDriver(driver)
+		driver.get(applicationUrl);
+
+	}
+
 
 	public String kibanacategoryQuery(String value){
 
@@ -459,11 +504,11 @@ public class ShopNationTest {
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			Response searchResult=io.restassured.RestAssured.given()
-			.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-			.header("kbn-version","6.3.2")
-			.header("Content-Type","application/json; charset=utf-8")
-			.body(searchString)
-			.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
 			System.out.println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
@@ -495,5 +540,5 @@ public class ShopNationTest {
 	}
 
 
-	
+
 }

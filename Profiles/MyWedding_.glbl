@@ -106,12 +106,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'true'</initValue>
+      <initValue>'false'</initValue>
       <name>local</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
       <initValue>'false'</initValue>
       <name>InternetExplorer</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>FireFox</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
