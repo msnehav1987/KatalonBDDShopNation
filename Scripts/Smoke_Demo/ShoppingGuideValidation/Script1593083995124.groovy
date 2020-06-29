@@ -16,13 +16,28 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 
+
+
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 String applicationName = GlobalVariable.applicationName
 
-String deviceType = GlobalVariable.deviceType
+
 String TCName =""
-Boolean isCanonical
+
+
+public void Page404(){
+	CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
+	String TCName =""
+	String deviceType = GlobalVariable.deviceType
+	Boolean isCanonical
 if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people'))  && TCName.equalsIgnoreCase("PDP") ) {
 	url = GlobalVariable.CategoryListingPageCPA
 } 
@@ -48,3 +63,5 @@ println('isCanonical->' + isCanonical)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
+
+}

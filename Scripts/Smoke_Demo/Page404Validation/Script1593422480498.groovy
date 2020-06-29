@@ -15,7 +15,16 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+String TCName = ""
 
+public void Page404(){
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable._404PageUrl)
 String TCName = ""
 
@@ -40,3 +49,73 @@ CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'("4
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
+
+}
+
+
+if (Samsung.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+	
+}
+
+else if (Desktop.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+}
+
+else if (iPad.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+}
+
+else if (iPhone.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+}
+
+else if(local.contains('true')) {
+		if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+}
+
+else if (InternetExplorer.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
+	Page404()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable._404PageUrl)
+		Page404()
+	}
+}

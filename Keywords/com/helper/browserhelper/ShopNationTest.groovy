@@ -352,8 +352,8 @@ public class ShopNationTest {
 		DriverFactory.changeWebDriver(driver)
 
 	}
-	
-	
+
+
 	@Keyword
 	public void BrowserStackIphone(String applicationUrl){
 		IOSDriver driver=((RemoteWebDriver) driver);
@@ -526,7 +526,7 @@ public class ShopNationTest {
 
 	}
 
-	
+
 	@Keyword
 	public void matchPhrase(String envType,String applicationName){
 		String matchPhrase="";
@@ -547,7 +547,7 @@ public class ShopNationTest {
 	}
 
 
-	
+
 	public ArrayList<String> kibanacategory(String appName) {
 		//appName=appName+".kibana"
 		//This is Search Query String is for es74 kibana
@@ -591,7 +591,7 @@ public class ShopNationTest {
 
 	}
 
-	
+
 	public static void authenticationforkibana() {
 		String convertedURL= GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
 		//		String convertedURL= getURL(GlobalVariable.envType.toString(),GlobalVariable.kibanaSourceURL.toString())
@@ -606,10 +606,6 @@ public class ShopNationTest {
 
 	}
 
-
-
-
-	
 
 	public String kibanacategoryQuery(String value){
 
@@ -661,20 +657,6 @@ public class ShopNationTest {
 	public String productvalue(Object object,String pid){
 		printf ("returning ->>"+object+pid+".html")
 		return (object+pid+".html");
-
-	}
-
-	public static void authenticationforkibana() {
-		String convertedURL= GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
-		//		String convertedURL= getURL(GlobalVariable.envType.toString(),GlobalVariable.kibanaSourceURL.toString())
-
-
-		RestAssured.baseURI = convertedURL+"/api/console/api_server";
-		System.out.println(RestAssured.baseURI);
-		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
-		authScheme.setUserName(new String(Base64.getDecoder().decode("cGFuZGV5bA==")));
-		authScheme.setPassword(new String(Base64.getDecoder().decode("QWF5YW5zaEAxNw==")));
-		RestAssured.authentication = authScheme;
 
 	}
 
