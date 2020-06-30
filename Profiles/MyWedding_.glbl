@@ -106,7 +106,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'false'</initValue>
+      <initValue>'true'</initValue>
       <name>local</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -116,7 +116,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'true'</initValue>
+      <initValue>'false'</initValue>
       <name>FireFox</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'null'</initValue>
+      <name>CategoryListingPageCPA</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
