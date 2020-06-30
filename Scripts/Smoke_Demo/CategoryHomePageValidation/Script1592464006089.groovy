@@ -22,7 +22,15 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 //RunConfiguration.setMobileDriverPreferencesProperty("os_version", "7.0");
 //RunConfiguration.setMobileDriverPreferencesProperty("platformName","Android")
 //RunConfiguration.setMobileDriverPreferencesProperty("build","Automation_ShopNation_Katalon_Mob")
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
+
+String Samsung= GlobalVariable.Samsung
+String Desktop= GlobalVariable.Desktop
+String iPad= GlobalVariable.iPad
+String iPhone= GlobalVariable.iPhone
+String local= GlobalVariable.local
+String InternetExplorer= GlobalVariable.InternetExplorer
+//CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.url)
+
 
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
@@ -77,3 +85,4 @@ CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('H
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
+

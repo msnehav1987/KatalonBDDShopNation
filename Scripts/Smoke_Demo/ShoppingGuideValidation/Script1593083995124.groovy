@@ -32,8 +32,8 @@ String applicationName = GlobalVariable.applicationName
 
 String TCName =""
 
+public void ShoppingguidePage(){
 
-public void Page404(){
 	CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 	String TCName =""
 	String deviceType = GlobalVariable.deviceType
@@ -63,5 +63,57 @@ println('isCanonical->' + isCanonical)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
-
 }
+
+
+if (Samsung.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
+	ShoppingguidePage()
+}
+}
+
+else if (Desktop.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
+	ShoppingguidePage()
+}
+}
+
+else if (iPad.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
+	ShoppingguidePage()
+	}
+}
+
+else if (iPhone.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
+	ShoppingguidePage()
+	
+}
+
+else if(local.contains('true')) {
+		if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
+	ShoppingguidePage()
+		}
+}
+
+else if (InternetExplorer.contains('true')){
+	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
+		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
+	ShoppingguidePage()
+	
+	}
+}
+}
+
+
