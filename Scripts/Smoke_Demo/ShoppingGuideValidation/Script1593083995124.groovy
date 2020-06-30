@@ -71,7 +71,11 @@ if (Samsung.contains('true')){
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
 	ShoppingguidePage()
-}
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
+	}
+	
 }
 
 else if (Desktop.contains('true')){
@@ -79,7 +83,10 @@ else if (Desktop.contains('true')){
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
 	ShoppingguidePage()
-}
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
+	}
 }
 
 else if (iPad.contains('true')){
@@ -87,6 +94,9 @@ else if (iPad.contains('true')){
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
 	ShoppingguidePage()
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
 	}
 }
 
@@ -95,7 +105,10 @@ else if (iPhone.contains('true')){
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
 	ShoppingguidePage()
-	
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
+	}
 }
 
 else if(local.contains('true')) {
@@ -103,7 +116,10 @@ else if(local.contains('true')) {
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
 	ShoppingguidePage()
-		}
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
+	}
 }
 
 else if (InternetExplorer.contains('true')){
@@ -111,9 +127,8 @@ else if (InternetExplorer.contains('true')){
 		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
 	ShoppingguidePage()
-	
+	}else{
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.ShoppingGuideUrl)
+		ShoppingguidePage()
 	}
 }
-}
-
-
