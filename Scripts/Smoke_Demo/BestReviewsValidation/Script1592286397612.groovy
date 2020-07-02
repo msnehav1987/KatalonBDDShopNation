@@ -25,10 +25,13 @@ String iPad= GlobalVariable.iPad
 String iPhone= GlobalVariable.iPhone
 String local= GlobalVariable.local
 String InternetExplorer= GlobalVariable.InternetExplorer
-String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
+
+String TCName = ''
+
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 
-public void BestReviewPage(){
+
 String applicationName = GlobalVariable.applicationName
 
 String deviceType = GlobalVariable.deviceType
@@ -54,6 +57,8 @@ Boolean isCanonical
  * and the xpath value is parameterized for validation
  * 
  */
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.BestReviewsUrl))
 String keyValueFromJson="bestreview.sponsortitle";
 String xpath = CustomKeywords.'com.helper.browserhelper.ShopNationTest.jsonReader'(keyValueFromJson)
 WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
@@ -69,37 +74,3 @@ println('isCanonical->' + isCanonical)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
-}
-
-
-if (Samsung.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-}
-
-else if (Desktop.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-	}
-
-else if (iPad.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-}
-
-else if (iPhone.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-}
-
-else if(local.contains('true')) {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-}
-
-else if (InternetExplorer.contains('true')){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.BestReviewsUrl)
-	BestReviewPage()
-}
-
-

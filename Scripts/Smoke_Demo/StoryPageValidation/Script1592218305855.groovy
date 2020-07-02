@@ -49,9 +49,9 @@ WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getU
 	WebUI.delay(10)
 	println ("The element is visible")
 
-//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
-
-//	println('isCanonical->' + isCanonical)
+	isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
+	
+	println('isCanonical->' + isCanonical)
 
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 WebUI.closeBrowser()
