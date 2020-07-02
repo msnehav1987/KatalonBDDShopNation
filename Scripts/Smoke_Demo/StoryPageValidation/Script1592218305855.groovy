@@ -45,7 +45,7 @@ CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(ur
 WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
 
 //	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.StoryPageUrl)
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/StoryPagesectionbody'), FailureHandling.STOP_ON_FAILURE)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('StoryPage.section.body')
 	WebUI.delay(10)
 	println ("The element is visible")
 

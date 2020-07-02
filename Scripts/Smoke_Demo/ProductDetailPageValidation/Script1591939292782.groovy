@@ -22,113 +22,49 @@ import org.openqa.selenium.interactions.Actions
 
 
 
-//String url = GlobalVariable.applicationUrl
 String Samsung= GlobalVariable.Samsung
 String Desktop= GlobalVariable.Desktop
 String iPad= GlobalVariable.iPad
 String iPhone= GlobalVariable.iPhone
 String local= GlobalVariable.local
 String InternetExplorer= GlobalVariable.InternetExplorer
-String PdpUrl= GlobalVariable.PDPpage
+String TCName = ''
+
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 
-public void ProductDetailPage(){
+
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
-String PdpUrl= GlobalVariable.PDPpage
+if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+}  else {
+    url = url
+}
 
-if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))) {
-
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
-	WebDriver driver = DriverFactory.getWebDriver()
-	WebUI.delay(10)
-	WebElement element = driver.findElement(By.xpath("(//a[@class='c-product-card__description-link']/following-sibling::div[@class='c-product-card__product-info']//div)[1]"))
-
-	Actions actions = new Actions(driver)
-	actions.moveToElement(element)
-	actions.click().build().perform()
-	WebUI.delay(10)
-		}
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+if (applicationName.equalsIgnoreCase('Parenting') || applicationName.equalsIgnoreCase('Realsimple')) {
+	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PDPpage))
+	}
 else {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
-	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagecategoryhomepagae'), FailureHandling.STOP_ON_FAILURE)
-	WebUI.delay(10)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.NavigateToPage'("HomePage.categoryhomepagae|HomePage.categorylisting", "ProductDetail");
+		WebDriver driver = DriverFactory.getWebDriver()
+		WebUI.delay(10)
+		WebElement element = driver.findElement(By.xpath("(//a[@class='c-product-card__description-link']/following-sibling::div[@class='c-product-card__product-info']//div)[1]"))
+	
+		Actions actions = new Actions(driver)
+		actions.moveToElement(element)
+		actions.click().build().perform()
+		WebUI.delay(10)
+	
 	println ("The element is visible")
 }
 
-	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
+//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
 
-	println('isCanonical->' + isCanonical)
+//	println('isCanonical->' + isCanonical)
 
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-	
-	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 WebUI.closeBrowser()
-
-}
-
-if (Samsung.contains('true')){
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.PDPpage)
-		ProductDetailPage()
-		}
-}
-
-else if (Desktop.contains('true')){
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-	}else{
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-}
-	}
-
-else if (iPad.contains('true')){
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-}else{
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.PDPpage)
-ProductDetailPage()
-}
-}
-
-else if (iPhone.contains('true')){
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-}else{
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.PDPpage)
-ProductDetailPage()
-}
-}
-
-else if(local.contains('true')) {
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
-		ProductDetailPage()
-	}else {
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-	}
-}
-
-else if (InternetExplorer.contains('true')){
-	if ((PdpUrl.contains('parenting') || PdpUrl.contains('realsimple'))){
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.PDPpage)
-	ProductDetailPage()
-}else {
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.PDPpage)
-ProductDetailPage()
-}
-}
-
-
 
