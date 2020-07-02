@@ -45,17 +45,17 @@ CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getUR
 	
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
-if(applicationName.equalsIgnoreCase("Parenting")||applicationName.equalsIgnoreCase("Realsimple")){
+if(applicationName.equalsIgnoreCase("Parenting")||applicationName.equalsIgnoreCase("Realsimple"))
 
 WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.DirectoryBrandURL))
 	
-}else{
+else
 //CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.NavigateToPage'("HomePage.BurgerMenu|HomePage.Burger.Stores","StoresPage")
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('directorypage.alphabetlist')
 	WebUI.delay(10)
 	println ("The element is visible")
-}
+
 
 	isCanonical = CustomKeywords.'com.helper.commonutilities.CommonUtilities.validateCanonicalURL'()
 
