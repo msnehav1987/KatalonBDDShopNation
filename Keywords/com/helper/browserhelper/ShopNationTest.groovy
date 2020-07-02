@@ -548,7 +548,7 @@ public class ShopNationTest {
 	}
 
 
-	
+
 	public String PDUfromkibana(boolean shouldExistOrNot,String pageURL,String xPathKey, String elementName){
 		String appName= GlobalVariable.applicationName
 		//String appnameOnKibana=propsObject.getProperty(applicationName+".kibana");
@@ -558,7 +558,7 @@ public class ShopNationTest {
 		String searchString="{\"index\":\"product\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[\"dateChanged\",\"dateCreated\",\"dateImage\",\"dateScraped\",\"dateUpdated\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"match_phrase\":{\"available\":{\"query\":false}}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName.toLowerCase()+"\"}}},{\"match_phrase\":{\"image.valid\":{\"query\":true}}},{\"match_phrase\":{\"monetization\":{\"query\":\"CPA\"}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
 		String productvalue2 = null;
 		String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
-		
+
 		try{
 			authenticationforkibana();
 			RequestSpecification httpRequest = io.restassured.RestAssured.given();
@@ -566,12 +566,12 @@ public class ShopNationTest {
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			// Response for kibana es74
-//			Response searchResult=given()
-//					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
-//					.header("kbn-version","7.4.2")
-//					.header("Content-Type","application/json; charset=utf-8")
-//					.body(searchString)
-//					.post(kibanaSourceURL+"/elasticsearch/_msearch?rest_total_hits_as_int=true&ignore_throttled=true");
+			//			Response searchResult=given()
+			//					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+			//					.header("kbn-version","7.4.2")
+			//					.header("Content-Type","application/json; charset=utf-8")
+			//					.body(searchString)
+			//					.post(kibanaSourceURL+"/elasticsearch/_msearch?rest_total_hits_as_int=true&ignore_throttled=true");
 			// Response for kibana es63
 			Response searchResult=io.restassured.RestAssured.given()
 					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
@@ -601,12 +601,12 @@ public class ShopNationTest {
 		}catch(Exception e)
 		{
 			print ("Exception in PDUfromkibana method.Exception is ->> "+e)
-			
+
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			assert false
 		}
-		 return productvalue2;
+		return productvalue2;
 	}
 
 	public ArrayList<String> kibanacategory(String appName) {
@@ -903,7 +903,7 @@ public class ShopNationTest {
 			{
 				println ("None of the flags are set in openUrlBasedOnDevice method  !!")
 				assert false
-				
+
 			}
 		}
 		catch(Exception e)
