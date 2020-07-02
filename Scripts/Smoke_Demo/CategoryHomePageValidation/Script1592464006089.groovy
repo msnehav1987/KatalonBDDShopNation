@@ -42,17 +42,14 @@ String TCName = ''
 
 Boolean isCanonical
 
+
 if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
     url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 } else {
     url = GlobalVariable.url
 }
 
-if (deviceType.equalsIgnoreCase('desktop')) {
-    WebUI.openBrowser(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))
-
-    WebUI.maximizeWindow()
-}
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
 if (applicationName.equalsIgnoreCase('More') || applicationName.equalsIgnoreCase('Shape')) {
     WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url))

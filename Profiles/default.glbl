@@ -6,7 +6,7 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Desktop'</initValue>
+      <initValue>'null'</initValue>
       <name>deviceType</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -18,5 +18,35 @@
       <description></description>
       <initValue>'https://kibana-%env%-es63.shopnation.com'</initValue>
       <name>kibanaSourceURL</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'true'</initValue>
+      <name>Desktop</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>Samsung</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>iPad</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>iPhone</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>local</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'false'</initValue>
+      <name>InternetExplorer</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

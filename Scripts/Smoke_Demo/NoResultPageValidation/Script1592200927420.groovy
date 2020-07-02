@@ -14,22 +14,23 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.webui.driver.DriverFactory
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import org.openqa.selenium.WebDriver as WebDriver
+import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
-import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.interactions.Actions as Actions
 
-String Samsung= GlobalVariable.Samsung
-String Desktop= GlobalVariable.Desktop
-String iPad= GlobalVariable.iPad
-String iPhone= GlobalVariable.iPhone
-String local= GlobalVariable.local
-String InternetExplorer= GlobalVariable.InternetExplorer
-String url = GlobalVariable.url
+String Samsung = GlobalVariable.Samsung
 
+String Desktop = GlobalVariable.Desktop
 
-public void NoResultPage(){
+String iPad = GlobalVariable.iPad
+
+String iPhone = GlobalVariable.iPhone
+
+String local = GlobalVariable.local
+
+String InternetExplorer = GlobalVariable.InternetExplorer
 
 
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
@@ -37,13 +38,14 @@ CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getUR
 String applicationName = GlobalVariable.applicationName
 
 String deviceType = GlobalVariable.deviceType
-String TCName =""
+
+String TCName = ''
 
 Boolean isCanonical
-if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people'))  && TCName.equalsIgnoreCase("PDP") ) {
-	url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-}
 
+if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase('PDP')) {
+    url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+}
 
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
@@ -53,45 +55,8 @@ isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCa
 
 println('isCanonical->' + isCanonical)
 
-
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'("NoResult.Title","Page Title for No Search Result page")
-
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('NoResult.Title', 'Page Title for No Search Result page')
 
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
-
-
-
-
-//String url = GlobalVariable.url
-//
-//String applicationName = GlobalVariable.applicationName
-//String deviceType = GlobalVariable.deviceType
-//Boolean isCanonical
-//String urlComp= GlobalVariable.urlContent
-//
-//if (url.contains(urlComp)) {
-//
-//	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.url)
-//	
-//	WebUI.verifyElementVisible(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), FailureHandling.STOP_ON_FAILURE)
-//	WebUI.delay(10)
-//	WebUI.setText(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchtext'), 'gjgkdg')
-//	WebUI.click(findTestObject('Object Repository/' + applicationName+  '_Objects/'+applicationName+'_'+deviceType+'/HomePagesearchButton'))
-//	WebUI.delay(10)
-//	
-//	}
-//
-//
-//	isCanonical = CustomKeywords.'com.helper.common.CommonUtilities.validateCanonicalURL'()
-//
-//	println('isCanonical->' + isCanonical)
-//
-//	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageLogo'), FailureHandling.STOP_ON_FAILURE)
-//	
-//	WebUI.verifyElementVisible(findTestObject(applicationName + '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterLogo'), FailureHandling.STOP_ON_FAILURE)
-//	
-//	WebUI.verifyElementVisible(findTestObject(applicationName +  '_Objects/'+applicationName+'_'+deviceType+'/homePageFooterCopyright'), FailureHandling.STOP_ON_FAILURE)
-//WebUI.closeBrowser()
-

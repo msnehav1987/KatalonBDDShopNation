@@ -16,45 +16,39 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 
+String Samsung = GlobalVariable.Samsung
 
+String Desktop = GlobalVariable.Desktop
 
-String Samsung= GlobalVariable.Samsung
-String Desktop= GlobalVariable.Desktop
-String iPad= GlobalVariable.iPad
-String iPhone= GlobalVariable.iPhone
-String local= GlobalVariable.local
-String InternetExplorer= GlobalVariable.InternetExplorer
+String iPad = GlobalVariable.iPad
+
+String iPhone = GlobalVariable.iPhone
+
+String local = GlobalVariable.local
+
+String InternetExplorer = GlobalVariable.InternetExplorer
 
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 
 String applicationName = GlobalVariable.applicationName
 
+String TCName = ''
 
-String TCName =""
+String deviceType = GlobalVariable.deviceType
 
-public void ShoppingguidePage(){
+Boolean isCanonical
 
-	CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
-	String TCName =""
-	String deviceType = GlobalVariable.deviceType
-	Boolean isCanonical
-if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people'))  && TCName.equalsIgnoreCase("PDP") ) {
-	url = GlobalVariable.CategoryListingPageCPA
-} 
-
-if (deviceType.equalsIgnoreCase('desktop')) {
-    WebUI.openBrowser(url, FailureHandling.STOP_ON_FAILURE)
-    WebUI.maximizeWindow()
-}
-else
-{
-	WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
+if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase('PDP')) {
+    url = GlobalVariable.CategoryListingPageCPA
 }
 
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
 String xpath = CustomKeywords.'com.helper.browserhelper.ShopNationTest.jsonReader'('SlideShow.heroarea.author')
 
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.FetchPagefromkibana'('SHOPPING_GUIDE', xpath, 'heroarea.author')
+
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('Shoppingguide.section.title', 'Shoppingguide.section.title')
 
 isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
 
@@ -63,72 +57,3 @@ println('isCanonical->' + isCanonical)
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
 WebUI.closeBrowser()
-}
-
-
-if (Samsung.contains('true')){
-	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackSamsung'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-	
-}
-
-else if (Desktop.contains('true')){
-	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackChrome'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-}
-
-else if (iPad.contains('true')){
-	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIpad'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-}
-
-else if (iPhone.contains('true')){
-	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackIphone'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-}
-
-else if(local.contains('true')) {
-		if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.loginIntoApplication'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-}
-
-else if (InternetExplorer.contains('true')){
-	if (((url.contains('parenting') || url.contains('realsimple')) || url.contains('people')) && TCName.equalsIgnoreCase("PDP") ) {
-		url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-	CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(url)
-	ShoppingguidePage()
-	}else{
-		CustomKeywords.'com.helper.browserhelper.ShopNationTest.BrowserStackInternetExplorer'(GlobalVariable.ShoppingGuideUrl)
-		ShoppingguidePage()
-	}
-}

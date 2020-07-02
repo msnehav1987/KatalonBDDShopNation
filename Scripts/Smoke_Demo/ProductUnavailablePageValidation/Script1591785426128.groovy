@@ -20,55 +20,45 @@ import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
 import org.openqa.selenium.interactions.Actions as Actions
 
-String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
+String url1 = GlobalVariable.url
 
+println('url->>' + url1)
+
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, url1)
+
+String TCName = ''
+
+//String url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url.toString())
 String applicationName = GlobalVariable.applicationName
 
 String deviceType = GlobalVariable.deviceType
 
 Boolean isCanonical
-String TCName =""
-if ((url.contentEquals('parenting') || url.contentEquals('realsimple')) || url.contentEquals('people')  && TCName.equalsIgnoreCase("PDP")) {
+
+if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
     url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
 } else {
     url = url
 }
 
-WebUI.openBrowser('')
-
-WebUI.maximizeWindow()
-
-//WebUI.delay(4)
-WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
 
 if (applicationName.equalsIgnoreCase('more')) {
-    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PDUpage))
+    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PDUpage //    WebUI.verifyElementVisible(findTestObject(((((('Object Repository/' + applicationName) + '_Objects/') + applicationName) + 
+            ) //  WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.ResponseKibanaUrl))
+        )
 } else {
-    WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.ResponseKibanaUrl))
+    String reducedPDupageUrl = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.PDUpage)
+
+    CustomKeywords.'com.helper.browserhelper.ShopNationTest.PDUfromkibana'(false, reducedPDupageUrl,'ProductDetail.UnavailableImage', 'Product Unavailable Image')
 
     isCanonical = CustomKeywords.'com.helper.browserhelper.ShopNationTest.validateCanonicalURL'()
 
     println('isCanonical->' + isCanonical)
 
-    if (GlobalVariable.AlphabetNavigation) {
-        WebUI.verifyElementVisible(findTestObject(((((('Object Repository/' + applicationName) + '_Objects/') + applicationName) + 
-                '_') + deviceType) + '/productUnavailableImage'), FailureHandling.STOP_ON_FAILURE)
-    }
-    
-    WebUI.verifyElementVisible(findTestObject(((((('Object Repository/' + applicationName) + '_Objects/') + applicationName) + 
-            '_') + deviceType) + '/productUnavailableImage'), FailureHandling.STOP_ON_FAILURE)
+    CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('ProductDetail.UnavailableImage', 'Product Unavailable Image')
 }
 
 CustomKeywords.'com.helper.browserhelper.ShopNationTest.footerValidation'()
 
-//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageLogo'), 
-//    FailureHandling.STOP_ON_FAILURE)
-//
-//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterLogo'), 
-//    FailureHandling.STOP_ON_FAILURE)
-//
-//WebUI.verifyElementVisible(findTestObject(((((applicationName + '_Objects/') + applicationName) + '_') + deviceType) + '/homePageFooterCopyright'), 
-//    FailureHandling.STOP_ON_FAILURE)
-
 WebUI.closeBrowser()
-

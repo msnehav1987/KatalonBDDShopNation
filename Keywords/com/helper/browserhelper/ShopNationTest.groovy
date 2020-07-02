@@ -111,6 +111,7 @@ public class ShopNationTest {
 	@Keyword
 	public static String getURL(String env,String urlToReplace){
 		String envToExecuteReplacedURL=urlToReplace
+		println ("Switching to Environment ->"+env+" for the url -> "+urlToReplace)
 		switch(env.toLowerCase()){
 
 			case 'prod':
@@ -547,6 +548,66 @@ public class ShopNationTest {
 	}
 
 
+	
+	public String PDUfromkibana(boolean shouldExistOrNot,String pageURL,String xPathKey, String elementName){
+		String appName= GlobalVariable.applicationName
+		//String appnameOnKibana=propsObject.getProperty(applicationName+".kibana");
+		//This is Search Query String is for es74 kibana
+		//String searchString="{\"index\":\"product\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[{\"field\":\"dateChanged\",\"format\":\"date_time\"},{\"field\":\"dateCreated\",\"format\":\"date_time\"},{\"field\":\"dateImage\",\"format\":\"date_time\"},{\"field\":\"dateScraped\",\"format\":\"date_time\"},{\"field\":\"dateUpdated\",\"format\":\"date_time\"}],\"query\":{\"bool\":{\"must\":[],\"filter\":[{\"match_all\":{}},{\"match_phrase\":{\"available\":{\"query\":false}}},{\"match_phrase\":{\"monetization\":{\"query\":\"CPA\"}}},{\"match_phrase\":{\"image.valid\":{\"query\":true}}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appnameOnKibana+"\"}}}],\"should\":[],\"must_not\":[]}}}\n";
+		//This is Search Query String is for  es63 Kibana
+		String searchString="{\"index\":\"product\",\"ignore_unavailable\":true}\n{\"version\":true,\"size\":5,\"sort\":[{\"_score\":{\"order\":\"desc\"}}],\"_source\":{\"excludes\":[]},\"stored_fields\":[\"*\"],\"script_fields\":{},\"docvalue_fields\":[\"dateChanged\",\"dateCreated\",\"dateImage\",\"dateScraped\",\"dateUpdated\"],\"query\":{\"bool\":{\"must\":[{\"match_all\":{}},{\"match_phrase\":{\"available\":{\"query\":false}}},{\"match_phrase\":{\"hierarchyIds\":{\"query\":\""+appName.toLowerCase()+"\"}}},{\"match_phrase\":{\"image.valid\":{\"query\":true}}},{\"match_phrase\":{\"monetization\":{\"query\":\"CPA\"}}}],\"filter\":[],\"should\":[],\"must_not\":[]}}}\n";
+		String productvalue2 = null;
+		String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
+		
+		try{
+			authenticationforkibana();
+			RequestSpecification httpRequest = io.restassured.RestAssured.given();
+			//GET request to find ResponseIds
+			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
+			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			// Response for kibana es74
+//			Response searchResult=given()
+//					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+//					.header("kbn-version","7.4.2")
+//					.header("Content-Type","application/json; charset=utf-8")
+//					.body(searchString)
+//					.post(kibanaSourceURL+"/elasticsearch/_msearch?rest_total_hits_as_int=true&ignore_throttled=true");
+			// Response for kibana es63
+			Response searchResult=io.restassured.RestAssured.given()
+					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
+					.header("kbn-version","6.3.2")
+					.header("Content-Type","application/json; charset=utf-8")
+					.body(searchString)
+					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
+
+			System.out.println(searchResult.asString());
+			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
+			for(int i=0;i<=3;i++)
+			{
+				String productid=jsonPathEvaluator.getString("responses[0].hits.hits["+i+"]._id");
+				productvalue2="p"+productid;
+				System.out.println("kibana response productvalue2->>"+productvalue2);
+				//HomePage homepage=new HomePage(driver, objectRepository, productid, softAssert, reportLogger);
+				String navigation=productvalue(pageURL, productvalue2);
+				System.out.println(navigation);
+				WebUI.navigateToUrl(navigation, FailureHandling.STOP_ON_FAILURE);
+				if(verifyElementVisible(xPathKey,xPathKey)){
+
+					System.out.println("The navigated page is"+elementName);
+					break;
+				}
+			}
+
+		}catch(Exception e)
+		{
+			print ("Exception in PDUfromkibana method.Exception is ->> "+e)
+			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			assert false
+		}
+		 return productvalue2;
+	}
 
 	public ArrayList<String> kibanacategory(String appName) {
 		//appName=appName+".kibana"
@@ -806,22 +867,48 @@ public class ShopNationTest {
 		String url = getURL(GlobalVariable.envType,urlToReplace)
 		try{
 			String deviceType = GlobalVariable.deviceType
+			String local = GlobalVariable.local
+			String desktop = GlobalVariable.Desktop
+			String samsung = GlobalVariable.Samsung
+			String ipad = GlobalVariable.iPad
+			String iphone = GlobalVariable.iPhone
+			String internetExplorer= GlobalVariable.InternetExplorer
 			//			CharSequence url =getURL'(GlobalVariable.envType, GlobalVariable.url)'
 
-			if (deviceType.equalsIgnoreCase('desktop')) {
-				println ("Opening on deviceType->"+deviceType )
+			if (deviceType.equalsIgnoreCase('desktop') || local.equalsIgnoreCase("true")) {
+				println ("Opening on deviceType -> local "+deviceType +"" )
 				WebUI.openBrowser(url, FailureHandling.STOP_ON_FAILURE)
-				println ("Maximizing the window")
+				println ("Maximizing the window.")
 				WebUI.maximizeWindow()
 			}
+			else if(desktop.equalsIgnoreCase("true")){
+				BrowserStackChrome(url)
+				WebUI.maximizeWindow()
+			}
+			else if(samsung.equalsIgnoreCase("true")){
+				BrowserStackSamsung(url)
+			}
+			else if(ipad.equalsIgnoreCase("true")){
+				BrowserStackIpad(GlobalVariable.url)
+			}
+			else if(iphone.equalsIgnoreCase("true")){
+				BrowserStackIphone(url)
+			}
+			else if(internetExplorer.equalsIgnoreCase("true")){
+				BrowserStackInternetExplorer(url)
+				WebUI.maximizeWindow()
+			}
+
 			else
 			{
-				WebUI.navigateToUrl(url, FailureHandling.STOP_ON_FAILURE)
+				println ("None of the flags are set in openUrlBasedOnDevice method  !!")
+				assert false
+				
 			}
 		}
 		catch(Exception e)
 		{
-			println ("Exception while openUrlBasedOnDevice method ->>"+e)
+			println ("Exception in openUrlBasedOnDevice method ->>"+e)
 			assert false
 		}
 	}
