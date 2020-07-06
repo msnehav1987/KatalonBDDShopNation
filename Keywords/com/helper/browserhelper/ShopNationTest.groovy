@@ -55,7 +55,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import org.apache.commons.lang3.StringUtils
 public class ShopNationTest {
+
 	AndroidDriver driver=((RemoteWebDriver) driver);
 
 
@@ -109,7 +111,7 @@ public class ShopNationTest {
 	 * Get the exact environment specific url from the global variables
 	 */
 	@Keyword
-	public static String getURL(String env,String urlToReplace){
+	public  String getURL(String env,String urlToReplace){
 		String envToExecuteReplacedURL=urlToReplace
 		println ("Switching to Environment ->"+env+" for the url -> "+urlToReplace)
 		switch(env.toLowerCase()){
@@ -234,9 +236,12 @@ public class ShopNationTest {
 				WebUI.delay(10)
 			}
 		}catch(Exception e){
-			println ("Exception is "+e)
+			println("Error Occured in function navigateToScreen for page  "+ Page_Type);
+			println("Error Occured in function navigateToScreen "+e.getMessage());
+			println("Error Occured in function navigateToScreen");
+			println("error occured in function navigateToScreen"+e.getMessage());
+			println ("Exception in  navigateToScreen ->> "+e)
 			assert false
-			e.printStackTrace()
 		}
 	}
 
@@ -913,7 +918,170 @@ public class ShopNationTest {
 		}
 	}
 
+	@Keyword
+	public CharSequence checkUrlContainsAndReturnURL(String TCName) {
+		try{
+			CharSequence  url = getURL(GlobalVariable.envType, GlobalVariable.url)
+			println ("url -> "+url+"\nTCName -> "+TCName)
+			if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
+				url = (String)getURL(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+			}
+			println ("Processed the url in checkUrlContainsAndReturn method and returning -> "+url)
+			return url
+		}
+
+		catch(Exception e)
+		{
+			println ("Exception in checkUrlContainsAndReturn method ->>"+e)
+			assert false
+		}
+
+	}
+
+
+	public String fetchingTextvalueofElement(String xpath , String elementName)
+	{
+		try{
+			//			String xpath = jsonReader(xpathKey)
+			String text = WebUI.getText(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), FailureHandling.STOP_ON_FAILURE)
+			println ("Text for element "+elementName+" whose xpath is  "+xpath+" is -> "+text+"  ")
+			return text
+		}
+		catch(Exception e)
+		{
+			println ("Exception while fetchingTextvalueofElement method ->>"+e)
+			assert false
+		}
+	}
+
+	public String readProperties(String key){
+		FileInputStream fis = null;
+		Properties prop = null;
+		try {
+			String filePath=System.getProperty("user.dir")+"\\Object Repository\\applicationSpecificPropertiesFile\\applicationSpecificTextContent.properties";
+			fis = new FileInputStream(filePath);
+			prop = new Properties();
+			prop.load(fis);
+			println ("properties file loaded successfully from the path ->"+filePath)
+			println ("Returning value for "+key+" is ->"+ prop.get(key))
+			return prop.get(key)
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		//		finally {
+		//			fis.close();
+		//		}
+		//		return prop;
+	}
+
+	/**
+	 * Page title :Verfiying the page title of categorySelected and categorytile
+	 * @param xpath of the element and is element name
+	 */
+	public void VerifyPageTitle(String xpath, String xpath1){
+
+		String categoryselected = fetchingTextvalueofElement((xpath1)).toLowerCase();
+		String categorytitle = fetchingTextvalueofElement((xpath1)).toLowerCase();
+		try{
+			if(categorytitle.contains(categoryselected)){
+				println(categorytitle+ " tile is displayed successfully");
+				println(categorytitle+ " is displayed successfully");
+			}else{
+				println("The breadcrumb title "+categorytitle + " is not matching with "+ categoryselected);
+			}
+		}catch (Exception e) {
+
+			e.printStackTrace();
+			println("page is not displayed successfully");
+			println("page tile is not matching with the selection");
+			assert false
+		}
+	}
+
+	public String deviceType()
+	{
+		try{
+			if(GlobalVariable.Desktop.toString().equalsIgnoreCase("true"))
+				return "chrome";
+			else if(GlobalVariable.Samsung.toString().equalsIgnoreCase("true"))
+				return "android";
+			else if(GlobalVariable.iPad.toString().equalsIgnoreCase("true"))
+				return "ipad";
+			else if(GlobalVariable.iPhone.toString().equalsIgnoreCase("true"))
+				return "iphone";
+			else if(GlobalVariable.local.toString().equalsIgnoreCase("true"))
+				return "desktop";
+			else if(GlobalVariable.InternetExplorer.toString().equalsIgnoreCase("true"))
+				return "internetexplorer";
+			else{
+				println ("Unknown device type!!")
+				assert false
+			}}
+		catch(Exception e)
+		{
+			println("Exception in deviceType method->>"+e)
+			assert false
+		}
+	}
+
+	public void validate_Directorypage(String searchkey){
+		try {
+
+			String directory_title=fetchingTextvalueofElement(getXpathValue("directorypage.title"), "Directory title");
+			String currentURL = WebUI.getUrl()
+			String titlecase= StringUtils.capitalize(directory_title);
+			println ("titlecase after capitalizing -> "+titlecase )
+
+			//String deviceTypeVal=refApplicationGenericUtils.getDeviceType(driver);
+
+			if(directory_title.equals(titlecase))
+				println ("Each word of the title is in Caps");
+			else
+				println("Each word of the title is not in Caps");
+			VerifyPageTitle(getXpathValue("directorypage.title"), getXpathValue("directorypage.breadcrumb"));
+			if(deviceType.equalsIgnoreCase("Desktop"))
+							{
+								refApplicationGenericUtils.verifyingText(objectRepository.get("directorypage.LeftnavigationShopBy"), "Shop By", "Leftnavigationheader");
+								List<WebElement> Directorieslist =   refApplicationGenericUtils.getListOfElements(objectRepository.get("directorypage.leftnavlinks"), "directorypage.leftnavlinks");
+				//				for(WebElement directorylink: Directorieslist)
+				//				System.out.println(directorylink.getText());
+				//				String directoryname=fetchingTextvalueofElement(getXpathValue("directorypage.BrandorStorelink"), "Brand/Store link");
+				//				refApplicationGenericUtils.clickOnElement(objectRepository.get("directorypage.BrandorStorelink"), "directorypage.BrandorStorelink");
+				//				refApplicationGenericUtils.waitUntilPageLoads();
+				//				refApplicationGenericUtils.checkForElement(objectRepository.get("directorypage.TopBrandsorStores.title"), "TopBrandsorStorestitle");
+				//				String TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//				refApplicationGenericUtils.softAssertTheCondition(true, refApplicationGenericUtils.doActualTextContains(TopBrandsorStores_title, directoryname), "Brand/Store page is not loaded successfully");
+				//				driver.navigate().to(currentURL);
+				//			}String TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//			refApplicationGenericUtils.checkForElement(objectRepository.get("directorypage.searchtext"), "searchtext box");
+				//			//refApplicationGenericUtils.removeAttributeForElementInDOM(objectRepository.get("directorypage.searchbutton"), "disabled", "searchbutton");
+				//			refApplicationGenericUtils.setElementValueEach(objectRepository.get("directorypage.searchtext"), "searchtext box", searchkey);
+				//			//	refApplicationGenericUtils.setElementValue(objectRepository.get("directorypage.searchtext"), "searchtext box", searchkey);
+				//			Thread.sleep(2000);
+				//
+				//			refApplicationGenericUtils.checkForElement(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//			if(deviceTypeVal.equalsIgnoreCase("iPad")||deviceTypeVal.equalsIgnoreCase("iPhone"))
+				//			refApplicationGenericUtils.clickSpecialMobile(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//			else
+				//			refApplicationGenericUtils.clickOnElementJS(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//
+				//			TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//
+				//			String splitedword=refApplicationGenericUtils.splitingcharcter(TopBrandsorStores_title);
+				//			//	String deviceTypeVal=refApplicationGenericUtils.getDeviceType(driver);
+				//			if(!(deviceTypeVal.equalsIgnoreCase("iPhone")||deviceTypeVal.equalsIgnoreCase("iPad")||applicationName.equalsIgnoreCase("MyWedding")))
+				//			refApplicationGenericUtils.softAssertTheCondition(true, refApplicationGenericUtils.doActualTextContains(splitedword,searchkey), "search functionality is not working");
+				//			//validateSearchInDirectoryPage(searchkey);
+				//			validateAlphabeticSegrigationOfPages();
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
 
 }
-
-

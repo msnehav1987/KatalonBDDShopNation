@@ -43,7 +43,7 @@ if (!(applicationName.equalsIgnoreCase('MarthaStewart'))) {
 
     WebUI.navigateToUrl(Url, FailureHandling.STOP_ON_FAILURE)
 
-    String partOfUrl = Url.substring(Url.indexOf('-i') + 1, Url.length())
+    CharSequence partOfUrl = Url.substring(Url.indexOf('-i') + 1, Url.length())
 
     if (partOfUrl.contains('-ii')) {
         System.out.println('The page is pageii in marthaStewart')
