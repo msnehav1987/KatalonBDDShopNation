@@ -32,6 +32,7 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By as By
+import org.openqa.selenium.JavascriptExecutor
 import groovy.json.JsonSlurper as JsonSlurper
 import com.kms.katalon.core.appium.driver.AppiumDriverManager
 import io.appium.java_client.android.AndroidDriver
@@ -49,6 +50,8 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.ie.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit
+
 import org.openqa.selenium.remote.*;
 import io.restassured.*
 import io.restassured.authentication.PreemptiveBasicAuthScheme
@@ -58,7 +61,9 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import java.util.concurrent.TimeUnit
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import org.apache.commons.lang3.StringUtils
 public class ShopNationTest {
+
 	AndroidDriver driver=((RemoteWebDriver) driver);
 
 
@@ -112,43 +117,43 @@ public class ShopNationTest {
 	 * Get the exact environment specific url from the global variables
 	 */
 	@Keyword
-	public static String getURL(String env,String urlToReplace){
+	public  String getURL(String env,String urlToReplace){
 		String envToExecuteReplacedURL=urlToReplace
 		println ("Switching to Environment ->"+env+" for the url -> "+urlToReplace)
 		switch(env.toLowerCase()){
 
 			case 'prod':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				println("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa1':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa1.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				println("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa2':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa2.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				println("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'qa3':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "qa3.")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				println("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 
 			case 'prod':
 				envToExecuteReplacedURL=envToExecuteReplacedURL.replaceAll("%env%.|qa3.|qa2.|qa1.", "")
-				printf("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
+				println("Environment Execution Environament URL is ->->"+envToExecuteReplacedURL)
 				return envToExecuteReplacedURL
 				break
 			default:
 				assert false
-				printf("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
+				println("ENVIRONMENT setting failed!!!. the value in Global Variable :: envType is->"+envToExecuteReplacedURL)
 				break
 		}
 	}
@@ -210,7 +215,7 @@ public class ShopNationTest {
 
 			String dataToReturn = InputJSON.get(applicationName.toString().toLowerCase()).get(key)
 
-			println ("Parsed the data from->"+filePath+"\n Found the value for "+keyValue+" which is ->>"+dataToReturn)
+			//println ("Parsed the data from->"+filePath+"\n Found the value for "+keyValue+" which is ->>"+dataToReturn)
 
 			return dataToReturn
 		}
@@ -237,9 +242,12 @@ public class ShopNationTest {
 				WebUI.delay(10)
 			}
 		}catch(Exception e){
-			println ("Exception is "+e)
+			println("Error Occured in function navigateToScreen for page  "+ Page_Type);
+			println("Error Occured in function navigateToScreen "+e.getMessage());
+			println("Error Occured in function navigateToScreen");
+			println("error occured in function navigateToScreen"+e.getMessage());
+			println ("Exception in  navigateToScreen ->> "+e)
 			assert false
-			e.printStackTrace()
 		}
 	}
 
@@ -585,7 +593,7 @@ public class ShopNationTest {
 			RequestSpecification httpRequest = io.restassured.RestAssured.given();
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
-			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			// Response for kibana es74
 			//			Response searchResult=given()
 			//					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
@@ -601,20 +609,20 @@ public class ShopNationTest {
 					.body(searchString)
 					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
 
-			System.out.println(searchResult.asString());
+			println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			for(int i=0;i<=3;i++)
 			{
 				String productid=jsonPathEvaluator.getString("responses[0].hits.hits["+i+"]._id");
 				productvalue2="p"+productid;
-				System.out.println("kibana response productvalue2->>"+productvalue2);
+				println("kibana response productvalue2->>"+productvalue2);
 				//HomePage homepage=new HomePage(driver, objectRepository, productid, softAssert, reportLogger);
 				String navigation=productvalue(pageURL, productvalue2);
-				System.out.println(navigation);
+				println(navigation);
 				WebUI.navigateToUrl(navigation, FailureHandling.STOP_ON_FAILURE);
 				if(verifyElementVisible(xPathKey,xPathKey)){
 
-					System.out.println("The navigated page is"+elementName);
+					println("The navigated page is"+elementName);
 					break;
 				}
 			}
@@ -623,7 +631,7 @@ public class ShopNationTest {
 		{
 			print ("Exception in PDUfromkibana method.Exception is ->> "+e)
 
-			System.out.println(e.getMessage());
+			println(e.getMessage());
 			e.printStackTrace();
 			assert false
 		}
@@ -644,17 +652,17 @@ public class ShopNationTest {
 			RequestSpecification httpRequest = io.restassured.RestAssured.given();
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
-			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			Response searchResult=io.restassured.RestAssured.given()
 					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
 					.header("kbn-version","6.3.2")
 					.header("Content-Type","application/json; charset=utf-8")
 					.body(searchString)
 					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
-			System.out.println(searchResult.asString());
+			println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryid = jsonPathEvaluator.getString("responses[0].hits.hits[0]._source.categoryIds");
-			System.out.println(categoryid);
+			println(categoryid);
 			String  str=categoryid.replace("[","").replace("]","");
 			strfinal=str.split(",");
 			al=new ArrayList<String>(Arrays.asList(strfinal));
@@ -664,7 +672,7 @@ public class ShopNationTest {
 		{
 			println("Exception: ${e}")
 			print ("Exception in matchphrase method.Exception is ->> "+e)
-			System.out.println(e.getMessage());
+			println(e.getMessage());
 			e.printStackTrace();
 			assert false
 		}
@@ -680,7 +688,7 @@ public class ShopNationTest {
 
 
 		RestAssured.baseURI = convertedURL+"/api/console/api_server";
-		System.out.println(RestAssured.baseURI);
+		println(RestAssured.baseURI);
 		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
 		authScheme.setUserName(new String(Base64.getDecoder().decode("cGFuZGV5bA==")));
 		authScheme.setPassword(new String(Base64.getDecoder().decode("QWF5YW5zaEAxNw==")));
@@ -701,7 +709,7 @@ public class ShopNationTest {
 			RequestSpecification httpRequest = io.restassured.RestAssured.given()
 			String convertedKibanaSourceURL = GlobalVariable.kibanaSourceURL.toString().replaceAll("%env%", GlobalVariable.envType)
 
-			System.out.println(searchString);
+			println(searchString);
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
 			Response searchResult=io.restassured.RestAssured.given()
@@ -710,19 +718,19 @@ public class ShopNationTest {
 					.header("Content-Type","application/json; charset=utf-8")
 					.body(searchString)
 					.post(convertedKibanaSourceURL+"/elasticsearch/_msearch");
-			System.out.println(searchResult.asString());
+			println(searchResult.asString());
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			String categoryhome = jsonPathEvaluator.getString("responses[0].hits.hits[0]._id");
-			System.out.println(categoryhome);
+			println(categoryhome);
 			categoryValue="-c"+categoryhome;
 
 			String navigation=productvalue(getURL(GlobalVariable.envType, GlobalVariable.url), categoryValue);
-			System.out.println("\n\n"+navigation);
+			println("\n\n"+navigation);
 			int index=navigation.lastIndexOf('/');
 			String navigationFirst=navigation.substring(0,index);
 			String navigationLast= navigation.substring(navigation.lastIndexOf("/") + 1);
 			navigation= navigationFirst+navigationLast;
-			System.out.println(navigation);
+			println(navigation);
 			WebUI.navigateToUrl(navigation , FailureHandling.STOP_ON_FAILURE)
 			//homepage.navigateToDirectUrl(navigation);
 		}
@@ -737,7 +745,7 @@ public class ShopNationTest {
 	}
 
 	public String productvalue(Object object,String pid){
-		printf ("returning ->>"+object+pid+".html")
+		println ("returning ->>"+object+pid+".html")
 		return (object+pid+".html");
 
 	}
@@ -756,31 +764,31 @@ public class ShopNationTest {
 			RequestSpecification httpRequest = RestAssured.given();
 			//GET request to find ResponseIds
 			Response responseBuildId = httpRequest.request(io.restassured.http.Method.POST);
-			System.out.println(responseBuildId.getHeader("kbn-xpack-sig").toString());
+			println(responseBuildId.getHeader("kbn-xpack-sig").toString());
 			Response searchResult=RestAssured.given()
 					.header("kbn-xpack-sig",responseBuildId.getHeader("kbn-xpack-sig").toString())
 					.header("kbn-version","6.3.2")
 					.header("Content-Type","application/json; charset=utf-8")
 					.body(searchString)
 					.post(kibanaSourceURL+"/elasticsearch/_msearch");
-			System.out.println(searchResult.asString());
+			println(searchResult.asString());
 
 			JsonPath jsonPathEvaluator =JsonPath.from(searchResult.asString());
 			for(int i=0;i<=5;i++)
 			{
 				String pagevalue=jsonPathEvaluator.getString("responses[0].hits.hits["+i+"]._source.id");
-				System.out.println(pagevalue);
+				println(pagevalue);
 				CategorylistingArticle="sc"+pagevalue;
-				System.out.println(CategorylistingArticle);
+				println(CategorylistingArticle);
 				// HomePage homepage=new HomePage(driver, objectRepository, CategorylistingArticle, softAssert, reportLogger);
 				String navigation=productvalue((getURL(GlobalVariable.envType, GlobalVariable.SlideshowPage)), CategorylistingArticle);
-				System.out.println(navigation);
+				println(navigation);
 				WebUI.navigateToUrl(navigation)
 				// homepage.navigateToDirectUrl(navigation);
 
 
 				if(WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath', [('variable') : xPath]), FailureHandling.STOP_ON_FAILURE)){
-					System.out.println("The navigated page is"+elementName);
+					println("The navigated page is"+elementName);
 					break;
 				}
 			}
@@ -795,6 +803,23 @@ public class ShopNationTest {
 
 	@Keyword
 	public String getXpathValue(String xpathKey){
+		try
+		{
+			String xpath = jsonReader(xpathKey)
+			//WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			println ("Xpath retrieved for->"+xpathKey +" from json is -> "+xpath)
+			return xpath
+		}
+		catch(Exception e)
+		{
+			println ("Exception while getXpathValue method ->>"+e)
+			assert false
+		}
+
+	}
+
+	@Keyword
+	public String get(String xpathKey){
 		try
 		{
 			String xpath = jsonReader(xpathKey)
@@ -825,12 +850,24 @@ public class ShopNationTest {
 		}
 	}
 
-	public String clickOnElement(String xpathKey, String elementName){
+	public void clickOnElement(String xpathKey, String elementName){
 		try{
 			String xpath = jsonReader(xpathKey)
 			//						println ("Xpath retrieved for "+elementName+" from json is -> "+xpath)
 			WebUI.click(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), FailureHandling.STOP_ON_FAILURE)
 			println ("Clicked on "+elementName+" with xpath -> "+xpath+" Successfully")
+		}
+		catch(Exception e)
+		{
+			println ("Exception while clickOnElement method ->>"+e)
+			assert false
+		}
+	}
+
+	public void clickOnElementUsingByXpath(String xpath, String elementName){
+		try{
+			WebUI.click(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), FailureHandling.STOP_ON_FAILURE)
+			println ("Clicked on "+elementName+" with By.xpath -> "+xpath+" Successfully")
 		}
 		catch(Exception e)
 		{
@@ -934,11 +971,245 @@ public class ShopNationTest {
 		}
 	}
 
-	
+	@Keyword
+	public CharSequence checkUrlContainsAndReturnURL(String TCName) {
+		try{
+			CharSequence  url = getURL(GlobalVariable.envType, GlobalVariable.url)
+			println ("url -> "+url+"\nTCName -> "+TCName)
+			if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
+				url = (String)getURL(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+			}
+			println ("Processed the url in checkUrlContainsAndReturn method and returning -> "+url)
+			return url
+		}
+		catch(Exception e)
+		{
+			println ("Exception in checkUrlContainsAndReturn method ->>"+e)
+			assert false
+		}
+
+	}
+
+	@Keyword
+	public String fetchingTextvalueofElement(String xpath , String elementName)
+	{
+		try{
+			//			String xpath = jsonReader(xpathKey)
+			String text = WebUI.getText(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), FailureHandling.STOP_ON_FAILURE)
+			println ("Text for element "+elementName+" whose xpath is  "+xpath+" is -> "+text+"  ")
+			return text
+		}
+		catch(Exception e)
+		{
+			println ("Exception while fetchingTextvalueofElement method ->>"+e)
+			assert false
+		}
+	}
+
 	
 
+	public String readProperties(String key){
+		FileInputStream fis = null;
+		Properties prop = null;
+		try {
+			String filePath=System.getProperty("user.dir")+"\\Object Repository\\applicationSpecificPropertiesFile\\applicationSpecificTextContent.properties";
+			fis = new FileInputStream(filePath);
+			prop = new Properties();
+			prop.load(fis);
+			println ("properties file loaded successfully from the path ->"+filePath)
+			println ("Returning value for "+key+" is ->"+ prop.get(key))
+			return prop.get(key)
+		} catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		//		finally {
+		//			fis.close();
+		//		}
+		//		return prop;
+	}
+
+	/**
+	 * Page title :Verfiying the page title of categorySelected and categorytile
+	 * @param xpath of the element and is element name
+	 */
+	public void VerifyPageTitle(String xpath, String xpath1){
+
+		String categoryselected = fetchingTextvalueofElement((xpath)).toLowerCase();
+		String categorytitle = fetchingTextvalueofElement((xpath1)).toLowerCase();
+		try{
+			if(categorytitle.contains(categoryselected)){
+				println(categorytitle+ " tile is displayed successfully");
+				println(categorytitle+ " is displayed successfully");
+			}else{
+				println("The breadcrumb title "+categorytitle + " is not matching with "+ categoryselected);
+			}
+		}catch (Exception e) {
+
+			e.printStackTrace();
+			println("page is not displayed successfully");
+			println("page tile is not matching with the selection");
+			assert false
+		}
+	}
+
+	public String deviceType()
+	{
+		try{
+			if(GlobalVariable.Desktop.toString().equalsIgnoreCase("true"))
+				return "chrome";
+			else if(GlobalVariable.Samsung.toString().equalsIgnoreCase("true"))
+				return "android";
+			else if(GlobalVariable.iPad.toString().equalsIgnoreCase("true"))
+				return "ipad";
+			else if(GlobalVariable.iPhone.toString().equalsIgnoreCase("true"))
+				return "iphone";
+			else if(GlobalVariable.local.toString().equalsIgnoreCase("true"))
+				return "desktop";
+			else if(GlobalVariable.InternetExplorer.toString().equalsIgnoreCase("true"))
+				return "internetexplorer";
+			else{
+				println ("Unknown device type!!")
+				assert false
+			}}
+		catch(Exception e)
+		{
+			println("Exception in deviceType method->>"+e)
+			assert false
+		}
+	}
+
+	public boolean verifyingText(String xpath, String expectedText, String ElementName)
+	{
+		String actualText="";
+		try {
+			boolean flag;
+			actualText= fetchingTextvalueofElement(xpath, ElementName)
+			println("Fetched value for xpath "+xpath+" with elementName  " +ElementName+" is -> "+ actualText)
+			if (actualText.equalsIgnoreCase(expectedText)){
+				flag=true;
+				println(actualText+" is equal to "+expectedText);
+			}
+			else{
+				flag=false;
+				println(actualText+" :does not match with -"+expectedText);
+			}
+			return flag;
+		}
+
+		catch(Exception e)
+		{
+			println(actualText+" :does not match with -"+expectedText);
+			println("Exception in verifyingText method -> "+e)
+			assert false
+		}
+	}
+
+	public List<WebElement> getListOfElements(String xpath,String ElementName)
+	{
+		println("getting List Of Elements..")
+
+		List<WebElement> li=new ArrayList<WebElement>();
+
+		try {
+			WebDriver driver = DriverFactory.getWebDriver()
+			li=driver.findElements(By.xpath(xpath))
+
+
+		} catch (Exception e) {
+			println("Exception in getListOfElements method -> "+e)
+			assert false
+		}
+		return li
+	}
+
+
+
+	public void waitUntilPageLoads(){
+		try{
+			long to = TimeUnit.SECONDS.toMillis(GlobalVariable.TimeOut)
+			WebDriver driver = DriverFactory.getWebDriver()
+			long t= System.currentTimeMillis();
+			long end = t+to;
+			while(System.currentTimeMillis() < end) {
+				// do this
+				if(((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete"))
+				{
+					println("Page load complete.")
+					break;
+				}
+				// pause to avoid churning
+				println("Waiting for Page to load.")
+
+				Thread.sleep( 2000);
+			}
+		}
+		catch(Exception E){
+			E.printStackTrace();
+			println("Timeout waiting for Page Load Request to complete.");}
+	}
+
+	public void validate_Directorypage(String searchkey){
+		try {
+
+			String directory_title=fetchingTextvalueofElement(getXpathValue("directorypage.title"), "Directory title");
+			String currentURL = WebUI.getUrl()
+			String titlecase= StringUtils.capitalize(directory_title);
+			println ("titlecase after capitalizing -> "+titlecase )
+
+			//String deviceTypeVal=refApplicationGenericUtils.getDeviceType(driver);
+
+			if(directory_title.equals(titlecase))
+				println ("Each word of the title is in Caps");
+			else
+				println("Each word of the title is not in Caps");
+			VerifyPageTitle(getXpathValue("directorypage.title"), getXpathValue("directorypage.breadcrumb"));
+			if(deviceType().equalsIgnoreCase("Desktop"))
+			{
+				println("Device type Desktop")
+				verifyingText(getXpathValue("directorypage.LeftnavigationShopBy"), "Shop By", "Leftnavigationheader");
+				List<WebElement> Directorieslist =   getListOfElements(get("directorypage.leftnavlinks"), "directorypage.leftnavlinks");
+				for(WebElement directorylink: Directorieslist)
+				{println(directorylink.getText());}
+				String directoryname=fetchingTextvalueofElement(getXpathValue("directorypage.BrandorStorelink"), "Brand/Store link");
+				clickOnElementUsingByXpath(get("directorypage.BrandorStorelink"), "directorypage.BrandorStorelink");
+				waitUntilPageLoads();
+
+								checkForElement(get("directorypage.TopBrandsorStores.title"), "TopBrandsorStorestitle");
+				//				String TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//				refApplicationGenericUtils.softAssertTheCondition(true, refApplicationGenericUtils.doActualTextContains(TopBrandsorStores_title, directoryname), "Brand/Store page is not loaded successfully");
+				//				driver.navigate().to(currentURL);
+				//			}String TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//			refApplicationGenericUtils.checkForElement(objectRepository.get("directorypage.searchtext"), "searchtext box");
+				//			//refApplicationGenericUtils.removeAttributeForElementInDOM(objectRepository.get("directorypage.searchbutton"), "disabled", "searchbutton");
+				//			refApplicationGenericUtils.setElementValueEach(objectRepository.get("directorypage.searchtext"), "searchtext box", searchkey);
+				//			//	refApplicationGenericUtils.setElementValue(objectRepository.get("directorypage.searchtext"), "searchtext box", searchkey);
+				//			Thread.sleep(2000);
+				//
+				//			refApplicationGenericUtils.checkForElement(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//			if(deviceTypeVal.equalsIgnoreCase("iPad")||deviceTypeVal.equalsIgnoreCase("iPhone"))
+				//			refApplicationGenericUtils.clickSpecialMobile(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//			else
+				//			refApplicationGenericUtils.clickOnElementJS(objectRepository.get("directorypage.searchbutton"), "searchbutton");
+				//
+				//			TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
+				//
+				//			String splitedword=refApplicationGenericUtils.splitingcharcter(TopBrandsorStores_title);
+				//			//	String deviceTypeVal=refApplicationGenericUtils.getDeviceType(driver);
+				//			if(!(deviceTypeVal.equalsIgnoreCase("iPhone")||deviceTypeVal.equalsIgnoreCase("iPad")||applicationName.equalsIgnoreCase("MyWedding")))
+				//			refApplicationGenericUtils.softAssertTheCondition(true, refApplicationGenericUtils.doActualTextContains(splitedword,searchkey), "search functionality is not working");
+				//			//validateSearchInDirectoryPage(searchkey);
+				//			validateAlphabeticSegrigationOfPages();
+			}
+		}
+		catch (InterruptedException e) {
+			println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 
 
 }
-
-
