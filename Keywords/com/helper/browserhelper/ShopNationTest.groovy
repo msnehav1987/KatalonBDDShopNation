@@ -60,6 +60,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import java.util.concurrent.TimeUnit
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import com.aventstack.extentreports.*
+import com.aventstack.extentreports.markuputils.*
+import com.kms.katalon.core.logging.KeywordLogger
+import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
+
+
 
 import org.apache.commons.lang3.StringUtils
 public class ShopNationTest {
@@ -1006,7 +1014,7 @@ public class ShopNationTest {
 		}
 	}
 
-	
+
 
 	public String readProperties(String key){
 		FileInputStream fis = null;
@@ -1178,7 +1186,7 @@ public class ShopNationTest {
 				clickOnElementUsingByXpath(get("directorypage.BrandorStorelink"), "directorypage.BrandorStorelink");
 				waitUntilPageLoads();
 
-								checkForElement(get("directorypage.TopBrandsorStores.title"), "TopBrandsorStorestitle");
+				checkForElement(get("directorypage.TopBrandsorStores.title"), "TopBrandsorStorestitle");
 				//				String TopBrandsorStores_title = fetchingTextvalueofElement(getXpathValue("directorypage.TopBrandsorStores.title"), "TopBrandsorStores_title");
 				//				refApplicationGenericUtils.softAssertTheCondition(true, refApplicationGenericUtils.doActualTextContains(TopBrandsorStores_title, directoryname), "Brand/Store page is not loaded successfully");
 				//				driver.navigate().to(currentURL);
@@ -1211,5 +1219,22 @@ public class ShopNationTest {
 		}
 	}
 
+	@Keyword
+	public void extentReportLogINFO(String Message){
+		KeywordUtil logger = new KeywordUtil()
+		logger.logInfo(Message)
+	}
+	
+	@Keyword
+	public void extentReportPass(String Message){
+		KeywordUtil logger = new KeywordUtil()
+		logger.markPassed(Message)
+	}
+	
+	@Keyword
+	public void extentReportFail(String Message){
+		KeywordUtil logger = new KeywordUtil()
+		logger.markFailed(Message)
+	}
 
 }

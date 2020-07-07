@@ -42,7 +42,7 @@ WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getU
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.heroarea.author')
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.section.image')
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.section.title')
-String elementTextValue=	CustomKeywords.'com.helper.browserhelper.ShopNationTest.fetchingTextvalueofElement'('SlideShow.herotitle')
+String elementTextValue= CustomKeywords.'com.helper.browserhelper.ShopNationTest.fetchingTextvalueofElement'('SlideShow.herotitle')
 println("The hero title is -> " + elementTextValue)
 
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.clickOnElement'('StoryPage.productcard.Instabutton', "Insta Button")
@@ -67,5 +67,25 @@ println("the title is ->"+ Title)
 
 List<WebElement> sectionbody= CustomKeywords.'com.helper.browserhelper.ShopNationTest.getListOfElements'('StoryPage.section.body',"section body")
 int sectionbody_size= sectionbody.size()
+if(sectionbody_size > 0)
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Story section body is displayed with total count of "+ sectionbody_size);
+else
+CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Story section body is not displayed ");
+
+
+List<WebElement> article = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getListOfElements'('StoryPage.leftnavigation.articles', "leftnavigation.articles")
+int article_size= article.size()
+
+if(article_size>0)
+{
+	System.out.println("Left Navigation Article section is displayed");
+	String header = CustomKeywords.'com.helper.browserhelper.ShopNationTest.fetchingTextvalueofElement'('StoryPage.leftnavigation.articlesheader', "article header")
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Total count of articles is : "+ article_size);
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Article grid header is : "+ header);
+}
+else{
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("No Article section found");
+}
+
 //}
 
