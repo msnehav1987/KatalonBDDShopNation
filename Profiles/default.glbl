@@ -49,4 +49,9 @@
       <initValue>'false'</initValue>
       <name>InternetExplorer</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>30</initValue>
+      <name>TimeOut</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
