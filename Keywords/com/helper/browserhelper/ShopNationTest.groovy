@@ -1,6 +1,7 @@
 package com.helper.browserhelper
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
@@ -54,6 +55,8 @@ import io.restassured.authentication.PreemptiveBasicAuthScheme
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import java.util.concurrent.TimeUnit
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ShopNationTest {
 	AndroidDriver driver=((RemoteWebDriver) driver);
@@ -244,6 +247,24 @@ public class ShopNationTest {
 		navigateToScreen(xPath,pageName);
 	}
 
+	@Keyword
+	public String fetchingTextvalueofElement(String ElementName){
+		String elementTextValue=null;
+		try {
+			String xpath = jsonReader(ElementName)
+
+			WebUI.scrollToElement(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]), 30, FailureHandling.STOP_ON_FAILURE)
+			println ("Scrolled till Element "+ ElementName +" with xpath ->"+xpath+" Successfully.")
+			WebUI.verifyElementVisible(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+			elementTextValue= WebUI.getText(findTestObject('Object Repository/ParameterizedXpath/ParameterizedXpath',['variable':xpath]))
+		}
+		catch(Exception e){
+			println ("Exception is "+e)
+			assert false
+			e.printStackTrace()
+		}
+		return elementTextValue;
+	}
 
 	@Keyword
 	public void verifyElementVisible(String element){
@@ -912,6 +933,10 @@ public class ShopNationTest {
 			assert false
 		}
 	}
+
+	
+	
+
 
 
 }
