@@ -20,22 +20,29 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
-//public void ValidateStoryPage(boolean ImgClickable){
+public class StoryPage_reg_validation{
 String TCName = ''
 
 CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.url)
 String applicationName = GlobalVariable.applicationName
 String deviceType = GlobalVariable.deviceType
 Boolean isCanonical
-if ((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
-url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
-}  else {
-url = url
-}
+//if((url.contains('parenting') || url.contains('realsimple')) || (url.contains('people') && TCName.equalsIgnoreCase('PDP'))) {
+//url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.CategoryListingPageCPA)
+//}  else {
+//url = url
+//}
 
-CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+CharSequence url = CustomKeywords.'com.helper.browserhelper.ShopNationTest.checkUrlContainsAndReturnURL'(TCName)
 
-WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
+//CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+//
+//WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
+
+public void ValidateStoryPage(boolean ImgClickable){
+	String deviceType = GlobalVariable.deviceType
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.herotitle')
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.heroimage')
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('SlideShow.herodescription')
@@ -87,5 +94,64 @@ else{
 	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("No Article section found");
 }
 
-//}
+}
+
+
+
+public void validateParaImageAndBody(){
+	String applicationName = GlobalVariable.applicationName
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
+try{	
+	int paraImage_size= CustomKeywords.'com.helper.browserhelper.ShopNationTest.getListOfElements'('StoryPage.para.Image',"para Image").size()
+	if(paraImage_size > 0)
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Story section paragraph image is displayed with total count of "+ paraImage_size);
+else
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("No Paragraph Image found");
+	
+	if(applicationName.equalsIgnoreCase("Shape"))
+	{
+		int para_size= CustomKeywords.'com.helper.browserhelper.ShopNationTest.getListOfElements'('StoryPage.para.body', "para.body").size();
+		if(para_size>0)
+		{
+			System.out.println("Paragraph section is displayed");
+			String header = CustomKeywords.'com.helper.browserhelper.ShopNationTest.fetchingTextvalueofElement'('StoryPage.para.header', "para header");
+			System.out.println("Paragraph grid header is : " + header);
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Total count of paragraph is : "+ para_size);
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("Paragraph header is : "+ header);
+		}
+		else
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportLogINFO'("No Paragraph body found");
+	}
+	
+	}
+catch (InterruptedException e) {
+	println(e.getMessage());
+	e.printStackTrace();
+}
+}
+
+
+public void ValidateStoryFooter()
+{
+	String applicationName = GlobalVariable.applicationName
+	CustomKeywords.'com.helper.browserhelper.ShopNationTest.openUrlBasedOnDevice'(url)
+	WebUI.navigateToUrl(CustomKeywords.'com.helper.browserhelper.ShopNationTest.getURL'(GlobalVariable.envType, GlobalVariable.StoryPageUrl))
+	try
+	{
+		if(applicationName.equalsIgnoreCase("MyWedding")||applicationName.equalsIgnoreCase("Shape"))
+		{
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('StoryPage.productcard.LeftArrow')
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('StoryPage.productcard.RightArrow')
+			CustomKeywords.'com.helper.browserhelper.ShopNationTest.verifyElementVisible'('StoryPage.productcard.ShopAll')
+		}
+	}
+	catch(Exception e)
+	{
+		System.out.println(e.getMessage());
+		CustomKeywords.'com.helper.browserhelper.ShopNationTest.extentReportFail'(e.getMessage());
+	}
+}
+
+}
 
